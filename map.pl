@@ -19,22 +19,22 @@ generateWater :-
     panjang(P),
     NewP is P-2,
     NewL is L-2,
-    random(4,NewP,TX1),
-    random(4,NewP,TX2),
-    random(4,NewP,TX3),
-    random(4,NewP,TX4),
-    random(4,NewP,TX5),
-    random(4,NewP,TX6),
-    random(4,NewP,TX7),
-    random(4,NewP,TX8),
-    random(4,NewL,TY1),
-    random(4,NewL,TY2),
-    random(4,NewL,TY3),
-    random(4,NewL,TY4),
-    random(4,NewL,TY5),
-    random(4,NewL,TY6),
-    random(4,NewL,TY7),
-    random(4,NewL,TY8),
+    random(1,NewP,TX1),
+    random(1,NewP,TX2),
+    random(1,NewP,TX3),
+    random(1,NewP,TX4),
+    random(1,NewP,TX5),
+    random(1,NewP,TX6),
+    random(1,NewP,TX7),
+    random(1,NewP,TX8),
+    random(1,NewL,TY1),
+    random(1,NewL,TY2),
+    random(1,NewL,TY3),
+    random(1,NewL,TY4),
+    random(1,NewL,TY5),
+    random(1,NewL,TY6),
+    random(1,NewL,TY7),
+    random(1,NewL,TY8),
     asserta(water(TX1,TY1,TX2,TY2,TX3,TY3,TX4,TY4,TX5,TY5,TX6,TY6,TX7,TY7,TX8,TY8)).
 
 generateQuestTile :-
@@ -240,12 +240,10 @@ legenda :-
     write('R = ternak manjah'),nl,
     write('M = belanja santuy'),nl,!.
 
-tesMap :-
+createMap :-
     initMap(15,15),
+    initPlayer,
     generateMarketTile,
     generateQuestTile,
     generateRanchTile,
-    generateWater,
-    initPlayer,
-    
-    map.
+    generateWater.

@@ -1,6 +1,9 @@
 :- dynamic(player/1).
 :- dynamic(init/1).
 
+/* include semua file prolog yang diperlukan */
+:- include('map.pl').
+:- include('exploration.pl').
 
 title :-
     write('                                      lllllll                                              '), nl, 
@@ -142,3 +145,6 @@ initBegin :-
     write('done').
 
 
+tes :-
+    createMap,
+    map.
