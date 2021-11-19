@@ -96,14 +96,14 @@ addItems(ItemName,Quantity) :-
 removeItems(ItemName,Quantity) :-
     inventory(_,ItemName,Qty,_,_,_,_,_,_),
     Qty2 is Qty - Quantity,
-    Qty2 \== 1,
+    Qty2 > 0,
     retract(inventory(ID,ItemName,Qty,Sell,Buy,Level,FarmLevel,FishLevel,RanchLevel)),
     asserta(inventory(ID,ItemName,Qty2,Sell,Buy,Level,FarmLevel,FishLevel,RanchLevel)),!
 .
 removeItems(ItemID,Quantity) :-
     inventory(ItemID,_,Qty,_,_,_,_,_,_),
     Qty2 is Qty - Quantity,
-    Qty2 \== 1,
+    Qty2 > 0,
     retract(inventory(ItemID,Name,Qty,Sell,Buy,Level,FarmLevel,FishLevel,RanchLevel)),
     asserta(inventory(ItemID,Name,Qty2,Sell,Buy,Level,FarmLevel,FishLevel,RanchLevel)),!
 .
@@ -112,12 +112,12 @@ removeItems(ItemID,Quantity) :-
 removeItems(ItemName,Quantity) :-
     inventory(_,ItemName,Qty,_,_,_,_,_,_),
     Qty2 is Qty - Quantity,
-    Qty2 >= 0,
-    retract(inventory(ID,ItemName,Qty,Sell,Buy,Level,FarmLevel,FishLevel,RanchLevel)),!
+    Qty2 =:= 0,
+    retract(inventory(_,ItemName,Qty,_,_,_,_,_,_)),!
 .
 removeItems(ItemID,Quantity) :-
     inventory(ItemID,_,Qty,_,_,_,_,_,_),
     Qty2 is Qty - Quantity,
     Qty2 =:= 0,
-    retract(inventory(ItemID,Name,Qty,Sell,Buy,Level,FarmLevel,FishLevel,RanchLevel)),
+    retract(inventory(ItemID,_,Qty,_,_,_,_,_,_)),!
 .
