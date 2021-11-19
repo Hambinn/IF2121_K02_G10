@@ -1,5 +1,5 @@
 :- dynamic(player/1).
-:- dynamic(init/1).
+:- dynamic(binjay/1).
 
 /* include semua file prolog yang diperlukan */
 :- include('map.pl').
@@ -146,5 +146,11 @@ initBegin :-
 
 
 tes :-
+    \+binjay(_),
+    asserta(binjay(99)),
     createMap,
-    map.
+    map, !.
+
+tes :-
+    binjay(_),
+    write('Sudah ada game yang dimulai').

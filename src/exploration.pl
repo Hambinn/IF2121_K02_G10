@@ -1,4 +1,5 @@
 w :-
+    binjay(_),
     positionX(X),
     positionY(Y),
     Next is (Y-1),
@@ -15,6 +16,7 @@ w :-
     asserta(positionY(Next)),!.
 
 w :-
+    binjay(_),
     positionX(X),
     positionY(Y),
     Next is (Y-1),
@@ -28,6 +30,7 @@ w :-
 
 
 w :-
+    binjay(_),
     positionX(X),
     positionY(Y),
     Next is (Y-1),
@@ -35,6 +38,7 @@ w :-
     logoWater, !.
 
 w :-
+    binjay(_),
     positionX(X),
     positionY(Y),
     Next is (Y-1),
@@ -44,6 +48,7 @@ w :-
     asserta(positionY(Next)), !.
 
 w :-
+    binjay(_),
     positionX(X),
     positionY(Y),
     Next is (Y-1),
@@ -53,6 +58,7 @@ w :-
     asserta(positionY(Next)), !.
 
 w :-
+    binjay(_),
     positionX(X),
     positionY(Y),
     Next is (Y-1),
@@ -62,6 +68,7 @@ w :-
     asserta(positionY(Next)), !.
 
 w :-
+    binjay(_),
     positionX(X),
     positionY(Y),
     Next is (Y-1),
@@ -71,6 +78,7 @@ w :-
     asserta(positionY(Next)), !.
 
 s :-
+    binjay(_),
     positionX(X),
     positionY(Y),
     Next is (Y+1),
@@ -87,6 +95,7 @@ s :-
     asserta(positionY(Next)),!.
 
 s :-
+    binjay(_),
     positionX(X),
     positionY(Y),
     Next is (Y+1),
@@ -99,6 +108,7 @@ s :-
     write('Kepentok pagar bosss'),!.
 
 s :-
+    binjay(_),
     positionX(X),
     positionY(Y),
     Next is (Y+1),
@@ -106,6 +116,7 @@ s :-
     logoWater, !.
 
 s :-
+    binjay(_),
     positionX(X),
     positionY(Y),
     Next is (Y+1),
@@ -115,6 +126,7 @@ s :-
     asserta(positionY(Next)),!.
 
 s :-
+    binjay(_),
     positionX(X),
     positionY(Y),
     Next is (Y+1),
@@ -124,6 +136,7 @@ s :-
     asserta(positionY(Next)),!.
 
 s :-
+    binjay(_),
     positionX(X),
     positionY(Y),
     Next is (Y+1),
@@ -133,6 +146,7 @@ s :-
     asserta(positionY(Next)),!.
 
 s :-
+    binjay(_),
     positionX(X),
     positionY(Y),
     Next is (Y+1),
@@ -142,6 +156,7 @@ s :-
     asserta(positionY(Next)),!.
 
 d :-
+    binjay(_),
     positionX(X),
     positionY(Y),
     Next is (X+1),
@@ -158,6 +173,7 @@ d :-
     asserta(positionX(Next)),!.
 
 d :-
+    binjay(_),
     positionX(X),
     positionY(Y),
     Next is (X+1),
@@ -170,6 +186,7 @@ d :-
     write('Kepentok pagar bosss'),!.
 
 d :-
+    binjay(_),
     positionX(X),
     positionY(Y),
     Next is (X+1),
@@ -177,6 +194,7 @@ d :-
     logoWater, !.
 
 d :-
+    binjay(_),
     positionX(X),
     positionY(Y),
     Next is (X+1),
@@ -186,6 +204,7 @@ d :-
     asserta(positionX(Next)),!.
 
 d :-
+    binjay(_),
     positionX(X),
     positionY(Y),
     Next is (X+1),
@@ -195,6 +214,7 @@ d :-
     asserta(positionX(Next)),!.
 
 d :-
+    binjay(_),
     positionX(X),
     positionY(Y),
     Next is (X+1),
@@ -204,6 +224,7 @@ d :-
     asserta(positionX(Next)),!.
 
 d :-
+    binjay(_),
     positionX(X),
     positionY(Y),
     Next is (X+1),
@@ -213,6 +234,7 @@ d :-
     asserta(positionX(Next)),!.
     
 a :-
+    binjay(_),
     positionX(X),
     positionY(Y),
     Next is (X-1),
@@ -229,6 +251,7 @@ a :-
     asserta(positionX(Next)),!.
 
 a :-
+    binjay(_),
     positionX(X),
     positionY(Y),
     Next is (X-1),
@@ -241,6 +264,7 @@ a :-
     write('Kepentok pagar bosss'),!.
 
 a :-
+    binjay(_),
     positionX(X),
     positionY(Y),
     Next is (X-1),
@@ -248,6 +272,7 @@ a :-
     logoWater, !.
 
 a :-
+    binjay(_),
     positionX(X),
     positionY(Y),
     Next is (X-1),
@@ -257,6 +282,7 @@ a :-
     asserta(positionX(Next)),!.
 
 a :-
+    binjay(_),
     positionX(X),
     positionY(Y),
     Next is (X-1),
@@ -266,6 +292,7 @@ a :-
     asserta(positionX(Next)),!.
 
 a :-
+    binjay(_),
     positionX(X),
     positionY(Y),
     Next is (X-1),
@@ -275,6 +302,7 @@ a :-
     asserta(positionX(Next)),!.
 
 a :-
+    binjay(_),
     positionX(X),
     positionY(Y),
     Next is (X-1),
@@ -282,6 +310,22 @@ a :-
     logoRanch,
     retract(positionX(_)),
     asserta(positionX(Next)),!.
+
+w :-
+    \+ binjay(_),
+    write('Anda belum tiba di Binjay!!').
+
+s :-
+    \+ binjay(_),
+    write('Anda belum tiba di Binjay!!').
+
+d :-
+    \+ binjay(_),
+    write('Anda belum tiba di Binjay!!').
+
+a :-
+    \+ binjay(_),
+    write('Anda belum tiba di Binjay!!').
 
 
 
