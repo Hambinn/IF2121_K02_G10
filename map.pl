@@ -230,8 +230,13 @@ initPlayer :-
     asserta(positionY(8)).
 
 map :- 
+    binjay(_),
     printX(0,0),nl,
     legenda,!.
+
+map :-
+    \+ binjay(_),
+    write('Anda belum tiba di Binjay!!'), !.
 
 legenda :- 
     write('- = tempat nyangkul'),nl,
