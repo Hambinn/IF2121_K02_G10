@@ -4,6 +4,8 @@
 /* include semua file prolog yang diperlukan */
 :- include('map.pl').
 :- include('exploration.pl').
+:- include('inventory.pl').
+:- include('items.pl').
 
 title :-
     write('                                      lllllll                                              '), nl, 
@@ -75,14 +77,16 @@ title :-
 help :-
     write('|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|'), nl,
     write('|                         SALAM DARI BINJAY                           |'), nl,
-    write('| 1. gaskeun: Mulai petualanganmu membebaskan diri dari Tugas Besar   |'), nl,
-    write('| 2. map    : Menampilkan peta                                        |'), nl,
-    write('| 3. status : Menampilkan kondisi terkinimu                           |'), nl,
-    write('| 4. w      : Gerak ke utara 1 langkah                                |'), nl,
-    write('| 5. s      : Gerak ke selatan 1 langkah                              |'), nl,
-    write('| 6. d      : Gerak ke timur 1 langkah                                |'), nl,
-    write('| 7. a      : Gerak ke barat 1 langkah                                |'), nl,
-    write('| 8. help   : Menampilkan segala bantuan                              |'), nl,
+    write('| 1. gaskeun   : Mulai petualanganmu membebaskan diri dari Tugas Besar   |'), nl,
+    write('| 2. map       : Menampilkan peta                                        |'), nl,
+    write('| 3. status    : Menampilkan kondisi terkinimu                           |'), nl,
+    write('| 4. inventory : Menampilkan semua barangmu                              |'), nl,
+    write('| 5. w         : Gerak ke utara 1 langkah                                |'), nl,
+    write('| 6. s         : Gerak ke selatan 1 langkah                              |'), nl,
+    write('| 7. d         : Gerak ke timur 1 langkah                                |'), nl,
+    write('| 8. a         : Gerak ke barat 1 langkah                                |'), nl,
+    write('| 9. help      : Menampilkan segala bantuan                              |'), nl,
+    write('| 10.nyerah    : Keluar dari game                                        |'), nl,
     write('|                                                                     |'), nl,
     write(' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ').
 
@@ -102,47 +106,63 @@ initBegin :-
     write('| 3. rancher   : ternak lele bossss!                                  |'), nl,
     write('|                                                                     |'), nl,
     write(' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ '), nl, 
-    write('Silahkan pilih keahlian yang anda inginkan: '), read(ID), nl,
+    write('Silahkan pilih keahlian yang anda inginkan: '), read(Role), nl, 
+    
+    ( 
+        Role == 'fisherman' ->
+            
+            write('           FISHKISSFISHKIS               '), nl,
+            write('       SFISHKISSFISHKISSFISH            F'), nl,
+            write('    ISHK   ISSFISHKISSFISHKISS         FI'), nl,
+            write('  SHKISS   FISHKISSFISHKISSFISS       FIS'), nl,
+            write('HKISSFISHKISSFISHKISSFISHKISSFISH    KISS'), nl,
+            write('  FISHKISSFISHKISSFISHKISSFISHKISS  FISHK'), nl,
+            write('      SSFISHKISSFISHKISSFISHKISSFISHKISSF'), nl,
+            write('  ISHKISSFISHKISSFISHKISSFISHKISSF  ISHKI'), nl,
+            write('SSFISHKISSFISHKISSFISHKISSFISHKIS    SFIS'), nl,
+            write('  HKISSFISHKISSFISHKISSFISHKISS       FIS'), nl,
+            write('    HKISSFISHKISSFISHKISSFISHK         IS'), nl,
+            write('       SFISHKISSFISHKISSFISH            K'), nl,
+            write('         ISSFISHKISSFISHK               '), nl,
+            addItems(fishing_rod, 1), nl;
 
-    write('           FISHKISSFISHKIS               '), nl,
-    write('       SFISHKISSFISHKISSFISH            F'), nl,
-    write('    ISHK   ISSFISHKISSFISHKISS         FI'), nl,
-    write('  SHKISS   FISHKISSFISHKISSFISS       FIS'), nl,
-    write('HKISSFISHKISSFISHKISSFISHKISSFISH    KISS'), nl,
-    write('  FISHKISSFISHKISSFISHKISSFISHKISS  FISHK'), nl,
-    write('      SSFISHKISSFISHKISSFISHKISSFISHKISSF'), nl,
-    write('  ISHKISSFISHKISSFISHKISSFISHKISSF  ISHKI'), nl,
-    write('SSFISHKISSFISHKISSFISHKISSFISHKIS    SFIS'), nl,
-    write('  HKISSFISHKISSFISHKISSFISHKISS       FIS'), nl,
-    write('    HKISSFISHKISSFISHKISSFISHK         IS'), nl,
-    write('       SFISHKISSFISHKISSFISH            K'), nl,
-    write('         ISSFISHKISSFISHK               '), nl,
-    write('                             +&-'), nl,
-    write('                           _.-^-._    .--.'), nl,
-    write('                        .-\'   _   \'-. |__|'), nl,
-    write('                       /     |_|     \\|  |'), nl,
-    write('                      /               \\  |'), nl,
-    write('                     /|     _____     |\\ |'), nl,
-    write('                      |    |==|==|    |  |'), nl,
-    write('  |---|---|---|---|---|    |--|--|    |  |'), nl,
-    write('  |---|---|---|---|---|    |==|==|    |  |'), nl,
-    write('^jgs^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^'), nl,
-    write('                                   .-\'"`/'), nl,
-    write('                                  // /\' /\\`\\'), nl,
-    write('                                (\'//.-\'/`-.;'), nl,
-    write('                                 \\ \\ / /-.'), nl,
-    write('              __.__.___..__._.___.\\\\ \\\\----,_'), nl,
-    write('           .:{@&#,&#@&,@&#&&,#&@#&@&\\\\` \\-. .-\'-.'), nl,
-    write('        .:{@#@,#@&#,@#&&#,@&#&@&,&@#&&\\\\, -._,"- \\'), nl,
-    write('      .{#@#&@#@#&#&@&#@#@&#,@#@#&@&&#@#\\ \\// = \\`=\\__'), nl,
-    write('      `{#@,@#&@&,@&#@,#@&#@#&@#&@,&#@,#/\\/ =`-. -_=__'), nl,
-    write('        `:{@#&@&#@&#@&#@,#&&#@&,@#/.\'  / / "/.-\', /'), nl,
-    write('           `:{@#&,#&@#,@&#&@&,@&#/.-// //-\'-_= ",/'), nl,
-    write('              `~`~~`~~~`~`~`~~`~( / , /__,___.-"'), nl,
-    write('                                 \\ \\\\/'), nl,
-    write('                                  `\\\\\\\''), nl,
-
-    write('done').
+        (
+            Role == 'rancher' ->
+                
+                write('                             +&-'), nl,
+                write('                           _.-^-._    .--.'), nl,
+                write('                        .-\'   _   \'-. |__|'), nl,
+                write('                       /     |_|     \\|  |'), nl,
+                write('                      /               \\  |'), nl,
+                write('                     /|     _____     |\\ |'), nl,
+                write('                      |    |==|==|    |  |'), nl,
+                write('  |---|---|---|---|---|    |--|--|    |  |'), nl,
+                write('  |---|---|---|---|---|    |==|==|    |  |'), nl,
+                write('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^'), nl,
+                addItems(milk_pail, 1), nl,
+                addItems(shears, 1), nl;
+            (
+                Role = 'farmer' ->
+                    write('                                   .-\'"`/'), nl,
+                    write('                                  // /\' /\\`\\'), nl,
+                    write('                                (\'//.-\'/`-.;'), nl,
+                    write('                                 \\ \\ / /-.'), nl,
+                    write('              __.__.___..__._.___.\\\\ \\\\----,_'), nl,
+                    write('           .:{@&#,&#@&,@&#&&,#&@#&@&\\\\` \\-. .-\'-.'), nl,
+                    write('        .:{@#@,#@&#,@#&&#,@&#&@&,&@#&&\\\\, -._,"- \\'), nl,
+                    write('      .{#@#&@#@#&#&@&#@#@&#,@#@#&@&&#@#\\ \\// = \\`=\\__'), nl,
+                    write('      `{#@,@#&@&,@&#@,#@&#@#&@#&@,&#@,#/\\/ =`-. -_=__'), nl,
+                    write('        `:{@#&@&#@&#@&#@,#&&#@&,@#/.\'  / / "/.-\', /'), nl,
+                    write('           `:{@#&,#&@#,@&#&@&,@&#/.-// //-\'-_= ",/'), nl,
+                    write('              `~`~~`~~~`~`~`~~`~( / , /__,___.-"'), nl,
+                    write('                                 \\ \\\\/'), nl,
+                    write('                                  `\\\\\\\''), nl,
+                    addItems(hoe, 1), nl,
+                    addItems(scythe, 1), nl
+            )
+        )
+    ), 
+    !.
 
 start :-
     title,
@@ -152,7 +172,7 @@ gaskeun :-
     \+binjay(_),
     asserta(binjay(99)),
     createMap,
-    map, !.
+    initBegin,!.
 
 gaskeun :-
     binjay(_),
