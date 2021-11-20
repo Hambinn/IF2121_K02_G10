@@ -10,6 +10,7 @@
 :- dynamic(ranchTile/1).
 :- dynamic(waterTile/1).
 :- dynamic(water/16).
+:- dynamic(crop/2).
 
 
 /*Fungsi untuk membuat Water Tile Random*/
@@ -128,6 +129,11 @@ isMarket(X,Y) :-
     X =:= X1,
     Y =:= Y1.
 
+isCrop(X,Y) :-
+    crop(X1, Y1),
+    X =:= X1,
+    Y =:= Y1.
+
 isTop(_,Y) :-
     Y =:= 0.
 
@@ -182,6 +188,12 @@ printX(X,Y) :-
 printX(X,Y) :-
     isMarket(X,Y),
     write('M'),
+    NextX is (X+1),
+    printX(NextX,Y).
+
+printX(X,Y) :-
+    isCrop(X,Y),
+    write('C'),
     NextX is (X+1),
     printX(NextX,Y).
 
@@ -251,4 +263,7 @@ createMap :-
     generateMarketTile,
     generateQuestTile,
     generateRanchTile,
+    asserta(crop(13,13)),
     generateWater.
+
+

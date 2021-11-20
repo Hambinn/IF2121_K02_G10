@@ -1,4 +1,8 @@
 w :-
+    \+binjay(_),
+    write('Anda belum tiba di Binjay'), !.
+
+w :-
     binjay(_),
     positionX(X),
     positionY(Y),
@@ -12,6 +16,7 @@ w :-
     \+isWaterTile(X,Next,X,Next,X,Next,X,Next,X,Next,X,Next,X,Next,X,Next),
     \+isHome(X,Next),
     \+isRanch(X,Next),
+    \+isCrop(X, Next),
     retract(positionY(_)),
     asserta(positionY(Next)),!.
 
@@ -36,6 +41,14 @@ w :-
     Next is (Y-1),
     isWaterTile(X,Next,X,Next,X,Next,X,Next,X,Next,X,Next,X,Next,X,Next),
     logoWater, !.
+
+w :- 
+    binjay(_),
+    positionX(X),
+    positionY(Y),
+    Next is (Y-1),
+    isCrop(X, Next),
+    logoCrop, !.
 
 w :-
     binjay(_),
@@ -78,6 +91,10 @@ w :-
     asserta(positionY(Next)), !.
 
 s :-
+    \+binjay(_),
+    write('Anda belum tiba di Binjay'), !.
+
+s :-
     binjay(_),
     positionX(X),
     positionY(Y),
@@ -91,6 +108,7 @@ s :-
     \+isWaterTile(X,Next,X,Next,X,Next,X,Next,X,Next,X,Next,X,Next,X,Next),
     \+isHome(X,Next),
     \+isRanch(X,Next),
+    \+isCrop(X,Next),
     retract(positionY(_)),
     asserta(positionY(Next)),!.
 
@@ -114,6 +132,14 @@ s :-
     Next is (Y+1),
     isWaterTile(X,Next,X,Next,X,Next,X,Next,X,Next,X,Next,X,Next,X,Next),
     logoWater, !.
+
+s :-
+    binjay(_),
+    positionX(X),
+    positionY(Y),
+    Next is (Y+1),
+    isCrop(X,Next),
+    logoCrop, !.
 
 s :-
     binjay(_),
@@ -156,6 +182,10 @@ s :-
     asserta(positionY(Next)),!.
 
 d :-
+    \+binjay(_),
+    write('Anda belum tiba di Binjay'), !.
+
+d :-
     binjay(_),
     positionX(X),
     positionY(Y),
@@ -169,6 +199,7 @@ d :-
     \+isWaterTile(Next,Y,Next,Y,Next,Y,Next,Y,Next,Y,Next,Y,Next,Y,Next,Y),
     \+isHome(Next,Y),
     \+isRanch(Next,Y),
+    \+isCrop(Next,Y),
     retract(positionX(_)),
     asserta(positionX(Next)),!.
 
@@ -192,6 +223,14 @@ d :-
     Next is (X+1),
     isWaterTile(Next,Y,Next,Y,Next,Y,Next,Y,Next,Y,Next,Y,Next,Y,Next,Y),
     logoWater, !.
+
+d :-
+    binjay(_),
+    positionX(X),
+    positionY(Y),
+    Next is (X+1),
+    isCrop(Next,Y),
+    logoCrop, !.
 
 d :-
     binjay(_),
@@ -247,8 +286,13 @@ a :-
     \+isWaterTile(Next,Y,Next,Y,Next,Y,Next,Y,Next,Y,Next,Y,Next,Y,Next,Y),
     \+isHome(Next,Y),
     \+isRanch(Next,Y),
+    \+isCrop(Next,Y),
     retract(positionX(_)),
     asserta(positionX(Next)),!.
+
+a :-
+    \+binjay(_),
+    write('Anda belum tiba di Binjay'), !.
 
 a :-
     binjay(_),
@@ -270,6 +314,14 @@ a :-
     Next is (X-1),
     isWaterTile(Next,Y,Next,Y,Next,Y,Next,Y,Next,Y,Next,Y,Next,Y,Next,Y),
     logoWater, !.
+
+a :-
+    binjay(_),
+    positionX(X),
+    positionY(Y),
+    Next is (X-1),
+    isCrop(Next,Y),
+    logoCrop, !.
 
 a :-
     binjay(_),
@@ -311,21 +363,13 @@ a :-
     retract(positionX(_)),
     asserta(positionX(Next)),!.
 
-w :-
-    \+ binjay(_),
-    write('Anda belum tiba di Binjay!!').
 
-s :-
-    \+ binjay(_),
-    write('Anda belum tiba di Binjay!!').
 
-d :-
-    \+ binjay(_),
-    write('Anda belum tiba di Binjay!!').
 
-a :-
-    \+ binjay(_),
-    write('Anda belum tiba di Binjay!!').
+
+
+
+
 
 
 
@@ -414,3 +458,13 @@ logoHome :-
     write('         `=======||||||||||||||||||||||||||||||=======`'), nl,
     write('        `==============================================`'), nl, nl,
     write('    Ketik tidur. untuk tidur'), nl.
+
+logoCrop :-
+    write('         wWWWw               wWWWw'), nl,
+    write('   vVVVv (___) wWWWw         (___)  vVVVv'), nl,
+    write('   (___)  ~Y~  (___)  vVVVv   ~Y~   (___)'), nl,
+    write('    ~Y~   \\|    ~Y~   (___)    |/    ~Y~'), nl,
+    write('    \\|   \\ |/   \\| /  \\~Y~/   \\|    \\ |/'), nl,
+    write('   \\\\|// \\\\|// \\\\|/// \\\\|//  \\\\|// \\\\\\|///'), nl,
+    write('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^'), nl,
+    write('    Ketik crop. untuk melihat status tanaman'), nl.

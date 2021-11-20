@@ -70,12 +70,12 @@ title :-
     write('Namun sebagai pendatang baru, anda harus bekerja keras dan memperoleh 20000 Gold dalam waktu 1 tahun.'), nl,
     write('Jika berhasil, anda akan diterima menjadi warga tetap dunia ini.'), nl,
     write('Jika gagal, anda akan disiksa selama 1 tahun lagi dan dikembalikan ke bumi untuk menyelesaikan semua Tugas Besar yang ada.'), nl,
-    write('Goodluck.').
+    write('Goodluck.'), nl.
 
 help :-
     write('|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|'), nl,
     write('|                         SALAM DARI BINJAY                           |'), nl,
-    write('| 1. start  : Mulai petualanganmu membebaskan diri dari Tugas Besar   |'), nl,
+    write('| 1. gaskeun: Mulai petualanganmu membebaskan diri dari Tugas Besar   |'), nl,
     write('| 2. map    : Menampilkan peta                                        |'), nl,
     write('| 3. status : Menampilkan kondisi terkinimu                           |'), nl,
     write('| 4. w      : Gerak ke utara 1 langkah                                |'), nl,
@@ -144,13 +144,31 @@ initBegin :-
 
     write('done').
 
+start :-
+    title,
+    help.
 
-tes :-
+gaskeun :-
     \+binjay(_),
     asserta(binjay(99)),
     createMap,
     map, !.
 
-tes :-
+gaskeun :-
     binjay(_),
     write('Sudah ada game yang dimulai').
+
+nyerah :-
+    \+ binjay(_),
+    write('apasihhh belum mulaiii uda nyerah'), !.
+
+nyerah :-
+    binjay(_),
+    retract(positionX(_)),
+    retract(positionY(_)),
+    retract(quest(_, _)),
+    retract(ranch(_, _)),
+    retract(market(_, _)),
+    retract(water(_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _)),
+    retract(binjay(_)),
+    write('dadahhhh'), !.
