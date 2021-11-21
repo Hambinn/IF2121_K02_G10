@@ -192,3 +192,6 @@ nyerah :-
     retract(water(_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _)),
     retract(binjay(_)),
     write('dadahhhh'), !.
+
+farm :-
+    generateCropTile.
