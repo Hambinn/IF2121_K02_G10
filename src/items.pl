@@ -68,10 +68,10 @@ items(58,arowana,0,1050,0,0,0,0,0).
 items(101,hoe,0,0,200,1,0,0,0).
 items(102,scythe,0,0,200,1,0,0,0).
 /* Fishing */
-items(111,fishing_rod,0,0,200,1,0,0,0).
-items(112,fishing_rod,0,0,500,2,0,16,0).
+items(111,fishing_rod_1,0,0,200,1,0,0,0).
+items(112,fishing_rod_2,0,0,500,2,0,16,0).
 /* Ranching */
-items(121,milk_pail,0,0,200,1,0,0,0).
-items(122,milk_pail,0,0,500,2,0,0,16).
-items(123,shears,0,0,200,1,0,0,0).
-items(124,shears,0,0,500,2,0,0,16).
+items(121,milk_pail_1,0,0,200,1,0,0,0).
+items(122,milk_pail_2,0,0,500,2,0,0,16).
+items(123,shears_1,0,0,200,1,0,0,0).
+items(124,shears_2,0,0,500,2,0,0,16).
