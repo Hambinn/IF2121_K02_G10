@@ -124,7 +124,7 @@ initBegin :-
             write('    HKISSFISHKISSFISHKISSFISHK         IS'), nl,
             write('       SFISHKISSFISHKISSFISH            K'), nl,
             write('         ISSFISHKISSFISHK               '), nl,
-            addItems(fishing_rod, 1), nl;
+            addItems(fishing_rod_1, 1), nl;
 
         (
             Role == 'rancher' ->
@@ -139,8 +139,8 @@ initBegin :-
                 write('  |---|---|---|---|---|    |--|--|    |  |'), nl,
                 write('  |---|---|---|---|---|    |==|==|    |  |'), nl,
                 write('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^'), nl,
-                addItems(milk_pail, 1), nl,
-                addItems(shears, 1), nl;
+                addItems(milk_pail_1, 1), nl,
+                addItems(shears_1, 1), nl;
             (
                 Role = 'farmer' ->
                     write('                                   .-\'"`/'), nl,
@@ -169,14 +169,14 @@ start :-
     help.
 
 gaskeun :-
+    binjay(_),
+    write('Sudah ada game yang dimulai').
+
+gaskeun :-
     \+binjay(_),
     asserta(binjay(99)),
     createMap,
     initBegin,!.
-
-gaskeun :-
-    binjay(_),
-    write('Sudah ada game yang dimulai').
 
 nyerah :-
     \+ binjay(_),
@@ -193,5 +193,8 @@ nyerah :-
     retract(binjay(_)),
     write('dadahhhh'), !.
 
-farm :-
-    generateCropTile.
+dig :-
+    generateDigTile.
+
+plant :-
+    generatePlantTile.

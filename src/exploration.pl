@@ -16,7 +16,8 @@ w :-
     \+isWaterTile(X,Next,X,Next,X,Next,X,Next,X,Next,X,Next,X,Next,X,Next),
     \+isHome(X,Next),
     \+isRanch(X,Next),
-    \+isCrop(X, Next),
+    \+isDig(X, Next),
+    \+isPlant(X, Next),
     retract(positionY(_)),
     asserta(positionY(Next)),!.
 
@@ -42,13 +43,25 @@ w :-
     isWaterTile(X,Next,X,Next,X,Next,X,Next,X,Next,X,Next,X,Next,X,Next),
     logoWater, !.
 
-w :- 
+w :-
     binjay(_),
     positionX(X),
     positionY(Y),
     Next is (Y-1),
-    isCrop(X, Next),
-    logoCrop, !.
+    isDig(X, Next),
+    write('Anda tiba di tanah berlubang'),
+    retract(positionY(_)),
+    asserta(positionY(Next)), !.
+
+w :-
+    binjay(_),
+    positionX(X),
+    positionY(Y),
+    Next is (Y-1),
+    isPlant(X, Next),
+    write('Widih ada tanaman'),
+    retract(positionY(_)),
+    asserta(positionY(Next)), !.
 
 w :-
     binjay(_),
@@ -108,7 +121,8 @@ s :-
     \+isWaterTile(X,Next,X,Next,X,Next,X,Next,X,Next,X,Next,X,Next,X,Next),
     \+isHome(X,Next),
     \+isRanch(X,Next),
-    \+isCrop(X,Next),
+    \+isDig(X, Next),
+    \+isPlant(X, Next),
     retract(positionY(_)),
     asserta(positionY(Next)),!.
 
@@ -138,8 +152,20 @@ s :-
     positionX(X),
     positionY(Y),
     Next is (Y+1),
-    isCrop(X,Next),
-    logoCrop, !.
+    isDig(X, Next),
+    write('Anda tiba di tanah berlubang'),
+    retract(positionY(_)),
+    asserta(positionY(Next)),!.
+
+s :-
+    binjay(_),
+    positionX(X),
+    positionY(Y),
+    Next is (Y+1),
+    isPlant(X, Next),
+    write('Widih ada tanaman nihh'),
+    retract(positionY(_)),
+    asserta(positionY(Next)),!.
 
 s :-
     binjay(_),
@@ -199,7 +225,8 @@ d :-
     \+isWaterTile(Next,Y,Next,Y,Next,Y,Next,Y,Next,Y,Next,Y,Next,Y,Next,Y),
     \+isHome(Next,Y),
     \+isRanch(Next,Y),
-    \+isCrop(Next,Y),
+    \+isDig(Next, Y),
+    \+isPlant(Next, Y),
     retract(positionX(_)),
     asserta(positionX(Next)),!.
 
@@ -229,8 +256,20 @@ d :-
     positionX(X),
     positionY(Y),
     Next is (X+1),
-    isCrop(Next,Y),
-    logoCrop, !.
+    isDig(Next, Y),
+    write('anda tiba di tanah berlubang'),
+    retract(positionX(_)),
+    asserta(positionX(Next)),!.
+
+d :-
+    binjay(_),
+    positionX(X),
+    positionY(Y),
+    Next is (X+1),
+    isPlant(Next, Y),
+    write('widih ada tanaman nihhh'),
+    retract(positionX(_)),
+    asserta(positionX(Next)),!.
 
 d :-
     binjay(_),
@@ -286,7 +325,8 @@ a :-
     \+isWaterTile(Next,Y,Next,Y,Next,Y,Next,Y,Next,Y,Next,Y,Next,Y,Next,Y),
     \+isHome(Next,Y),
     \+isRanch(Next,Y),
-    \+isCrop(Next,Y),
+    \+isDig(Next, Y),
+    \+isPlant(Next, Y),
     retract(positionX(_)),
     asserta(positionX(Next)),!.
 
@@ -320,8 +360,20 @@ a :-
     positionX(X),
     positionY(Y),
     Next is (X-1),
-    isCrop(Next,Y),
-    logoCrop, !.
+    isDig(Next, Y),
+    write('anda tiba di tanah berlubang'),
+    retract(positionX(_)),
+    asserta(positionX(Next)),!.
+
+a :-
+    binjay(_),
+    positionX(X),
+    positionY(Y),
+    Next is (X-1),
+    isPlant(Next, Y),
+    write('widih ada tanaman nihhh'),
+    retract(positionX(_)),
+    asserta(positionX(Next)),!.
 
 a :-
     binjay(_),

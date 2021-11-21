@@ -10,7 +10,9 @@
 :- dynamic(ranchTile/1).
 :- dynamic(waterTile/1).
 :- dynamic(water/16).
-:- dynamic(crop/2).
+:- dynamic(dig/2).
+:- dynamic(plant/2).
+:- dynamic(harvest/2).
 
 
 /*Fungsi untuk membuat Water Tile Random*/
@@ -67,10 +69,22 @@ generateMarketTile :-
     random(1, 5, Y),
     asserta(market(X, Y)).
 
-generateCropTile :-
+generateDigTile :-
     positionX(X),
     positionY(Y),
-    asserta(crop(X, Y)).
+    asserta(dig(X, Y)).
+
+generatePlantTile :-
+    positionX(X),
+    positionY(Y),
+    retract(dig(X, Y)),
+    asserta(plant(X, Y)), write('tanaman berhasil ditanam, jangan lupa panen ya') , !.
+
+generatePlantTile :-
+    positionX(X),
+    positionY(Y),
+    \+ dig(X,Y),
+    write('mau nanam di batu bosss?'), !.
 
 isWaterTile(X1,Y1,X2,Y2,X3,Y3,X4,Y4,X5,Y5,X6,Y6,X7,Y7,X8,Y8) :-
     water(TX1,TY1,TX2,TY2,TX3,TY3,TX4,TY4,TX5,TY5,TX6,TY6,TX7,TY7,TX8,TY8),
@@ -134,8 +148,13 @@ isMarket(X,Y) :-
     X =:= X1,
     Y =:= Y1.
 
-isCrop(X,Y) :-
-    crop(X1, Y1),
+isDig(X,Y) :-
+    dig(X1, Y1),
+    X =:= X1,
+    Y =:= Y1.
+
+isPlant(X,Y) :-
+    plant(X1, Y1),
     X =:= X1,
     Y =:= Y1.
 
@@ -197,8 +216,14 @@ printX(X,Y) :-
     printX(NextX,Y).
 
 printX(X,Y) :-
-    isCrop(X,Y),
-    write('C'),
+    isDig(X,Y),
+    write('='),
+    NextX is (X+1),
+    printX(NextX,Y).
+
+printX(X,Y) :-
+    isPlant(X,Y),
+    write('.'),
     NextX is (X+1),
     printX(NextX,Y).
 
