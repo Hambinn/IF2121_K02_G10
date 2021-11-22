@@ -7,6 +7,7 @@
 :- include('inventory.pl').
 :- include('items.pl').
 :- include('player.pl').
+:- include('peri.pl').
 
 title :-
     write('                                      lllllll                                              '), nl, 
