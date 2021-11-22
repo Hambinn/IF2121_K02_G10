@@ -6,6 +6,7 @@
 :- include('exploration.pl').
 :- include('inventory.pl').
 :- include('items.pl').
+:- include('player.pl').
 
 title :-
     write('                                      lllllll                                              '), nl, 
@@ -81,12 +82,14 @@ help :-
     write('| 2. map       : Menampilkan peta                                        |'), nl,
     write('| 3. status    : Menampilkan kondisi terkinimu                           |'), nl,
     write('| 4. inventory : Menampilkan semua barangmu                              |'), nl,
-    write('| 5. w         : Gerak ke utara 1 langkah                                |'), nl,
-    write('| 6. s         : Gerak ke selatan 1 langkah                              |'), nl,
-    write('| 7. d         : Gerak ke timur 1 langkah                                |'), nl,
-    write('| 8. a         : Gerak ke barat 1 langkah                                |'), nl,
-    write('| 9. help      : Menampilkan segala bantuan                              |'), nl,
-    write('| 10.nyerah    : Keluar dari game                                        |'), nl,
+    write('| 5. dig       : Menggali tanah untuk ditanam                            |'), nl,
+    write('| 6. plant     : Menanam tanaman di tanah yang sudah berlubang           |'), nl,
+    write('| 7. w         : Gerak ke utara 1 langkah                                |'), nl,
+    write('| 8. s         : Gerak ke selatan 1 langkah                              |'), nl,
+    write('| 9. d         : Gerak ke timur 1 langkah                                |'), nl,
+    write('| 10. a        : Gerak ke barat 1 langkah                                |'), nl,
+    write('| 11. help     : Menampilkan segala bantuan                              |'), nl,
+    write('| 12.nyerah    : Keluar dari game                                        |'), nl,
     write('|                                                                        |'), nl,
     write(' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ').
 
@@ -125,8 +128,8 @@ initBegin :-
             write('    HKISSFISHKISSFISHKISSFISHK         IS'), nl,
             write('       SFISHKISSFISHKISSFISH            K'), nl,
             write('         ISSFISHKISSFISHK               '), nl,
-            addItems(fishing_rod_1, 1), nl;
-
+            addItems(fishing_rod_1, 1), nl,
+            setStatus(Role, 1, 1, 56, 1, 76, 1, 56, 0, 1000);
         (
             Role == 'rancher' ->
                 
@@ -141,7 +144,8 @@ initBegin :-
                 write('  |---|---|---|---|---|    |==|==|    |  |'), nl,
                 write('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^'), nl,
                 addItems(milk_pail_1, 1), nl,
-                addItems(shears_1, 1), nl;
+                addItems(shears_1, 1), nl,
+                setStatus(Role, 1, 1, 56, 1, 56, 1, 76, 0, 1000);
             (
                 Role = 'farmer' ->
                     write('                                   .-\'"`/'), nl,
@@ -159,7 +163,8 @@ initBegin :-
                     write('                                 \\ \\\\/'), nl,
                     write('                                  `\\\\\\\''), nl,
                     addItems(hoe, 1), nl,
-                    addItems(scythe, 1), nl
+                    addItems(scythe, 1), nl,
+                    setStatus(Role, 1, 1, 76, 1, 56, 1, 56, 0, 1000)
             )
         )
     ), 
@@ -191,7 +196,9 @@ nyerah :-
     retract(ranch(_, _)),
     retract(market(_, _)),
     retract(water(_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _)),
+    retract(infoStats(_,_,_,_,_,_,_,_,_,_)),
     retract(binjay(_)),
+    retract(items(_,_,_,_,_,_,_,_,_)),
     logoDie,
     write('yeyyyy anda mati, dadahhh Tubes'), !.
 

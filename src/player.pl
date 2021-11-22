@@ -14,6 +14,7 @@
     - General Exp
     - Money */
 status :-
+    binjay(_),
     infoStats(Role, GeneralLevel, FarmingLevel, FarmingExp, FishingLevel, FishingExp, RanchingLevel, RanchingExp, GeneralExp, Money),
     write('Your status: '),nl,
     write('Role: '), write(Role), nl,
@@ -25,8 +26,12 @@ status :-
     write('Level Ranching: '), write(RanchingLevel), nl,
     write('Exp Ranching: '), write(RanchingExp), nl,
     write('Exp: '), write(GeneralExp), write('/300'), nl,
-    write('Gold: '), write(Money), nl
+    write('Gold: '), write(Money), nl, !
 .
+
+status :-
+    \+binjay(_),
+    write('game belum mulai oi').
 
 setStatus(Role, GeneralLevel, FarmingLevel, FarmingExp, FishingLevel, FishingExp, RanchingLevel, RanchingExp, GeneralExp, Money) :-
     asserta(infoStats(Role, GeneralLevel, FarmingLevel, FarmingExp, FishingLevel, FishingExp, RanchingLevel, RanchingExp, GeneralExp, Money)),!

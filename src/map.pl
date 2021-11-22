@@ -45,17 +45,13 @@ generateQuestTile :-
     lebar(L),
     panjang(P),
     NewP is P,
-    NewL is L-2,
     random(15, L, X),
     random(1, NewP, Y),
     asserta(quest(X, Y)).
 
 generateRanchTile :-
     asserta(ranchTile(1)),
-    lebar(L),
     panjang(P),
-    NewP is P-4,
-    NewL is L-2,
     random(1, 2, X),
     random(1, P, Y),
     asserta(ranch(X, Y)).
@@ -63,7 +59,6 @@ generateRanchTile :-
 generateMarketTile :-
     asserta(marketTile(1)),
     lebar(L),
-    panjang(P),
     NewL is L-2,
     random(2, NewL, X),
     random(1, 2, Y),
