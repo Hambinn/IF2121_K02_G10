@@ -1,8 +1,6 @@
 :- dynamic(inventory/9).    
 /* inventory(id,name,qty,sell,buy,level,farmLevel,fishLevel,ranchLevel) */
 
-:- include('items.pl').
-
 /* Maximum Inventory Slots : 100 */
 inventoryCapacity(100).
 
@@ -13,6 +11,12 @@ inventoryCapacity(100).
 totalInventory(Length) :-
     findall(Qty, inventory(_,_,Qty,_,_,_,_,_,_), ListofQty),
     sumList(ListofQty,Length)
+.
+
+/* Mengembalikan jumlah item 'itemName' pada Inventory */
+amountItem(ItemName, Amount) :-
+    inventory(_,ItemName,Qty,_,_,_,_,_,_),
+    Amount is Qty
 .
 
 /* Rules tambahan untuk mengembalikan total elemen pada List of Qty */
