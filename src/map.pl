@@ -22,22 +22,22 @@ generateWater :-
     panjang(P),
     NewP is P-2,
     NewL is L-2,
-    random(1,NewP,TX1),
-    random(1,NewP,TX2),
-    random(1,NewP,TX3),
-    random(1,NewP,TX4),
-    random(1,NewP,TX5),
-    random(1,NewP,TX6),
-    random(1,NewP,TX7),
-    random(1,NewP,TX8),
-    random(1,NewL,TY1),
-    random(1,NewL,TY2),
-    random(1,NewL,TY3),
-    random(1,NewL,TY4),
-    random(1,NewL,TY5),
-    random(1,NewL,TY6),
-    random(1,NewL,TY7),
-    random(1,NewL,TY8),
+    random(2,NewP,TX1),
+    random(2,NewP,TX2),
+    random(2,NewP,TX3),
+    random(2,NewP,TX4),
+    random(2,NewP,TX5),
+    random(2,NewP,TX6),
+    random(2,NewP,TX7),
+    random(2,NewP,TX8),
+    random(2,NewL,TY1),
+    random(2,NewL,TY2),
+    random(2,NewL,TY3),
+    random(2,NewL,TY4),
+    random(2,NewL,TY5),
+    random(2,NewL,TY6),
+    random(2,NewL,TY7),
+    random(2,NewL,TY8),
     asserta(water(TX1,TY1,TX2,TY2,TX3,TY3,TX4,TY4,TX5,TY5,TX6,TY6,TX7,TY7,TX8,TY8)).
 
 generateQuestTile :-
@@ -46,8 +46,8 @@ generateQuestTile :-
     panjang(P),
     NewP is P,
     NewL is L-2,
-    random(2, NewL, X),
-    random(11, NewP, Y),
+    random(15, L, X),
+    random(1, NewP, Y),
     asserta(quest(X, Y)).
 
 generateRanchTile :-
@@ -56,8 +56,8 @@ generateRanchTile :-
     panjang(P),
     NewP is P-4,
     NewL is L-2,
-    random(2, NewL, X),
-    random(5, 8, Y),
+    random(1, 2, X),
+    random(1, P, Y),
     asserta(ranch(X, Y)).
 
 generateMarketTile :-
@@ -66,7 +66,7 @@ generateMarketTile :-
     panjang(P),
     NewL is L-2,
     random(2, NewL, X),
-    random(1, 5, Y),
+    random(1, 2, Y),
     asserta(market(X, Y)).
 
 generateDigTile :-
@@ -124,8 +124,8 @@ isWaterTile(X1,Y1,X2,Y2,X3,Y3,X4,Y4,X5,Y5,X6,Y6,X7,Y7,X8,Y8) :-
     ).
 
 isHome(X,Y) :-
-    X =:= 7,
-    Y =:= 8.
+    X =:= 8,
+    Y =:= 16.
 
 isPlayer(X,Y) :-
     positionX(A),
@@ -268,8 +268,8 @@ initMap(X, Y) :-
     asserta(panjang(Y)).
 
 initPlayer :-
-    asserta(positionX(6)),
-    asserta(positionY(8)).
+    asserta(positionX(7)),
+    asserta(positionY(16)).
 
 map :- 
     binjay(_),
@@ -288,12 +288,11 @@ legenda :-
     write('M = belanja santuy'),nl,!.
 
 createMap :-
-    initMap(15,15),
+    initMap(16,15),
     initPlayer,
     generateMarketTile,
     generateQuestTile,
     generateRanchTile,
-    asserta(crop(13,13)),
     generateWater.
 
 

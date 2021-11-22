@@ -75,8 +75,8 @@ title :-
     write('Goodluck.'), nl.
 
 help :-
-    write('|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|'), nl,
-    write('|                         SALAM DARI BINJAY                           |'), nl,
+    write('|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|'), nl,
+    write('|                         SALAM DARI BINJAY                              |'), nl,
     write('| 1. gaskeun   : Mulai petualanganmu membebaskan diri dari Tugas Besar   |'), nl,
     write('| 2. map       : Menampilkan peta                                        |'), nl,
     write('| 3. status    : Menampilkan kondisi terkinimu                           |'), nl,
@@ -87,8 +87,8 @@ help :-
     write('| 8. a         : Gerak ke barat 1 langkah                                |'), nl,
     write('| 9. help      : Menampilkan segala bantuan                              |'), nl,
     write('| 10.nyerah    : Keluar dari game                                        |'), nl,
-    write('|                                                                     |'), nl,
-    write(' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ').
+    write('|                                                                        |'), nl,
+    write(' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ').
 
 initBegin :-
     write('~~~~Selamat datang di BINJAY~~~~~'), nl,
@@ -96,6 +96,7 @@ initBegin :-
     read(Username),
     asserta(player(Username)), nl,
     write('Hello '), write(Username), nl,
+    repeat,
     write('|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|'), nl,
     write('|                            Keahlian                                 |'), nl,
     write('|                                                                     |'), nl,
@@ -191,7 +192,8 @@ nyerah :-
     retract(market(_, _)),
     retract(water(_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _)),
     retract(binjay(_)),
-    write('dadahhhh'), !.
+    logoDie,
+    write('yeyyyy anda mati, dadahhh Tubes'), !.
 
 dig :-
     generateDigTile.

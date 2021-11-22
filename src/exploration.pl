@@ -511,7 +511,7 @@ logoHome :-
     write('        `==============================================`'), nl, nl,
     write('    Ketik tidur. untuk tidur'), nl.
 
-logoCrop :-
+logoHarvest :-
     write('         wWWWw               wWWWw'), nl,
     write('   vVVVv (___) wWWWw         (___)  vVVVv'), nl,
     write('   (___)  ~Y~  (___)  vVVVv   ~Y~   (___)'), nl,
@@ -520,3 +520,13 @@ logoCrop :-
     write('   \\\\|// \\\\|// \\\\|/// \\\\|//  \\\\|// \\\\\\|///'), nl,
     write('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^'), nl,
     write('    Ketik crop. untuk melihat status tanaman'), nl.
+
+logoDie :-
+    write('     _______'), nl,
+    write('    |/      |'), nl,
+    write('    |      (_)'), nl,
+    write('    |      \\|/'), nl,
+    write('    |       |'), nl,
+    write('    |      / \\'), nl,
+    write('    |'), nl,
+    write('  __|___'), nl.
