@@ -5,18 +5,11 @@
 inventoryCapacity(100).
 
 /* ****** RULES ****** */
-
 /* *** SELEKTOR *** */
 /* Mengembalikan total items pada Inventory */
 totalInventory(Length) :-
     findall(Qty, inventory(_,_,Qty,_,_,_,_,_,_), ListofQty),
     sumList(ListofQty,Length)
-.
-
-/* Mengembalikan jumlah item 'itemName' pada Inventory */
-amountItem(ItemName, Amount) :-
-    inventory(_,ItemName,Qty,_,_,_,_,_,_),
-    Amount is Qty
 .
 
 /* Rules tambahan untuk mengembalikan total elemen pada List of Qty */
@@ -26,6 +19,40 @@ sumList([Head|Tail], Sum) :-
    sumList(Tail,Sum1),
    Sum is Head + Sum1
 .
+
+/* Mengembalikan jumlah item 'itemName' pada Inventory */
+amountItem(ItemName, Amount) :-
+    inventory(_,ItemName,Qty,_,_,_,_,_,_),
+    Amount is Qty
+.
+
+/* *** INPUT/OUTPUT *** */
+/* inventory */
+/* Mencetak informasi inventory */
+inventory :-
+    totalInventory(Length),
+    write('Your inventory ('), write(Length), write('/100)'),nl,
+    makeListItems(ListofLevel,ListofQty,ListofName),
+    displayInventory(ListofLevel,ListofQty,ListofName),!
+.
+
+/* Mengembalikan list level, quantity, dan name dari item yang ada di inventory */
+makeListItems(ListofLevel,ListofQty,ListofName) :-
+    findall(Level, inventory(_,_,_,_,_,Level,_,_,_), ListofLevel),
+    findall(Qty, inventory(_,_,Qty,_,_,_,_,_,_), ListofQty),
+    findall(Name, inventory(_,Name,_,_,_,_,_,_,_), ListofName),!
+.
+
+/* Mencetak item-item yang ada di invenotry */
+displayInventory([],[],[]).
+displayInventory([A|X],[B|Y],[C|Z]) :-
+    A >= 1,
+    write(A), write(' level '), write(B), write(' '), write(C), nl,
+    displayInventory(X,Y,Z).
+displayInventory([A|X],[B|Y],[C|Z]) :-
+    A < 1,
+    write(B), write(' '), write(C), nl,
+    displayInventory(X,Y,Z).
 
 /* *** ADD ITEMS *** */
 /* Belum ada item 'itemName' di Inventory */
