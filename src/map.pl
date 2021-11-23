@@ -67,11 +67,47 @@ generateMarketTile :-
 generateDigTile :-
     positionX(X),
     positionY(Y),
-    asserta(dig(X, Y)).
+    (
+        isHome(X, Y),
+        write('ada rumah woiii');
+        (
+            isQuest(X, Y),
+            write('nanti gabisa kerja mampus dah');
+            (
+                isMarket(X,Y),
+                write('kasian pemilik supermarketnya :)');
+                (
+                    isWaterTile(X,Y,X,Y,X,Y,X,Y,X,Y,X,Y,X,Y,X,Y),
+                    write('nanti kebanjiran gesss');
+                    (
+                        isRanch(X,Y),
+                        write('kasian ayamnya nanti');
+                        (
+                            isPlant(X,Y),
+                            write('ada tanaman masa mau digali sih')
+                        )
+                    )
+                )
+            )
+        )
+    ), !.
+
+generateDigTile :-
+    positionX(X),
+    positionY(Y),
+    \+isQuest(X,Y),
+    \+isMarket(X,Y),
+    \+isWaterTile(X,Y,X,Y,X,Y,X,Y,X,Y,X,Y,X,Y,X,Y),
+    \+isHome(X,Y),
+    \+isRanch(X,Y),
+    \+isDig(X, Y),
+    \+isPlant(X, Y),
+    asserta(dig(X, Y)), !.
 
 generatePlantTile :-
     positionX(X),
     positionY(Y),
+    isDig(X,Y),
     retract(dig(X, Y)),
     asserta(plant(X, Y)), write('tanaman berhasil ditanam, jangan lupa panen ya') , !.
 
