@@ -3,7 +3,13 @@ w :-
     write('Anda belum tiba di Binjay'), !.
 
 w :-
+    waktu(Jam, Hari),
+    Hari =:= 41,
+    endState, !.
+
+w :-
     binjay(_),
+    addWaktu,
     positionX(X),
     positionY(Y),
     Next is (Y-1),
@@ -108,7 +114,13 @@ s :-
     write('Anda belum tiba di Binjay'), !.
 
 s :-
+    waktu(Jam, Hari),
+    Hari =:= 41,
+    endState, !.
+
+s :-
     binjay(_),
+    addWaktu,
     positionX(X),
     positionY(Y),
     Next is (Y+1),
@@ -212,7 +224,13 @@ d :-
     write('Anda belum tiba di Binjay'), !.
 
 d :-
+    waktu(Jam, Hari),
+    Hari =:= 41,
+    endState, !.
+
+d :-
     binjay(_),
+    addWaktu,
     positionX(X),
     positionY(Y),
     Next is (X+1),
@@ -310,9 +328,19 @@ d :-
     logoRanch,
     retract(positionX(_)),
     asserta(positionX(Next)),!.
+
+a :-
+    \+binjay(_),
+    write('Anda belum tiba di Binjay'), !.
+
+a :-
+    waktu(Jam, Hari),
+    Hari =:= 41,
+    endState, !.
     
 a :-
     binjay(_),
+    addWaktu,
     positionX(X),
     positionY(Y),
     Next is (X-1),
@@ -329,10 +357,6 @@ a :-
     \+isPlant(Next, Y),
     retract(positionX(_)),
     asserta(positionX(Next)),!.
-
-a :-
-    \+binjay(_),
-    write('Anda belum tiba di Binjay'), !.
 
 a :-
     binjay(_),

@@ -1,9 +1,3 @@
-:- include('exploration.pl').
-:- include('main.pl').
-:- include('map.pl').
-:- include('inventory.pl').
-:- include('items.pl').
-:- include('player.pl').
 
 shop:-
     %binjay(_),

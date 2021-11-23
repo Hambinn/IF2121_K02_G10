@@ -166,3 +166,25 @@ addRanchingExp(Amount) :-
 myMoney(Money) :-
     infoStats(_, _, _, _, _, _, _, _, _, Money),!
 .
+
+
+/* ***** WAKTU ***** */
+addWaktu :-
+    waktu(Jam, Hari),
+    NewJam is Jam + 1,
+    (
+        NewJam > 24,
+        UpdateJam is 0,
+        NewHari is Hari + 1,
+        retract(waktu(Jam, Hari)),
+        asserta(waktu(UpdateJam, NewHari));
+        (
+            retract(waktu(Jam, Hari)),
+            asserta(waktu(NewJam, Hari))
+        )
+    ), !.
+
+showWaktu :-
+    waktu(Jam, Hari),
+    write('Jam  : '), write(Jam), nl,
+    write('Hari : '), write(Hari).

@@ -1,5 +1,6 @@
 :- dynamic(player/1).
 :- dynamic(binjay/1).
+:- dynamic(waktu/2).
 
 /* include semua file prolog yang diperlukan */
 :- include('map.pl').
@@ -8,6 +9,7 @@
 :- include('items.pl').
 :- include('player.pl').
 :- include('peri.pl').
+:- include('marketplace.pl').
 
 title :-
     write('                                      lllllll                                              '), nl, 
@@ -182,6 +184,7 @@ gaskeun :-
 gaskeun :-
     \+binjay(_),
     asserta(binjay(99)),
+    asserta(waktu(0,39)),
     createMap,
     initBegin,!.
 
@@ -208,3 +211,14 @@ dig :-
 
 plant :-
     generatePlantTile.
+
+endState :-
+    myMoney(M),
+    (
+        M >= 20000,
+        write('Anda akan dikirim kembali ke bumi untuk menyelesaikan Tubes');
+        (
+            logoDie,
+            write('Anda disiksa dan digantung. Byeee tubes')
+        )
+    ), !.
