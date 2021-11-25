@@ -36,7 +36,7 @@ shop:-
                          addItems(hoe,1),
                          reduceMoney(200),
                         (write('Hoe berhasil dibeli'), nl);
-                        (write('Item tidak ada di inventory'), nl)
+                        (write('Uangmu tidak cukup'), nl)
                     );
                     PilItem == 2 ->
                     myMoney(Money),
@@ -45,7 +45,7 @@ shop:-
                          addItems(scyte,1),
                          reduceMoney(200),
                         (write('Scyte berhasil dibeli'), nl);
-                        (write('Item tidak ada di inventory'), nl)
+                        (write('Uangmu tidak cukup'), nl)
                     );
                     PilItem == 3 ->
                     myMoney(Money),
@@ -54,7 +54,7 @@ shop:-
                          addItems(fishing_rod_1,1),
                          reduceMoney(200),
                         (write('Fishing Rod berhasil dibeli'), nl);
-                        (write('Item tidak ada di inventory'), nl)
+                        (write('Uangmu tidak cukup'), nl)
                     );
                     PilItem == 4 ->
                     myMoney(Money),
@@ -63,7 +63,7 @@ shop:-
                          addItems(fishing_rod_2,1),
                          reduceMoney(500),
                         (write('Fishing Rod berhasil dibeli'), nl);
-                        (write('Item tidak ada di inventory'), nl)
+                        (write('Uangmu tidak cukup'), nl)
                     );
                     PilItem == 5 ->
                     myMoney(Money),
@@ -72,7 +72,7 @@ shop:-
                         addItems(milk_pail_1,1),
                         reduceMoney(200),                         
                         (write('Milk Pail berhasil dibeli'), nl);
-                        (write('Item tidak ada di inventory'), nl)
+                        (write('Uangmu tidak cukup'), nl)
                     );
                     PilItem == 6 ->
                     myMoney(Money),
@@ -81,7 +81,7 @@ shop:-
                          addItems(milk_pail_2,1),
                          reduceMoney(500),
                         (write('Milk Pail berhasil dibeli'), nl);
-                        (write('Item tidak ada di inventory'), nl)
+                        (write('Uangmu tidak cukup'), nl)
                     );
                     PilItem == 7 ->
                     myMoney(Money),
@@ -90,7 +90,7 @@ shop:-
                         addItems(shears_1,1),
                         reduceMoney(200), 
                         (write('Shears berhasil dibeli'), nl);
-                        (write('Item tidak ada di inventory'), nl)
+                        (write('Uangmu tidak cukup'), nl)
                     );
                     PilItem == 8 ->
                     myMoney(Money),
@@ -99,7 +99,7 @@ shop:-
                         addItems(shears_2,1),
                         reduceMoney(500),
                         (write('Shears berhasil dibeli'), nl);
-                        (write('Item tidak ada di inventory'), nl)
+                        (write('Uangmu tidak cukup'), nl)
                     );
                     PilItem == 9 ->
                     myMoney(Money),
@@ -108,7 +108,7 @@ shop:-
                         addItems(wheat_seeds,1),
                         reduceMoney(30),
                         (write('Wheat Seeds berhasil dibeli'), nl);
-                        (write('Item tidak ada di inventory'), nl)
+                        (write('Uangmu tidak cukup'), nl)
                     );
                     PilItem == 10 ->
                     myMoney(Money),
@@ -117,7 +117,7 @@ shop:-
                         addItems(corn_seeds,1),
                         reduceMoney(100),
                         (write('Corn Seeds berhasil dibeli'), nl);
-                        (write('Item tidak ada di inventory'), nl)
+                        (write('Uangmu tidak cukup'), nl)
                     );
                     PilItem == 11 ->
                     myMoney(Money),
@@ -126,7 +126,7 @@ shop:-
                         addItems(eggplant_seeds,1),
                         reduceMoney(150),
                         (write('Eggplant Seeds berhasil dibeli'), nl);
-                        (write('Item tidak ada di inventory'), nl)
+                        (write('Uangmu tidak cukup'), nl)
                     );
                     PilItem == 12 ->
                     myMoney(Money),
@@ -135,7 +135,7 @@ shop:-
                         addItems(tomato_seeds,1),
                         reduceMoney(150),
                         (write('Tomato Seeds berhasil dibeli'), nl);
-                        (write('Item tidak ada di inventory'), nl)
+                        (write('Uangmu tidak cukup'), nl)
                     );
                     PilItem == 13 ->
                     myMoney(Money),
@@ -144,7 +144,7 @@ shop:-
                         addItems(potato_seeds,1),
                         reduceMoney(200),
                         (write('Potato Seeds berhasil dibeli'), nl);
-                        (write('Item tidak ada di inventory'), nl)
+                        (write('Uangmu tidak cukup'), nl)
                     );
                     PilItem == 14 ->
                     myMoney(Money),
@@ -153,7 +153,7 @@ shop:-
                         addItems(cauliflower_seeds,1),
                         reduceMoney(240),
                         (write('Cauliflower Seeds berhasil dibeli'), nl);
-                        (write('Item tidak ada di inventory'), nl)
+                        (write('Uangmu tidak cukup'), nl)
                     )
             );
         (
