@@ -1,11 +1,11 @@
 
 shop:-
-    %binjay(_),
-    %positionX(X),
-    %positionY(Y),
-    %isMarket(X,Y),
-    %myMoney(Money),
-    write('Kamu berada di marketplace, gold anda berjumlah: '), write(Uang), nl,
+    binjay(_),
+    positionX(X),
+    positionY(Y),
+    isMarket(X,Y),
+    myMoney(Money),
+    write('Kamu berada di marketplace, gold anda berjumlah: '), write(Money), nl,
     write('Apa yang ingin kamu lakukan?'), nl,
     write('1. beli item'), nl,
     write('2. jual item'), nl,
