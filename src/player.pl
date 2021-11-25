@@ -90,7 +90,7 @@ addFarmingExp(Amount) :-
     infoStats(_, _, FarmingLevel, FarmingExp, _, _, _, _, _, _),
     FarmingExpTemp is FarmingExp + Amount,
     FarmingExpTemp > 300,
-    write('Exp farming anda bertambah sebesar '), write(FarmingExpTemp),
+    write('Exp farming anda bertambah sebesar '), write(FarmingExpTemp),nl,
     FarmingLevelTemp is FarmingExpTemp // 300,
     FarmingLevel2 is FarmingLevel + FarmingLevelTemp,
     FarmingExp2 is FarmingExpTemp mod 300,
@@ -121,7 +121,7 @@ addFishingExp(Amount) :-
     infoStats(_, _, _, _, FishingLevel, FishingExp, _, _, _, _),
     FishingExpTemp is FishingExp + Amount,
     FishingExpTemp > 300,
-    write('Exp fishing anda bertambah sebesar '), write(FishingExpTemp),
+    write('Exp fishing anda bertambah sebesar '), write(FishingExpTemp),nl,
     FishingLevelTemp is FishingExpTemp // 300,
     FishingLevel2 is FishingLevel + FishingLevelTemp,
     FishingExp2 is FishingExpTemp mod 300,
@@ -152,7 +152,7 @@ addRanchingExp(Amount) :-
     infoStats(_, _, _, _, _, _, RanchingLevel, RanchingExp, _, _),
     RanchingExpTemp is RanchingExp + Amount,
     RanchingExpTemp > 300,
-    write('Exp ranching anda bertambah sebesar '), write(RanchingExpTemp),
+    write('Exp ranching anda bertambah sebesar '), write(RanchingExpTemp),nl,
     RanchingLevelTemp is RanchingExpTemp // 300,
     RanchingLevel2 is RanchingLevel + RanchingLevelTemp,
     RanchingExp2 is RanchingExpTemp mod 300,
@@ -169,18 +169,46 @@ myMoney(Money) :-
 
 
 /* ***** WAKTU ***** */
-addWaktu :-
+addWaktu(Jumlah) :-
     waktu(Jam, Hari),
-    NewJam is Jam + 1,
+    generateHarvestTile,
+    NewJam is Jam + Jumlah,
     (
         NewJam > 24,
-        UpdateJam is 0,
         NewHari is Hari + 1,
-        retract(waktu(Jam, Hari)),
-        asserta(waktu(UpdateJam, NewHari));
+        NewHari > 40,
+        endState;
         (
+            NewJam > 24,
+            UpdateJam is NewJam - 24,
+            NewHari is Hari + 1,
             retract(waktu(Jam, Hari)),
-            asserta(waktu(NewJam, Hari))
+            asserta(waktu(UpdateJam, NewHari));
+            (
+                retract(waktu(Jam, Hari)),
+                asserta(waktu(NewJam, Hari))
+            )
+        )
+    ), !.
+
+addWaktu(Jumlah) :-
+    waktu(Jam, Hari),
+    NewJam is Jam + Jumlah,
+    (
+        NewJam > 24,
+        NewHari is Hari + 1,
+        NewHari > 40,
+        endState;
+        (
+            NewJam > 24,
+            UpdateJam is NewJam - 24,
+            NewHari is Hari + 1,
+            retract(waktu(Jam, Hari)),
+            asserta(waktu(UpdateJam, NewHari));
+            (
+                retract(waktu(Jam, Hari)),
+                asserta(waktu(NewJam, Hari))
+            )
         )
     ), !.
 
@@ -188,3 +216,4 @@ showWaktu :-
     waktu(Jam, Hari),
     write('Jam  : '), write(Jam), nl,
     write('Hari : '), write(Hari).
+

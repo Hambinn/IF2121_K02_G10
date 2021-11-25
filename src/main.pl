@@ -10,6 +10,7 @@
 :- include('player.pl').
 :- include('peri.pl').
 :- include('marketplace.pl').
+:- include('fishing.pl').
 
 title :-
     write('                                      lllllll                                              '), nl, 
@@ -184,7 +185,7 @@ gaskeun :-
 gaskeun :-
     \+binjay(_),
     asserta(binjay(99)),
-    asserta(waktu(0,39)),
+    asserta(waktu(20,39)),
     createMap,
     initBegin,!.
 

@@ -3,13 +3,8 @@ w :-
     write('Anda belum tiba di Binjay'), !.
 
 w :-
-    waktu(Jam, Hari),
-    Hari =:= 41,
-    endState, !.
-
-w :-
     binjay(_),
-    addWaktu,
+    addWaktu(1),
     positionX(X),
     positionY(Y),
     Next is (Y-1),
@@ -24,6 +19,7 @@ w :-
     \+isRanch(X,Next),
     \+isDig(X, Next),
     \+isPlant(X, Next),
+    \+isHarvest(X, Next),
     retract(positionY(_)),
     asserta(positionY(Next)),!.
 
@@ -74,6 +70,16 @@ w :-
     positionX(X),
     positionY(Y),
     Next is (Y-1),
+    isHarvest(X, Next),
+    logoHarvest,
+    retract(positionY(_)),
+    asserta(positionY(Next)), !.
+
+w :-
+    binjay(_),
+    positionX(X),
+    positionY(Y),
+    Next is (Y-1),
     isHome(X, Next),
     logoHome,
     retract(positionY(_)),
@@ -114,13 +120,8 @@ s :-
     write('Anda belum tiba di Binjay'), !.
 
 s :-
-    waktu(Jam, Hari),
-    Hari =:= 41,
-    endState, !.
-
-s :-
     binjay(_),
-    addWaktu,
+    addWaktu(1),
     positionX(X),
     positionY(Y),
     Next is (Y+1),
@@ -135,6 +136,7 @@ s :-
     \+isRanch(X,Next),
     \+isDig(X, Next),
     \+isPlant(X, Next),
+    \+isHarvest(X, Next),
     retract(positionY(_)),
     asserta(positionY(Next)),!.
 
@@ -184,6 +186,16 @@ s :-
     positionX(X),
     positionY(Y),
     Next is (Y+1),
+    isHarvest(X, Next),
+    logoHarvest,
+    retract(positionY(_)),
+    asserta(positionY(Next)),!.
+
+s :-
+    binjay(_),
+    positionX(X),
+    positionY(Y),
+    Next is (Y+1),
     isMarket(X, Next),
     logoMarket,
     retract(positionY(_)),
@@ -224,13 +236,8 @@ d :-
     write('Anda belum tiba di Binjay'), !.
 
 d :-
-    waktu(Jam, Hari),
-    Hari =:= 41,
-    endState, !.
-
-d :-
     binjay(_),
-    addWaktu,
+    addWaktu(1),
     positionX(X),
     positionY(Y),
     Next is (X+1),
@@ -245,6 +252,7 @@ d :-
     \+isRanch(Next,Y),
     \+isDig(Next, Y),
     \+isPlant(Next, Y),
+    \+isHarvest(Next, Y),
     retract(positionX(_)),
     asserta(positionX(Next)),!.
 
@@ -286,6 +294,16 @@ d :-
     Next is (X+1),
     isPlant(Next, Y),
     write('widih ada tanaman nihhh'),
+    retract(positionX(_)),
+    asserta(positionX(Next)),!.
+
+d :-
+    binjay(_),
+    positionX(X),
+    positionY(Y),
+    Next is (X+1),
+    isHarvest(Next, Y),
+    logoHarvest,
     retract(positionX(_)),
     asserta(positionX(Next)),!.
 
@@ -332,15 +350,10 @@ d :-
 a :-
     \+binjay(_),
     write('Anda belum tiba di Binjay'), !.
-
-a :-
-    waktu(Jam, Hari),
-    Hari =:= 41,
-    endState, !.
     
 a :-
     binjay(_),
-    addWaktu,
+    addWaktu(1),
     positionX(X),
     positionY(Y),
     Next is (X-1),
@@ -355,6 +368,7 @@ a :-
     \+isRanch(Next,Y),
     \+isDig(Next, Y),
     \+isPlant(Next, Y),
+    \+isHarvest(Next, Y),
     retract(positionX(_)),
     asserta(positionX(Next)),!.
 
@@ -396,6 +410,16 @@ a :-
     Next is (X-1),
     isPlant(Next, Y),
     write('widih ada tanaman nihhh'),
+    retract(positionX(_)),
+    asserta(positionX(Next)),!.
+
+a :-
+    binjay(_),
+    positionX(X),
+    positionY(Y),
+    Next is (X-1),
+    isHarvest(Next, Y),
+    logoHarvest,
     retract(positionX(_)),
     asserta(positionX(Next)),!.
 
@@ -543,7 +567,7 @@ logoHarvest :-
     write('    \\|   \\ |/   \\| /  \\~Y~/   \\|    \\ |/'), nl,
     write('   \\\\|// \\\\|// \\\\|/// \\\\|//  \\\\|// \\\\\\|///'), nl,
     write('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^'), nl,
-    write('    Ketik crop. untuk melihat status tanaman'), nl.
+    write('    Ketik harvest. untuk memanen tanaman'), nl.
 
 logoDie :-
     write('     _______'), nl,
