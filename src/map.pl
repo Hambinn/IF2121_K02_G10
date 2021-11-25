@@ -117,6 +117,13 @@ generatePlantTile :-
     \+ dig(X,Y),
     write('mau nanam di batu bosss?'), !.
 
+generateHarvestTile :-
+    plant(X,Y),
+    waktu(24, Hari),
+    Hari =:= 39,
+    retract(plant(X, Y)),
+    asserta(harvest(X, Y)).
+
 isWaterTile(X1,Y1,X2,Y2,X3,Y3,X4,Y4,X5,Y5,X6,Y6,X7,Y7,X8,Y8) :-
     water(TX1,TY1,TX2,TY2,TX3,TY3,TX4,TY4,TX5,TY5,TX6,TY6,TX7,TY7,TX8,TY8),
     (
@@ -183,6 +190,11 @@ isDig(X,Y) :-
     dig(X1, Y1),
     X =:= X1,
     Y =:= Y1.
+
+isHarvest(X, Y) :-
+    harvest(X1,Y1),
+    X1 =:= X,
+    Y1 =:= Y. 
 
 isPlant(X,Y) :-
     plant(X1, Y1),
@@ -259,6 +271,12 @@ printX(X,Y) :-
     printX(NextX,Y).
 
 printX(X,Y) :-
+    isHarvest(X,Y),
+    write('!'),
+    NextX is (X+1),
+    printX(NextX,Y).
+
+printX(X,Y) :-
     isBot(X,Y),
     write('#'),
     NextX is (X+1),
@@ -324,6 +342,7 @@ createMap :-
     generateMarketTile,
     generateQuestTile,
     generateRanchTile,
+    asserta(harvest(12,12)),
     generateWater.
 
 

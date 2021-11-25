@@ -171,6 +171,22 @@ myMoney(Money) :-
 /* ***** WAKTU ***** */
 addWaktu :-
     waktu(Jam, Hari),
+    generateHarvestTile,
+    NewJam is Jam + 1,
+    (
+        NewJam > 24,
+        UpdateJam is 0,
+        NewHari is Hari + 1,
+        retract(waktu(Jam, Hari)),
+        asserta(waktu(UpdateJam, NewHari));
+        (
+            retract(waktu(Jam, Hari)),
+            asserta(waktu(NewJam, Hari))
+        )
+    ), !.
+
+addWaktu :-
+    waktu(Jam, Hari),
     NewJam is Jam + 1,
     (
         NewJam > 24,

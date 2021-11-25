@@ -184,7 +184,7 @@ gaskeun :-
 gaskeun :-
     \+binjay(_),
     asserta(binjay(99)),
-    asserta(waktu(0,39)),
+    asserta(waktu(20,39)),
     createMap,
     initBegin,!.
 
