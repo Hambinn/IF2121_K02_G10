@@ -65,8 +65,8 @@ items(58,arowana,0,1050,0,0,0,0,0).
 
 /* ****** TOOLS ****** */
 /* Farming */
-items(101,hoe,0,0,200,1,0,0,0).
-items(102,scythe,0,0,200,1,0,0,0).
+items(101,shovel_1,0,0,200,1,0,0,0).
+items(102,shovel_2,0,0,500,2,0,0,0).
 /* Fishing */
 items(111,fishing_rod_1,0,0,200,1,0,0,0).
 items(112,fishing_rod_2,0,0,500,2,0,16,0).
