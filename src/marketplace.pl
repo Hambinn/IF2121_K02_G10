@@ -1,4 +1,3 @@
-
 shop:-
     binjay(_),
     positionX(X),
@@ -17,11 +16,11 @@ shop:-
             write('1. Hoe (200 gold)'),nl,
             write('2. Scythe (200 gold)'),nl,
             write('3. Fishing Rod (200 gold'),nl,
-            write('4. Fishing Rod (500 gold)'),nl,
+            write('4. Fishing Rod 2 (500 gold)'),nl,
             write('5. Milk Pail (200 gold)'),nl,
-            write('6. Milk Pail (500 gold)'),nl,
+            write('6. Milk Pail 2 (500 gold)'),nl,
             write('7. Shears (200 gold)'),nl,
-            write('8. Shears (500 gold)'),nl,
+            write('8. Shears 2 (500 gold)'),nl,
             write('9. Wheat Seeds (30 gold)'),nl,
             write('10. Corn Seeds (100 gold)'),nl,
             write('11. Eggplant Seeds (150 gold)'),nl,
@@ -33,156 +32,128 @@ shop:-
                 PilItem == 1 ->
                     myMoney(Money),
                     (
-                        1<2 ->
-                        % retract(myMoney(Money)),
-                        % NewMoney is Money - 200,
-                        % asserta(myMoney(NewMoney)),
-                        % addItems(hoe,1),
+                        200<Money ->
+                         addItems(hoe,1),
+                         reduceMoney(200),
                         (write('Hoe berhasil dibeli'), nl);
-                        (write('Uangmu tidak cukup'), nl)
+                        (write('Item tidak ada di inventory'), nl)
                     );
                     PilItem == 2 ->
                     myMoney(Money),
                     (
-                        1<2 ->
-                        % retract(myMoney(Money)),
-                        % NewMoney is Money - 200,
-                        % asserta(myMoney(NewMoney)),
-                        % addItems(scyte,1),
+                        200<Money ->
+                         addItems(scyte,1),
+                         reduceMoney(200),
                         (write('Scyte berhasil dibeli'), nl);
-                        (write('Uangmu tidak cukup'), nl)
+                        (write('Item tidak ada di inventory'), nl)
                     );
                     PilItem == 3 ->
-                    %myMoney(Money),
+                    myMoney(Money),
                     (
-                        1<2 ->
-                        % retract(myMoney(Money)),
-                        % NewMoney is Money - 200,
-                        % asserta(myMoney(NewMoney)),
-                        % addItems(fishingrod,1),
+                        200<Money ->
+                         addItems(fishing_rod_1,1),
+                         reduceMoney(200),
                         (write('Fishing Rod berhasil dibeli'), nl);
-                        (write('Uangmu tidak cukup'), nl)
+                        (write('Item tidak ada di inventory'), nl)
                     );
                     PilItem == 4 ->
-                    %myMoney(Money),
+                    myMoney(Money),
                     (
-                        1<2 ->
-                        % retract(myMoney(Money)),
-                        % NewMoney is Money - 200,
-                        % asserta(myMoney(NewMoney)),
-                        % addItems(fishingrod,1),
+                        500<Money ->
+                         addItems(fishing_rod_2,1),
+                         reduceMoney(500),
                         (write('Fishing Rod berhasil dibeli'), nl);
-                        (write('Uangmu tidak cukup'), nl)
+                        (write('Item tidak ada di inventory'), nl)
                     );
                     PilItem == 5 ->
-                    %myMoney(Money),
+                    myMoney(Money),
                     (
-                        1<2 ->
-                        % retract(myMoney(Money)),
-                        % NewMoney is Money - 200,
-                        % asserta(myMoney(NewMoney)),
-                        % addItems(milkpail,1),
+                        200<Money ->
+                        addItems(milk_pail_1,1),
+                        reduceMoney(200),                         
                         (write('Milk Pail berhasil dibeli'), nl);
-                        (write('Uangmu tidak cukup'), nl)
+                        (write('Item tidak ada di inventory'), nl)
                     );
                     PilItem == 6 ->
-                    %myMoney(Money),
+                    myMoney(Money),
                     (
-                        1<2 ->
-                        % retract(myMoney(Money)),
-                        % NewMoney is Money - 200,
-                        % asserta(myMoney(NewMoney)),
-                        % addItems(milkpail,1),
+                        500<Money ->
+                         addItems(milk_pail_2,1),
+                         reduceMoney(500),
                         (write('Milk Pail berhasil dibeli'), nl);
-                        (write('Uangmu tidak cukup'), nl)
+                        (write('Item tidak ada di inventory'), nl)
                     );
                     PilItem == 7 ->
-                    %myMoney(Money),
+                    myMoney(Money),
                     (
-                        1<2 ->
-                        % retract(myMoney(Money)),
-                        % NewMoney is Money - 200,
-                        % asserta(myMoney(NewMoney)),
-                        % addItems(shears,1),
+                        200<Money ->
+                        addItems(shears_1,1),
+                        reduceMoney(200), 
                         (write('Shears berhasil dibeli'), nl);
-                        (write('Uangmu tidak cukup'), nl)
+                        (write('Item tidak ada di inventory'), nl)
                     );
                     PilItem == 8 ->
-                    %myMoney(Money),
+                    myMoney(Money),
                     (
-                        1<2 ->
-                        % retract(myMoney(Money)),
-                        % NewMoney is Money - 200,
-                        % asserta(myMoney(NewMoney)),
-                        % addItems(shears,1),
+                        500<Money ->
+                        addItems(shears_2,1),
+                        reduceMoney(500),
                         (write('Shears berhasil dibeli'), nl);
-                        (write('Uangmu tidak cukup'), nl)
+                        (write('Item tidak ada di inventory'), nl)
                     );
                     PilItem == 9 ->
-                    %myMoney(Money),
+                    myMoney(Money),
                     (
-                        1<2 ->
-                        % retract(myMoney(Money)),
-                        % NewMoney is Money - 200,
-                        % asserta(myMoney(NewMoney)),
-                        % addItems(wheatseeds,1),
+                        30<Money ->
+                        addItems(wheat_seeds,1),
+                        reduceMoney(30),
                         (write('Wheat Seeds berhasil dibeli'), nl);
-                        (write('Uangmu tidak cukup'), nl)
+                        (write('Item tidak ada di inventory'), nl)
                     );
                     PilItem == 10 ->
-                    %myMoney(Money),
+                    myMoney(Money),
                     (
-                        1<2 ->
-                        % retract(myMoney(Money)),
-                        % NewMoney is Money - 200,
-                        % asserta(myMoney(NewMoney)),
-                        % addItems(cornseeds,1),
+                        100<Money ->
+                        addItems(corn_seeds,1),
+                        reduceMoney(100),
                         (write('Corn Seeds berhasil dibeli'), nl);
-                        (write('Uangmu tidak cukup'), nl)
+                        (write('Item tidak ada di inventory'), nl)
                     );
                     PilItem == 11 ->
-                    %myMoney(Money),
+                    myMoney(Money),
                     (
-                        1<2 ->
-                        % retract(myMoney(Money)),
-                        % NewMoney is Money - 200,
-                        % asserta(myMoney(NewMoney)),
-                        % addItems(eggplantseeds,1),
+                        150<2 ->
+                        addItems(eggplant_seeds,1),
+                        reduceMoney(150),
                         (write('Eggplant Seeds berhasil dibeli'), nl);
-                        (write('Uangmu tidak cukup'), nl)
+                        (write('Item tidak ada di inventory'), nl)
                     );
                     PilItem == 12 ->
-                    %myMoney(Money),
+                    myMoney(Money),
                     (
-                        1<2 ->
-                        % retract(myMoney(Money)),
-                        % NewMoney is Money - 200,
-                        % asserta(myMoney(NewMoney)),
-                        % addItems(tomatoseeds,1),
+                        150<2 ->
+                        addItems(tomato_seeds,1),
+                        reduceMoney(150),
                         (write('Tomato Seeds berhasil dibeli'), nl);
-                        (write('Uangmu tidak cukup'), nl)
+                        (write('Item tidak ada di inventory'), nl)
                     );
                     PilItem == 13 ->
-                    %myMoney(Money),
+                    myMoney(Money),
                     (
-                        1<2 ->
-                        % retract(myMoney(Money)),
-                        % NewMoney is Money - 200,
-                        % asserta(myMoney(NewMoney)),
-                        % addItems(potatoseeds,1),
+                        200<2 ->
+                        addItems(potato_seeds,1),
+                        reduceMoney(200),
                         (write('Potato Seeds berhasil dibeli'), nl);
-                        (write('Uangmu tidak cukup'), nl)
+                        (write('Item tidak ada di inventory'), nl)
                     );
                     PilItem == 14 ->
-                    %myMoney(Money),
+                    myMoney(Money),
                     (
-                        1<2 ->
-                        % retract(myMoney(Money)),
-                        % NewMoney is Money - 200,
-                        % asserta(myMoney(NewMoney)),
-                        % addItems(cauliflowerseeds,1),
+                        240<2 ->
+                        addItems(cauliflower_seeds,1),
+                        reduceMoney(240),
                         (write('Cauliflower Seeds berhasil dibeli'), nl);
-                        (write('Uangmu tidak cukup'), nl)
+                        (write('Item tidak ada di inventory'), nl)
                     )
             );
         (
@@ -212,256 +183,214 @@ shop:-
                 write('Pilihan: '), read(PilJual),
                 (
                     PilJual == 1 ->
-                    %myMoney(Money),
+                    myMoney(Money),
                     amountItem(egg,amount),
                     (
-                        1<2 ->
-                        % retract(myMoney(Money)),
-                        % NewMoney is Money + 150,
-                        % asserta(myMoney(NewMoney)),
-                        % removeItems(egg,amount),
+                        1=<amount ->
+                        addMoney((150*amount)),
+                        removeItems(egg,amount),
                         (write('Egg berhasil dijual'), nl);
-                        (write('Uangmu tidak cukup'), nl)
+                        (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 2 ->
-                    %myMoney(Money),
+                    myMoney(Money),
                     amountItem(large_egg,amount),
                     (
-                        1<2 ->
-                        % retract(myMoney(Money)),
-                        % NewMoney is Money + 285,
-                        % asserta(myMoney(NewMoney)),
-                        % removeItems(large_egg,amount),
+                        1=<amount ->
+                        addMoney((285*amount)),
+                        removeItems(large_egg,amount),
                         (write('Large Egg berhasil dijual'), nl);
-                        (write('Uangmu tidak cukup'), nl)
+                        (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 3 ->
-                    %myMoney(Money),
+                    myMoney(Money),
                     amountItem(golden_egg,amount),
                     (
-                        1<2 ->
-                        % retract(myMoney(Money)),
-                        % NewMoney is Money + 1500,
-                        % asserta(myMoney(NewMoney)),
-                        % removeItems(golden_egg,amount),
+                        1=<amount ->
+                        addMoney((1500*amount)),
+                        removeItems(golden_egg,amount),
                         (write('Golden Egg berhasil dijual'), nl);
-                        (write('Uangmu tidak cukup'), nl)
+                        (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 4 ->
-                    %myMoney(Money),
+                    myMoney(Money),
                     amountItem(wool,amount),
                     (
-                        1<2 ->
-                        % retract(myMoney(Money)),
-                        % NewMoney is Money + 1020,
-                        % asserta(myMoney(NewMoney)),
-                        % removeItems(wool,amount),
+                        1=<amount ->
+                        addMoney((1020*amount)),
+                        removeItems(wool,amount),
                         (write('Wool berhasil dijual'), nl);
-                        (write('Uangmu tidak cukup'), nl)
+                        (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 5 ->
-                    %myMoney(Money),
+                    myMoney(Money),
                     amountItem(premium_wool,amount),
                     (
-                        1<2 ->
-                        % retract(myMoney(Money)),
-                        % NewMoney is Money + 2000,
-                        % asserta(myMoney(NewMoney)),
-                        % removeItems(premium_wool,amount),
+                        1=<amount ->
+                        addMoney((2000*amount)),
+                        removeItems(premium_wool,amount),
                         (write('Premium Wool berhasil dijual'), nl);
-                        (write('Uangmu tidak cukup'), nl)
+                        (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 6 ->
-                    %myMoney(Money),
+                    myMoney(Money),
                     amountItem(milk,amount),
                     (
-                        1<2 ->
-                        % retract(myMoney(Money)),
-                        % NewMoney is Money + 375,
-                        % asserta(myMoney(NewMoney)),
-                        % removeItems(milk,amount),
+                        1=<amount ->
+                        addMoney((375*amount)),
+                        removeItems(milk,amount),
                         (write('Milk berhasil dijual'), nl);
-                        (write('Uangmu tidak cukup'), nl)
+                        (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 7 ->
-                    %myMoney(Money),
+                    myMoney(Money),
                     amountItem(large_milk,amount),
                     (
-                        1<2 ->
-                        % retract(myMoney(Money)),
-                        % NewMoney is Money + 570,
-                        % asserta(myMoney(NewMoney)),
-                        % removeItems(large_milk,amount),
+                        1=<amount ->
+                        addMoney((570*amount)),
+                        removeItems(large_milk,amount),
                         (write('Large Milk berhasil dijual'), nl);
-                        (write('Uangmu tidak cukup'), nl)
+                        (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 8 ->
-                    %myMoney(Money),
+                    myMoney(Money),
                     amountItem(wheat,amount),
                     (
-                        1<2 ->
-                        % retract(myMoney(Money)),
-                        % NewMoney is Money + 75,
-                        % asserta(myMoney(NewMoney)),
-                        % removeItems(wheat,amount),
+                        1=<amount ->
+                        addMoney((75*amount)),
+                        removeItems(wheat,amount),
                         (write('Wheat berhasil dijual'), nl);
-                        (write('Uangmu tidak cukup'), nl)
+                        (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 9 ->
-                    %myMoney(Money),
+                    myMoney(Money),
                     amountItem(corn,amount),
                     (
-                        1<2 ->
-                        % retract(myMoney(Money)),
-                        % NewMoney is Money + 150,
-                        % asserta(myMoney(NewMoney)),
-                        % removeItems(corn,amount),
+                        1=<amount ->
+                        addMoney((150*amount)),
+                        removeItems(corn,amount),
                         (write('Corn berhasil dijual'), nl);
-                        (write('Uangmu tidak cukup'), nl)
+                        (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 10 ->
-                    %myMoney(Money),
+                    myMoney(Money),
                     amountItem(eggplant,amount),
                     (
-                        1<2 ->
-                        % retract(myMoney(Money)),
-                        % NewMoney is Money + 180,
-                        % asserta(myMoney(NewMoney)),
-                        % removeItems(eggplant,amount),
+                        1=<amount ->
+                        addMoney((180*amount)),
+                        removeItems(eggplant,amount),
                         (write('Eggplant berhasil dijual'), nl);
-                        (write('Uangmu tidak cukup'), nl)
+                        (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 11 ->
-                    %myMoney(Money),
+                    myMoney(Money),
                     amountItem(tomato,amount),
                     (
-                        1<2 ->
-                        % retract(myMoney(Money)),
-                        % NewMoney is Money + 180,
-                        % asserta(myMoney(NewMoney)),
-                        % removeItems(tomato,amount),
+                        1=<amount ->
+                        addMoney((180*amount)),
+                        removeItems(tomato,amount),
                         (write('Tomato berhasil dijual'), nl);
-                        (write('Uangmu tidak cukup'), nl)
+                        (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 12 ->
-                    %myMoney(Money),
+                    myMoney(Money),
                     amountItem(potato,amount),
                     (
-                        1<2 ->
-                        % retract(myMoney(Money)),
-                        % NewMoney is Money + 240,
-                        % asserta(myMoney(NewMoney)),
-                        % removeItems(potato,amount),
+                        1=<amount ->
+                        addMoney((240*amount)),
+                        removeItems(potato,amount),
                         (write('Potato berhasil dijual'), nl);
-                        (write('Uangmu tidak cukup'), nl)
+                        (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 13 ->
-                    %myMoney(Money),
+                    myMoney(Money),
                     amountItem(cauliflower,amount),
                     (
-                        1<2 ->
-                        % retract(myMoney(Money)),
-                        % NewMoney is Money + 300,
-                        % asserta(myMoney(NewMoney)),
-                        % removeItems(cauliflower,amount),
+                        1=<amount ->
+                        addMoney((525*amount)),
+                        removeItems(cauliflower,amount),
                         (write('cauliflower berhasil dijual'), nl);
-                        (write('Uangmu tidak cukup'), nl)
+                        (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 14 ->
-                    %myMoney(Money),
+                    myMoney(Money),
                     amountItem(carp,amount),
                     (
-                        1<2 ->
-                        % retract(myMoney(Money)),
-                        % NewMoney is Money + 300,
-                        % asserta(myMoney(NewMoney)),
-                        % removeItems(carp,amount),
+                        1=<amount ->
+                        addMoney((150*amount)),
+                        removeItems(carp,amount),
                         (write('carp berhasil dijual'), nl);
-                        (write('Uangmu tidak cukup'), nl)
+                        (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 15 ->
-                    %myMoney(Money),
+                    myMoney(Money),
                     amountItem(rainbow_trout,amount),
                     (
-                        1<2 ->
-                        % retract(myMoney(Money)),
-                        % NewMoney is Money + 300,
-                        % asserta(myMoney(NewMoney)),
-                        % removeItems(rainbow_trout,amount),
+                        1=<amount ->
+                        addMoney((195*amount)),
+                        removeItems(rainbow_trout,amount),
                         (write('rainbow_trout berhasil dijual'), nl);
-                        (write('Uangmu tidak cukup'), nl)
+                        (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 16 ->
-                    %myMoney(Money),
+                    myMoney(Money),
                     amountItem(bullhead,amount),
                     (
-                        1<2 ->
-                        % retract(myMoney(Money)),
-                        % NewMoney is Money + 300,
-                        % asserta(myMoney(NewMoney)),
-                        % removeItems(bullhead,amount),
+                        1=<amount ->
+                        addMoney((1225*amount)),
+                        removeItems(bullhead,amount),
                         (write('bullhead berhasil dijual'), nl);
-                        (write('Uangmu tidak cukup'), nl)
+                        (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 17 ->
-                    %myMoney(Money),
+                    myMoney(Money),
                     amountItem(largemouth_bass,amount),
                     (
-                        1<2 ->
-                        % retract(myMoney(Money)),
-                        % NewMoney is Money + 300,
-                        % asserta(myMoney(NewMoney)),
-                        % removeItems(largemouth_bass,amount),
+                        1=<amount ->
+                        addMoney((300*amount)),
+                        removeItems(largemouth_bass,amount),
                         (write('largemouth bass berhasil dijual'), nl);
-                        (write('Uangmu tidak cukup'), nl)
+                        (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 18 ->
-                    %myMoney(Money),
+                    myMoney(Money),
                     amountItem(salmon,amount),
                     (
-                        1<2 ->
-                        % retract(myMoney(Money)),
-                        % NewMoney is Money + 300,
-                        % asserta(myMoney(NewMoney)),
-                        % removeItems(salmon,amount),
+                        1=<amount ->
+                        addMoney((375*amount)),
+                        removeItems(salmon,amount),
                         (write('salmon berhasil dijual'), nl);
-                        (write('Uangmu tidak cukup'), nl)
+                        (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 19 ->
-                    %myMoney(Money),
+                    myMoney(Money),
                     amountItem(tuna,amount),
                     (
-                        1<2 ->
-                        % retract(myMoney(Money)),
-                        % NewMoney is Money + 300,
-                        % asserta(myMoney(NewMoney)),
-                        % removeItems(tuna,amount),
+                        1=<amount ->
+                        addMoney((450*amount)),
+                        removeItems(tuna,amount),
                         (write('tuna berhasil dijual'), nl);
-                        (write('Uangmu tidak cukup'), nl)
+                        (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 20 ->
-                    %myMoney(Money),
+                    myMoney(Money),
                     amountItem(polka_dot_stingray,amount),
                     (
-                        1<2 ->
-                        % retract(myMoney(Money)),
-                        % NewMoney is Money + 300,
-                        % asserta(myMoney(NewMoney)),
-                        % removeItems(polka_dot_stingray,amount),
+                        1=<amount ->
+                        addMoney((540*amount)),
+                        removeItems(polka_dot_stingray,amount),
                         (write('polka dot stingray berhasil dijual'), nl);
-                        (write('Uangmu tidak cukup'), nl)
+                        (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 21 ->
-                    %myMoney(Money),
+                    myMoney(Money),
                     amountItem(arowana,amount),
                     (
-                        1<2 ->
-                        % retract(myMoney(Money)),
-                        % NewMoney is Money + 300,
-                        % asserta(myMoney(NewMoney)),
-                        % removeItems(arowana,amount),
+                        1=<amount ->
+                        addMoney((1050*amount)),
+                        removeItems(arowana,amount),
                         (write('arowana berhasil dijual'), nl);
-                        (write('Uangmu tidak cukup'), nl)
+                        (write('Item tidak ada di inventory'), nl)
                     )
         );
             (
