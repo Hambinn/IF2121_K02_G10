@@ -118,11 +118,13 @@ generatePlantTile :-
     write('mau nanam di batu bosss?'), !.
 
 generateHarvestTile :-
-    plant(X,Y),
+    plant(_,_),
     waktu(24, Hari),
     Hari =:= 39,
-    retract(plant(X, Y)),
-    asserta(harvest(X, Y)).
+    forall(plant(X,Y),(
+        retract(plant(X,Y)),
+        asserta(harvest(X,Y))
+    )), !.
 
 isWaterTile(X1,Y1,X2,Y2,X3,Y3,X4,Y4,X5,Y5,X6,Y6,X7,Y7,X8,Y8) :-
     water(TX1,TY1,TX2,TY2,TX3,TY3,TX4,TY4,TX5,TY5,TX6,TY6,TX7,TY7,TX8,TY8),
