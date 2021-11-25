@@ -167,6 +167,21 @@ myMoney(Money) :-
     infoStats(_, _, _, _, _, _, _, _, _, Money),!
 .
 
+/* ADD MONEY */
+addMoney(Amount) :-
+    infoStats(_, _, _, _, _, _, _, _, _, Money),
+    Money2 is Money + Amount,
+    retract(infoStats(_, _, _, _, _, _, _, _, _, Money)),
+    asserta(infoStats(_, _, _, _, _, _, _, _, _, Money2)),!
+.
+
+/* REDUCE MONEY */
+reduceMoney(Amount) :-
+    infoStats(_, _, _, _, _, _, _, _, _, Money),
+    Money2 is Money - Amount,
+    retract(infoStats(_, _, _, _, _, _, _, _, _, Money)),
+    asserta(infoStats(_, _, _, _, _, _, _, _, _, Money2)),!
+.
 
 /* ***** WAKTU ***** */
 addWaktu(Jumlah) :-
