@@ -169,34 +169,46 @@ myMoney(Money) :-
 
 
 /* ***** WAKTU ***** */
-addWaktu :-
+addWaktu(Jumlah) :-
     waktu(Jam, Hari),
     generateHarvestTile,
-    NewJam is Jam + 1,
+    NewJam is Jam + Jumlah,
     (
         NewJam > 24,
-        UpdateJam is 0,
         NewHari is Hari + 1,
-        retract(waktu(Jam, Hari)),
-        asserta(waktu(UpdateJam, NewHari));
+        NewHari > 40,
+        endState;
         (
+            NewJam > 24,
+            UpdateJam is NewJam - 24,
+            NewHari is Hari + 1,
             retract(waktu(Jam, Hari)),
-            asserta(waktu(NewJam, Hari))
+            asserta(waktu(UpdateJam, NewHari));
+            (
+                retract(waktu(Jam, Hari)),
+                asserta(waktu(NewJam, Hari))
+            )
         )
     ), !.
 
-addWaktu :-
+addWaktu(Jumlah) :-
     waktu(Jam, Hari),
-    NewJam is Jam + 1,
+    NewJam is Jam + Jumlah,
     (
         NewJam > 24,
-        UpdateJam is 0,
         NewHari is Hari + 1,
-        retract(waktu(Jam, Hari)),
-        asserta(waktu(UpdateJam, NewHari));
+        NewHari > 40,
+        endState;
         (
+            NewJam > 24,
+            UpdateJam is NewJam - 24,
+            NewHari is Hari + 1,
             retract(waktu(Jam, Hari)),
-            asserta(waktu(NewJam, Hari))
+            asserta(waktu(UpdateJam, NewHari));
+            (
+                retract(waktu(Jam, Hari)),
+                asserta(waktu(NewJam, Hari))
+            )
         )
     ), !.
 
@@ -204,3 +216,4 @@ showWaktu :-
     waktu(Jam, Hari),
     write('Jam  : '), write(Jam), nl,
     write('Hari : '), write(Hari).
+

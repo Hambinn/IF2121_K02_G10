@@ -3,13 +3,8 @@ w :-
     write('Anda belum tiba di Binjay'), !.
 
 w :-
-    waktu(_, Hari),
-    Hari =:= 41,
-    endState, !.
-
-w :-
     binjay(_),
-    addWaktu,
+    addWaktu(1),
     positionX(X),
     positionY(Y),
     Next is (Y-1),
@@ -125,13 +120,8 @@ s :-
     write('Anda belum tiba di Binjay'), !.
 
 s :-
-    waktu(_, Hari),
-    Hari =:= 41,
-    endState, !.
-
-s :-
     binjay(_),
-    addWaktu,
+    addWaktu(1),
     positionX(X),
     positionY(Y),
     Next is (Y+1),
@@ -246,13 +236,8 @@ d :-
     write('Anda belum tiba di Binjay'), !.
 
 d :-
-    waktu(_, Hari),
-    Hari =:= 41,
-    endState, !.
-
-d :-
     binjay(_),
-    addWaktu,
+    addWaktu(1),
     positionX(X),
     positionY(Y),
     Next is (X+1),
@@ -365,15 +350,10 @@ d :-
 a :-
     \+binjay(_),
     write('Anda belum tiba di Binjay'), !.
-
-a :-
-    waktu(_, Hari),
-    Hari =:= 41,
-    endState, !.
     
 a :-
     binjay(_),
-    addWaktu,
+    addWaktu(1),
     positionX(X),
     positionY(Y),
     Next is (X-1),
