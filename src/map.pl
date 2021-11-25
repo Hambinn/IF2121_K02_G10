@@ -104,6 +104,73 @@ generateDigTile :-
     \+isPlant(X, Y),
     asserta(dig(X, Y)), !.
 
+generateDigTileLv2 :-
+    positionX(X),
+    positionY(Y),
+    (
+        isHome(X, Y),
+        write('ada rumah woiii');
+        (
+            isQuest(X, Y),
+            write('nanti gabisa kerja mampus dah');
+            (
+                isMarket(X,Y),
+                write('kasian pemilik supermarketnya :)');
+                (
+                    isWaterTile(X,Y,X,Y,X,Y,X,Y,X,Y,X,Y,X,Y,X,Y),
+                    write('nanti kebanjiran gesss');
+                    (
+                        isRanch(X,Y),
+                        write('kasian ayamnya nanti');
+                        (
+                            isPlant(X,Y),
+                            write('ada tanaman masa mau digali sih')
+                        )
+                    )
+                )
+            )
+        )
+    ), !.
+
+generateDigTileLv2 :-
+    positionX(X),
+    positionY(Y),
+    Right = X+1,
+    Left = X-1,
+    \+isQuest(X,Y),
+    \+isMarket(X,Y),
+    \+isWaterTile(X,Y,X,Y,X,Y,X,Y,X,Y,X,Y,X,Y,X,Y),
+    \+isHome(X,Y),
+    \+isRanch(X,Y),
+    \+isDig(X, Y),
+    \+isPlant(X, Y),
+    asserta(dig(X, Y)),
+    generateDigTileLeft(Left,Y),
+    generateDigTileRight(Right,Y),!
+.
+
+generateDigTileLeft(Left,Y) :-
+    \+isQuest(Left,Y),
+    \+isMarket(Left,Y),
+    \+isWaterTile(Left,Y,Left,Y,Left,Y,Left,Y,Left,Y,Left,Y,Left,Y,Left,Y),
+    \+isHome(Left,Y),
+    \+isRanch(Left,Y),
+    \+isDig(Left, Y),
+    \+isPlant(Left, Y),
+    asserta(dig(Left, Y)),!
+.
+
+generateDigTileRight(Right,Y) :-
+    \+isQuest(Right,Y),
+    \+isMarket(Right,Y),
+    \+isWaterTile(Right,Y,Right,Y,Right,Y,Right,Y,Right,Y,Right,Y,Right,Y,Right,Y),
+    \+isHome(Right,Y),
+    \+isRanch(Right,Y),
+    \+isDig(Right, Y),
+    \+isPlant(Right, Y),
+    asserta(dig(Right, Y)),!
+.
+
 generatePlantTile :-
     positionX(X),
     positionY(Y),

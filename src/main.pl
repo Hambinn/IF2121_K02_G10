@@ -11,6 +11,7 @@
 :- include('peri.pl').
 :- include('marketplace.pl').
 :- include('fishing.pl').
+:- include('farming.pl').
 
 title :-
     write('                                      lllllll                                              '), nl, 
@@ -166,8 +167,7 @@ initBegin :-
                     write('              `~`~~`~~~`~`~`~~`~( / , /__,___.-"'), nl,
                     write('                                 \\ \\\\/'), nl,
                     write('                                  `\\\\\\\''), nl,
-                    addItems(hoe, 1), nl,
-                    addItems(scythe, 1), nl,
+                    addItems(shovel_1, 1), nl,
                     setStatus(Role, 1, 1, 76, 1, 56, 1, 56, 0, 1000)
             )
         )
@@ -206,12 +206,6 @@ nyerah :-
     retract(items(_,_,_,_,_,_,_,_,_)),
     logoDie,
     write('yeyyyy anda mati, dadahhh Tubes'), !.
-
-dig :-
-    generateDigTile.
-
-plant :-
-    generatePlantTile.
 
 endState :-
     myMoney(M),

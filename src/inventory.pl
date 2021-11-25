@@ -26,6 +26,11 @@ amountItem(ItemName, Amount) :-
     Amount is Qty,!
 .
 
+amountItem(ItemName, Amount) :-
+    \+inventory(_,ItemName,_,_,_,_,_,_,_),
+    Amount is 0,!
+.
+
 /* *** INPUT/OUTPUT *** */
 /* inventory */
 /* Mencetak informasi inventory */
@@ -310,12 +315,12 @@ printItemName(ItemName) :-
     write('Arowana'),!
 .
 printItemName(ItemName) :-
-    ItemName == hoe,
-    write('Hoe'),!
+    ItemName == shovel_1,
+    write('Shovel'),!
 .
 printItemName(ItemName) :-
-    ItemName == scythe,
-    write('Scythe'),!
+    ItemName == shovel_2,
+    write('Shovel'),!
 .
 printItemName(ItemName) :-
     ItemName == fishing_rod_1,
