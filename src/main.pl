@@ -10,6 +10,7 @@
 :- include('player.pl').
 :- include('peri.pl').
 :- include('marketplace.pl').
+:- include('fishing.pl').
 
 title :-
     write('                                      lllllll                                              '), nl, 
