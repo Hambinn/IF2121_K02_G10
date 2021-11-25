@@ -23,7 +23,7 @@ sumList([Head|Tail], Sum) :-
 /* Mengembalikan jumlah item 'itemName' pada Inventory */
 amountItem(ItemName, Amount) :-
     inventory(_,ItemName,Qty,_,_,_,_,_,_),
-    Amount is Qty
+    Amount is Qty,!
 .
 
 /* *** INPUT/OUTPUT *** */
