@@ -511,6 +511,7 @@ generateCowProduct(NamaCow,_):-
     !.
 /* ******************************** Generate animals ******************************** */
 ranch:-
+    binjay(_),
     write('Welcome to ranch! you have:'), nl,
     displayAnimals,
     write('What you want to do?'),nl,

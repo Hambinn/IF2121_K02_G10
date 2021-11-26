@@ -346,3 +346,15 @@ printItemName(ItemName) :-
     ItemName == shears_2,
     write('Shears'),!
 .
+printItemName(ItemName) :-
+    ItemName == chicken,
+    write('Chicken'),!
+.
+printItemName(ItemName) :-
+    ItemName == cow,
+    write('Cow'),!
+.
+printItemName(ItemName) :-
+    ItemName == sheep,
+    write('Sheep'),!
+.

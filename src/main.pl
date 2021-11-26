@@ -12,6 +12,7 @@
 :- include('marketplace.pl').
 :- include('fishing.pl').
 :- include('farming.pl').
+:- include('ranching.pl').
 :- include('quest.pl').
 
 title :-
@@ -149,9 +150,13 @@ initBegin :-
                 write('  |---|---|---|---|---|    |--|--|    |  |'), nl,
                 write('  |---|---|---|---|---|    |==|==|    |  |'), nl,
                 write('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^'), nl,
-                addItems(milk_pail_1, 1), nl,
-                addItems(shears_1, 1), nl,
-                setStatus(Role, 1, 1, 56, 1, 56, 1, 76, 0, 1000);
+                addItems(chicken,1), nl,
+                addItems(sheep,1), nl,
+                addItems(cow,1), nl,
+                setStatus(Role, 1, 1, 56, 1, 56, 1, 76, 0, 1000),
+                generateChickenProduct(1,_),
+                generateSheepProduct(1,_),
+                generateCowProduct(1,_);
             (
                 Role = 'farmer' ->
                     write('                                   .-\'"`/'), nl,
