@@ -43,6 +43,7 @@ shop:-
                     (
                         500<Money ->
                          addItems(shovel_2,1),
+                         removeItems(shovel_1),
                          reduceMoney(500),
                         (write('Scyte berhasil dibeli'), nl);
                         (write('Uangmu tidak cukup'), nl)
@@ -61,6 +62,7 @@ shop:-
                     (
                         500<Money ->
                          addItems(fishing_rod_2,1),
+                         removeItems(fishing_rod_1),
                          reduceMoney(500),
                         (write('Fishing Rod berhasil dibeli'), nl);
                         (write('Uangmu tidak cukup'), nl)
@@ -79,6 +81,7 @@ shop:-
                     (
                         500<Money ->
                          addItems(milk_pail_2,1),
+                         removeItems(milk_pail_1),
                          reduceMoney(500),
                         (write('Milk Pail berhasil dibeli'), nl);
                         (write('Uangmu tidak cukup'), nl)
