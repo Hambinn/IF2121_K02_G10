@@ -171,16 +171,16 @@ myMoney(Money) :-
 addMoney(Amount) :-
     infoStats(_, _, _, _, _, _, _, _, _, Money),
     Money2 is Money + Amount,
-    retract(infoStats(_, _, _, _, _, _, _, _, _, Money)),
-    asserta(infoStats(_, _, _, _, _, _, _, _, _, Money2)),!
+    retract(infoStats(Role, GeneralLevel, FarmingLevel, FarmingExp, FishingLevel, FishingExp, RanchingLevel, RanchingExp, GeneralExp, Money)),
+    asserta(infoStats(Role, GeneralLevel, FarmingLevel, FarmingExp, FishingLevel, FishingExp, RanchingLevel, RanchingExp, GeneralExp, Money2)),!
 .
 
 /* REDUCE MONEY */
 reduceMoney(Amount) :-
     infoStats(_, _, _, _, _, _, _, _, _, Money),
     Money2 is Money - Amount,
-    retract(infoStats(_, _, _, _, _, _, _, _, _, Money)),
-    asserta(infoStats(_, _, _, _, _, _, _, _, _, Money2)),!
+    retract(infoStats(Role, GeneralLevel, FarmingLevel, FarmingExp, FishingLevel, FishingExp, RanchingLevel, RanchingExp, GeneralExp, Money)),
+    asserta(infoStats(Role, GeneralLevel, FarmingLevel, FarmingExp, FishingLevel, FishingExp, RanchingLevel, RanchingExp, GeneralExp, Money2)),!
 .
 
 /* ***** WAKTU ***** */
