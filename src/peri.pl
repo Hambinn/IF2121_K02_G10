@@ -16,7 +16,7 @@ peri :-
                     retract(positionY(_)),
                     asserta(positionX(X)),
                     asserta(positionY(Y)),
-                    write('selamat anda berhasil pindah'),
+                    write('selamat anda berhasil pindah')
                 )
             )
         )
