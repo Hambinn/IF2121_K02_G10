@@ -13,12 +13,12 @@ shop:-
     ( 
         Pilihan == 1 ->
             write('Item yang tersedia:'), nl,
-            write('1. Hoe (200 gold)'),nl,
-            write('2. Scythe (200 gold)'),nl,
-            write('3. Fishing Rod (200 gold'),nl,
-            write('4. Fishing Rod 2 (500 gold)'),nl,
-            write('5. Milk Pail (200 gold)'),nl,
-            write('6. Milk Pail 2 (500 gold)'),nl,
+            write('1. Shovel level 1 (200 gold)'),nl,
+            write('2. Shovel level 2 (500 gold)'),nl,
+            write('3. Fishing Rod level 1(200 gold'),nl,
+            write('4. Fishing Rod level 2 (500 gold)'),nl,
+            write('5. Milk Pail level 1 (200 gold)'),nl,
+            write('6. Milk Pail level 2 (500 gold)'),nl,
             write('7. Shears (200 gold)'),nl,
             write('8. Shears 2 (500 gold)'),nl,
             write('9. Wheat Seeds (30 gold)'),nl,
@@ -33,7 +33,7 @@ shop:-
                     myMoney(Money),
                     (
                         200<Money ->
-                         addItems(hoe,1),
+                         addItems(shovel_1,1),
                          reduceMoney(200),
                         (write('Hoe berhasil dibeli'), nl);
                         (write('Uangmu tidak cukup'), nl)
@@ -41,9 +41,9 @@ shop:-
                     PilItem == 2 ->
                     myMoney(Money),
                     (
-                        200<Money ->
-                         addItems(scyte,1),
-                         reduceMoney(200),
+                        500<Money ->
+                         addItems(shovel_2,1),
+                         reduceMoney(500),
                         (write('Scyte berhasil dibeli'), nl);
                         (write('Uangmu tidak cukup'), nl)
                     );
@@ -122,7 +122,7 @@ shop:-
                     PilItem == 11 ->
                     myMoney(Money),
                     (
-                        150<2 ->
+                        150<Money ->
                         addItems(eggplant_seeds,1),
                         reduceMoney(150),
                         (write('Eggplant Seeds berhasil dibeli'), nl);
@@ -131,7 +131,7 @@ shop:-
                     PilItem == 12 ->
                     myMoney(Money),
                     (
-                        150<2 ->
+                        150<Money ->
                         addItems(tomato_seeds,1),
                         reduceMoney(150),
                         (write('Tomato Seeds berhasil dibeli'), nl);
@@ -140,7 +140,7 @@ shop:-
                     PilItem == 13 ->
                     myMoney(Money),
                     (
-                        200<2 ->
+                        200<Money ->
                         addItems(potato_seeds,1),
                         reduceMoney(200),
                         (write('Potato Seeds berhasil dibeli'), nl);
@@ -149,7 +149,7 @@ shop:-
                     PilItem == 14 ->
                     myMoney(Money),
                     (
-                        240<2 ->
+                        240<Money ->
                         addItems(cauliflower_seeds,1),
                         reduceMoney(240),
                         (write('Cauliflower Seeds berhasil dibeli'), nl);
@@ -159,27 +159,27 @@ shop:-
         (
             Pilihan == 2 ->
                 write('Item yang bisa dijual:'), nl,
-                write('1. egg (x') , write(amountItem(egg,amout)), write(') (150)'),nl,
-                write('2. large egg (x') , write(amountItem(large_egg,amout)), write(') (285)'),nl,
-                write('3. golden egg (x') , write(amountItem(golden_egg,amout)), write(') (1500)'),nl,
-                write('4. wool (x') , write(amountItem(wool,amout)), write(') (1020)'),nl,
-                write('5. premium wool (x') , write(amountItem(premium_wool,amout)), write(') (2000)'),nl,
-                write('6. milk (x') , write(amountItem(milk,amout)), write(') (375)'),nl,
-                write('7. large milk (x') , write(amountItem(large_milk,amout)), write(') (570)'),nl,
-                write('8. wheat (x') , write(amountItem(wheat,amout)), write(') (75)'),nl,
-                write('9. corn (x') , write(amountItem(corn,amout)), write(') (150)'),nl,
-                write('10. eggplant (x') , write(amountItem(eggplant,amout)), write(') (180)'),nl,
-                write('11. tomato (x') , write(amountItem(tomato,amout)), write(') (180)'),nl,
-                write('12. potato (x') , write(amountItem(potato,amout)), write(') (240)'),nl,
-                write('13. cauliflower (x') , write(amountItem(cauliflower,amout)), write(') (525)'),nl,
-                write('14. carp (x') , write(amountItem(carp,amout)), write(') (150)'),nl,
-                write('15. rainbow trout (x') , write(amountItem(rainbow_trout,amout)), write(') (195)'),nl,
-                write('16. bullhead (x') , write(amountItem(bullhead,amout)), write(') (225)'),nl,
-                write('17. largemouth bass (x') , write(amountItem(largemouth_bass,amout)), write(') (300)'),nl,
-                write('18. salmon (x') , write(amountItem(salmon,amout)), write(') (375)'),nl,
-                write('19. tuna (x') , write(amountItem(tuna,amout)), write(') (450)'),nl,
-                write('20. polka dot stingray (x') , write(amountItem(polka_dot_stingray,amout)), write(') (540)'),nl,
-                write('21. arowana (x') , write(amountItem(arowana,amout)), write(') (1050)'),nl,
+                write('1. egg (x') , write(amountItem(egg,amount)), write(') (150)'),nl,
+                write('2. large egg (x') , write(amountItem(large_egg,amount)), write(') (285)'),nl,
+                write('3. golden egg (x') , write(amountItem(golden_egg,amount)), write(') (1500)'),nl,
+                write('4. wool (x') , write(amountItem(wool,amount)), write(') (1020)'),nl,
+                write('5. premium wool (x') , write(amountItem(premium_wool,amount)), write(') (2000)'),nl,
+                write('6. milk (x') , write(amountItem(milk,amount)), write(') (375)'),nl,
+                write('7. large milk (x') , write(amountItem(large_milk,amount)), write(') (570)'),nl,
+                write('8. wheat (x') , write(amountItem(wheat,amount)), write(') (75)'),nl,
+                write('9. corn (x') , write(amountItem(corn,amount)), write(') (150)'),nl,
+                write('10. eggplant (x') , write(amountItem(eggplant,amount)), write(') (180)'),nl,
+                write('11. tomato (x') , write(amountItem(tomato,amount)), write(') (180)'),nl,
+                write('12. potato (x') , write(amountItem(potato,amount)), write(') (240)'),nl,
+                write('13. cauliflower (x') , write(amountItem(cauliflower,amount)), write(') (525)'),nl,
+                write('14. carp (x') , write(amountItem(carp,amount)), write(') (150)'),nl,
+                write('15. rainbow trout (x') , write(amountItem(rainbow_trout,amount)), write(') (195)'),nl,
+                write('16. bullhead (x') , write(amountItem(bullhead,amount)), write(') (225)'),nl,
+                write('17. largemouth bass (x') , write(amountItem(largemouth_bass,amount)), write(') (300)'),nl,
+                write('18. salmon (x') , write(amountItem(salmon,amount)), write(') (375)'),nl,
+                write('19. tuna (x') , write(amountItem(tuna,amount)), write(') (450)'),nl,
+                write('20. polka dot stingray (x') , write(amountItem(polka_dot_stingray,amount)), write(') (540)'),nl,
+                write('21. arowana (x') , write(amountItem(arowana,amount)), write(') (1050)'),nl,
                 write('Pilihan: '), read(PilJual),
                 (
                     PilJual == 1 ->

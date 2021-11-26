@@ -12,6 +12,7 @@
 :- include('marketplace.pl').
 :- include('fishing.pl').
 :- include('farming.pl').
+:- include('quest.pl').
 
 title :-
     write('                                      lllllll                                              '), nl, 
