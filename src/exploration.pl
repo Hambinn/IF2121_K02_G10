@@ -570,6 +570,10 @@ logoHarvest :-
     write('    Ketik harvest. untuk memanen tanaman'), nl.
 
 logoDie :-
+    write(' Anda mendengar suara yang sangat keras dari kejauhan'), nl,sleep(2),
+    write('                   DUARRRRRRRR         '), nl, nl,sleep(2),
+    write('              Peri tiba-tiba muncul'), nl, sleep(2),
+    write(' Anda gagal menyelesaikan misi anda, sebagai hukuman anda akan disiksa'), nl,sleep(3),
     write('     _______'), nl,
     write('    |/      |'), nl,
     write('    |      (_)'), nl,
@@ -577,4 +581,5 @@ logoDie :-
     write('    |       |'), nl,
     write('    |      / \\'), nl,
     write('    |'), nl,
-    write('  __|___'), nl.
+    write('  __|___'), nl, sleep(2),
+    write('         GAME OVER      ').
