@@ -3,7 +3,7 @@ peri :-
     write('masukkan koordinat x: '), read(X),
     write('masukkan koordinat y: '), read(Y),
     (
-        X > 16,
+        X > 15,
         write('koordinat mana itu bosss');
         (
             Y>16,
@@ -16,7 +16,7 @@ peri :-
                     retract(positionY(_)),
                     asserta(positionX(X)),
                     asserta(positionY(Y)),
-                    write('selamat anda berhasil pindah')
+                    write('selamat anda berhasil pindah'),
                 )
             )
         )

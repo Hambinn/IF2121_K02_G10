@@ -454,7 +454,36 @@ legenda :-
     write('H = home sweet home'), nl,
     write('Q = ambil quest kuy'),nl,
     write('R = ternak manjah'),nl,
-    write('M = belanja santuy'),nl,!.
+    write('M = belanja santuy'),nl,
+    positionX(X),
+    positionY(Y),
+    (
+        isHome(X,Y),
+        write('Anda sedang berada di rumah');
+        (
+            isMarket(X,Y),
+            write('Anda sedang berada di Market');
+            (
+                isRanch(X,Y),
+                write('Anda sedang berada di Ranch');
+                (
+                    isQuest(X,Y),
+                    write('Anda sedang berada di tempat pengambilan quest');
+                    (
+                        isDig(X,Y),
+                        write('Anda sedang berada di dig tile');
+                        (
+                            isPlant(X,Y),
+                            write('Anda sedang berada di Plant');
+                            (
+                                write('')
+                            )
+                        )
+                    )
+                )
+            )
+        )
+    ),!.
 
 createMap :-
     initMap(16,15),
