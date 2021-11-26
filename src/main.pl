@@ -187,6 +187,7 @@ gaskeun :-
     asserta(binjay(99)),
     asserta(waktu(20,39)),
     createMap,
+    addItems(shovel_2, 1),
     initBegin,!.
 
 nyerah :-
