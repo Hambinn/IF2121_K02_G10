@@ -204,7 +204,8 @@ addWaktu(Jumlah) :-
                 asserta(waktu(NewJam, Hari))
             )
         )
-    ), !.
+    ), 
+    updateTimeRanch(Jumlah),!.
 
 addWaktu(Jumlah) :-
     waktu(Jam, Hari),
