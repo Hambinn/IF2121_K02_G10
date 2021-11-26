@@ -160,6 +160,32 @@ generateDigTileLeft(Left,Y) :-
     asserta(dig(Left, Y)),!
 .
 
+generateDigTileLeft(Left,Y) :-
+    (
+        isHome(Left, Y),
+        write('di kiri ada rumah woiii');
+        (
+            isQuest(Left, Y),
+            write('di kiri ada Quest, nanti gabisa kerja mampus dah');
+            (
+                isMarket(Left,Y),
+                write('di kiri ada Market, kasian pemilik supermarketnya :)');
+                (
+                    isWaterTile(Left,Y,Left,Y,Left,Y,Left,Y,Left,Y,Left,Y,Left,Y,Left,Y),
+                    write('yang di kiri nanti kebanjiran gesss');
+                    (
+                        isRanch(Left,Y),
+                        write('di kiri ada Ranch, kasian ayamnya nanti');
+                        (
+                            isPlant(Left,Y),
+                            write('di kiri ada Plant masa mau digali sih')
+                        )
+                    )
+                )
+            )
+        )
+    ), !.
+
 generateDigTileRight(Right,Y) :-
     \+isQuest(Right,Y),
     \+isMarket(Right,Y),
@@ -170,6 +196,31 @@ generateDigTileRight(Right,Y) :-
     \+isPlant(Right, Y),
     asserta(dig(Right, Y)),!
 .
+generateDigTileRight(Right,Y) :-
+    (
+        isHome(Right, Y),
+        write('di kanan ada rumah woiii');
+        (
+            isQuest(Right, Y),
+            write('di kanan ada Quest, nanti gabisa kerja mampus dah');
+            (
+                isMarket(Right,Y),
+                write('di kanan ada Market, kasian pemilik supermarketnya :)');
+                (
+                    isWaterTile(Right,Y,Right,Y,Right,Y,Right,Y,Right,Y,Right,Y,Right,Y,Right,Y),
+                    write('yang di kanan nanti kebanjiran gesss');
+                    (
+                        isRanch(Right,Y),
+                        write('di kanan ada Ranch, kasian ayamnya nanti');
+                        (
+                            isPlant(Right,Y),
+                            write('di kanan ada Plant masa mau digali sih')
+                        )
+                    )
+                )
+            )
+        )
+    ), !.
 
 generatePlantTile :-
     positionX(X),
