@@ -222,3 +222,8 @@ addHari(Jumlah) :-
     TotalJam is NextDayJam + (Jumlah-1)*24,
     addWaktu(TotalJam),!
 .
+
+showHari(Day) :-
+    waktu(_, Hari),
+    Day is Hari, !
+.
