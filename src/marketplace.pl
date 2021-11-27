@@ -43,8 +43,9 @@ shop:-
                     );
                     PilItem == 2 ->
                     myMoney(Money),
+                    amountItem(shovel_1,Shovel1),
                     (
-                        500<Money ->
+                        500<Money, Shovel1>0  ->
                          (write('Shovel berhasil dibeli'), nl),
                          addItems(shovel_2,1),
                          removeItems(shovel_1),
@@ -62,8 +63,9 @@ shop:-
                     );
                     PilItem == 4 ->
                     myMoney(Money),
+                    amountItem(fishing_rod_1,Rod1),
                     (
-                        500<Money ->
+                        500<Money, Rod1>0 ->
                          (write('Fishing Rod berhasil dibeli'), nl),
                          addItems(fishing_rod_2,1),
                          removeItems(fishing_rod_1),
@@ -81,8 +83,9 @@ shop:-
                     );
                     PilItem == 6 ->
                     myMoney(Money),
+                    amountItem(milk_pail_1,Pail1),
                     (
-                        500<Money ->
+                        500<Money, Pail1>0 ->
                          (write('Milk Pail berhasil dibeli'), nl),
                          addItems(milk_pail_2,1),
                          removeItems(milk_pail_1),
