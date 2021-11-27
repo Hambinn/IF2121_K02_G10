@@ -15,22 +15,22 @@ ranchResult(productName,jumlah)
 /* ******************************** Beli Animals ******************************** */
 /* beli chicken */
 buyChicken:-
-    addItems(125,1),
     write('Chicken berhasil dibeli'),nl,
+    addItems(125,1),
     inventory(_,chicken,Qty,_,_,_,_,_,_),
     generateChickenProduct(Qty,_), !.
 
 /* beli sheep */
 buySheep:-
-    addItems(126,1),
     write('Sheep berhasil dibeli'),nl,
+    addItems(126,1),
     inventory(_,sheep,Qty,_,_,_,_,_,_),
     generateSheepProduct(Qty,_), !.
 
 /* beli cow */
 buyCow:-
-    addItems(128,1),
     write('Cow berhasil dibeli'),nl,
+    addItems(128,1),
     inventory(_,cow,Qty,_,_,_,_,_,_),
     generateSheepProduct(Qty,_), !.
 
@@ -278,7 +278,7 @@ displayRanch:-
     \+inventory(_,chicken,_,_,_,_,_,_,_),
     \+inventory(_,sheep,_,_,_,_,_,_,_),
     \+inventory(_,cow,_,_,_,_,_,_,_),
-    write('   Kamu tidak memiliki animal sehingga'), !.
+    write('   Kamu tidak memiliki animal'), !.
 
 /* ******************************** display Result ******************************** */
 /* Result Ayam */
@@ -383,7 +383,9 @@ displayResult:-
 
 /* ******************************** Display all info ******************************** */
 displayRanchInfo:-
+    write('Hewan yang kamu punya: '),nl,
     displayRanch,nl,
+    write('Hasil ranch: '),nl,
     displayResult.
 
 /* ******************************** Display jumlah hewan ******************************** */
@@ -512,6 +514,9 @@ generateCowProduct(NamaCow,_):-
 /* ******************************** Generate animals ******************************** */
 ranch:-
     binjay(_),
+    positionX(X),
+    positionY(Y),
+    isRanch(X, Y),
     write('Welcome to ranch! you have:'), nl,
     displayAnimals,
     write('What you want to do?'),nl,
