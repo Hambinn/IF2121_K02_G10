@@ -350,7 +350,7 @@ writeDiary(Day):-
     Day =:= 39,
     write('tuliskan diary tentang Day 39: '),nl,
     read(Diary),
-    asserta(diary(Day))
+    asserta(diary(Day)),
     tell('day39.txt'),
     write(Diary),
     told, !.
