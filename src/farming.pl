@@ -36,15 +36,15 @@ reducePlantedGrowTime(Time) :-
 /* Rule tambahan untuk mengurangi waktu growTime dari list Planted Plants */
 reduceListPlantedGrowTime([], [], _).
 reduceListPlantedGrowTime([A|X], [B|Y], Time) :-
-    retract(plantedPlants(A,B,PosX,PosY)),
     B > 1,
     B2 is B - Time,
+    retract(plantedPlants(A,B,PosX,PosY)),
     asserta(plantedPlants(A,B2,PosX,PosY)),
     reduceListPlantedGrowTime(X,Y,Time),!.
 reduceListPlantedGrowTime([A|X], [B|Y], Time) :-
-    retract(plantedPlants(A,B,PosX,PosY)),
     B =< 1,
     write('sini'),
+    retract(plantedPlants(A,B,PosX,PosY)),
     generateHarvestTile(A,PosX,PosY),
     reduceListPlantedGrowTime(X,Y,Time),!
 .
