@@ -11,8 +11,8 @@
 :- dynamic(waterTile/1).
 :- dynamic(water/16).
 :- dynamic(dig/2).
-:- dynamic(plant/2).
-:- dynamic(harvest/2).
+:- dynamic(plantedPlants/4).
+:- dynamic(harvest/3).
 
 
 /*Fungsi untuk membuat Water Tile Random*/
@@ -160,32 +160,6 @@ generateDigTileLeft(Left,Y) :-
     asserta(dig(Left, Y)),!
 .
 
-generateDigTileLeft(Left,Y) :-
-    (
-        isHome(Left, Y),
-        write('di kiri ada rumah woiii');
-        (
-            isQuest(Left, Y),
-            write('di kiri ada Quest, nanti gabisa kerja mampus dah');
-            (
-                isMarket(Left,Y),
-                write('di kiri ada Market, kasian pemilik supermarketnya :)');
-                (
-                    isWaterTile(Left,Y,Left,Y,Left,Y,Left,Y,Left,Y,Left,Y,Left,Y,Left,Y),
-                    write('yang di kiri nanti kebanjiran gesss');
-                    (
-                        isRanch(Left,Y),
-                        write('di kiri ada Ranch, kasian ayamnya nanti');
-                        (
-                            isPlant(Left,Y),
-                            write('di kiri ada Plant masa mau digali sih')
-                        )
-                    )
-                )
-            )
-        )
-    ), !.
-
 generateDigTileRight(Right,Y) :-
     \+isQuest(Right,Y),
     \+isMarket(Right,Y),
@@ -196,53 +170,19 @@ generateDigTileRight(Right,Y) :-
     \+isPlant(Right, Y),
     asserta(dig(Right, Y)),!
 .
-generateDigTileRight(Right,Y) :-
-    (
-        isHome(Right, Y),
-        write('di kanan ada rumah woiii');
-        (
-            isQuest(Right, Y),
-            write('di kanan ada Quest, nanti gabisa kerja mampus dah');
-            (
-                isMarket(Right,Y),
-                write('di kanan ada Market, kasian pemilik supermarketnya :)');
-                (
-                    isWaterTile(Right,Y,Right,Y,Right,Y,Right,Y,Right,Y,Right,Y,Right,Y,Right,Y),
-                    write('yang di kanan nanti kebanjiran gesss');
-                    (
-                        isRanch(Right,Y),
-                        write('di kanan ada Ranch, kasian ayamnya nanti');
-                        (
-                            isPlant(Right,Y),
-                            write('di kanan ada Plant masa mau digali sih')
-                        )
-                    )
-                )
-            )
-        )
-    ), !.
 
-generatePlantTile :-
+generatePlantTile(ItemName,GrowTime) :-
     positionX(X),
     positionY(Y),
     isDig(X,Y),
     retract(dig(X, Y)),
-    asserta(plant(X, Y)), write('tanaman berhasil ditanam, jangan lupa panen ya') , !.
+    asserta(plantedPlants(ItemName,GrowTime,X,Y)), 
+    printItemName(ItemName), write(' berhasil ditanam, jangan lupa panen ya') , !.
 
-generatePlantTile :-
-    positionX(X),
-    positionY(Y),
-    \+ dig(X,Y),
-    write('mau nanam di batu bosss?'), !.
-
-generateHarvestTile :-
-    plant(_,_),
-    waktu(24, Hari),
-    Hari =:= 39,
-    forall(plant(X,Y),(
-        retract(plant(X,Y)),
-        asserta(harvest(X,Y))
-    )), !.
+generateHarvestTile(ItemName,X,Y) :-
+    asserta(harvest(ItemName,X,Y)),
+    printItemName(ItemName), write(' di ('), write(X), write(','), write(Y), write(') sudah siap panen ya'), !
+.
 
 isWaterTile(X1,Y1,X2,Y2,X3,Y3,X4,Y4,X5,Y5,X6,Y6,X7,Y7,X8,Y8) :-
     water(TX1,TY1,TX2,TY2,TX3,TY3,TX4,TY4,TX5,TY5,TX6,TY6,TX7,TY7,TX8,TY8),
@@ -312,12 +252,12 @@ isDig(X,Y) :-
     Y =:= Y1.
 
 isHarvest(X, Y) :-
-    harvest(X1,Y1),
+    harvest(_,X1,Y1),
     X1 =:= X,
     Y1 =:= Y. 
 
 isPlant(X,Y) :-
-    plant(X1, Y1),
+    plantedPlants(_,_,X1,Y1),
     X =:= X1,
     Y =:= Y1.
 
@@ -491,7 +431,6 @@ createMap :-
     generateMarketTile,
     generateQuestTile,
     generateRanchTile,
-    asserta(harvest(12,12)),
     generateWater.
 
 

@@ -35,16 +35,16 @@ items(14,large_milk,0,570,0,0,0,0,0).
 
 /* ****** CROPS ****** */
 items(21,wheat,0,75,0,0,0,0,0).
-items(22,wheat_seeds,0,15,30,0,0,0,0).
-items(23,corn,0,150,0,0,0,0,0).
-items(24,corn_seeds,0,50,100,0,0,0,0).
-items(25,eggplant,0,180,0,0,0,0,0).
-items(26,eggplant_seeds,0,75,150,0,0,0,0).
-items(27,tomato,0,180,0,0,0,0,0).
-items(28,tomato_seeds,0,75,150,0,0,0,0).
-items(29,potato,0,240,0,0,0,0,0).
-items(30,potato_seeds,0,100,200,0,0,0,0).
-items(31,cauliflower,0,525,0,0,0,0,0).
+items(22,corn,0,150,0,0,0,0,0).
+items(23,eggplant,0,180,0,0,0,0,0).
+items(24,tomato,0,180,0,0,0,0,0).
+items(25,potato,0,240,0,0,0,0,0).
+items(26,cauliflower,0,525,0,0,0,0,0).
+items(27,wheat_seeds,0,15,30,0,0,0,0).
+items(28,corn_seeds,0,50,100,0,0,0,0).
+items(29,eggplant_seeds,0,75,150,0,0,0,0).
+items(30,tomato_seeds,0,75,150,0,0,0,0).
+items(31,potato_seeds,0,100,200,0,0,0,0).
 items(32,cauliflower_seeds,0,120,240,0,0,0,0).
 
 /* ****** FISH ****** */

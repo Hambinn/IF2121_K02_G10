@@ -186,7 +186,7 @@ reduceMoney(Amount) :-
 /* ***** WAKTU ***** */
 addWaktu(Jumlah) :-
     waktu(Jam, Hari),
-    generateHarvestTile,
+    reducePlantedGrowTime(Jumlah),
     NewJam is Jam + Jumlah,
     (
         NewJam > 24,
