@@ -161,237 +161,258 @@ shop:-
             );
         (
             Pilihan == 2 ->
+                amountItem(egg,A),
+                amountItem(large_egg,B),
+                amountItem(golden_egg,C),
+                amountItem(wool,D),
+                amountItem(premium_wool,E),
+                amountItem(milk,F),
+                amountItem(premium_milk,G),
+                amountItem(wheat,H),
+                amountItem(corn,I),
+                amountItem(eggplant,J),
+                amountItem(tomato,K),
+                amountItem(potato,L),
+                amountItem(cauliflower,N),
+                amountItem(carp,O),
+                amountItem(rainbow_trout,P),
+                amountItem(bullhead,Q),
+                amountItem(largemouth_bass,R),
+                amountItem(salmon,S),
+                amountItem(tuna,T),
+                amountItem(polka_dot_stingray,U),
+                amountItem(arowana,V),
                 write('Item yang bisa dijual:'), nl,
-                write('1. egg (x') , write(amountItem(egg,amount)), write(') (150)'),nl,
-                write('2. large egg (x') , write(amountItem(large_egg,amount)), write(') (285)'),nl,
-                write('3. golden egg (x') , write(amountItem(golden_egg,amount)), write(') (1500)'),nl,
-                write('4. wool (x') , write(amountItem(wool,amount)), write(') (1020)'),nl,
-                write('5. premium wool (x') , write(amountItem(premium_wool,amount)), write(') (2000)'),nl,
-                write('6. milk (x') , write(amountItem(milk,amount)), write(') (375)'),nl,
-                write('7. large milk (x') , write(amountItem(large_milk,amount)), write(') (570)'),nl,
-                write('8. wheat (x') , write(amountItem(wheat,amount)), write(') (75)'),nl,
-                write('9. corn (x') , write(amountItem(corn,amount)), write(') (150)'),nl,
-                write('10. eggplant (x') , write(amountItem(eggplant,amount)), write(') (180)'),nl,
-                write('11. tomato (x') , write(amountItem(tomato,amount)), write(') (180)'),nl,
-                write('12. potato (x') , write(amountItem(potato,amount)), write(') (240)'),nl,
-                write('13. cauliflower (x') , write(amountItem(cauliflower,amount)), write(') (525)'),nl,
-                write('14. carp (x') , write(amountItem(carp,amount)), write(') (150)'),nl,
-                write('15. rainbow trout (x') , write(amountItem(rainbow_trout,amount)), write(') (195)'),nl,
-                write('16. bullhead (x') , write(amountItem(bullhead,amount)), write(') (225)'),nl,
-                write('17. largemouth bass (x') , write(amountItem(largemouth_bass,amount)), write(') (300)'),nl,
-                write('18. salmon (x') , write(amountItem(salmon,amount)), write(') (375)'),nl,
-                write('19. tuna (x') , write(amountItem(tuna,amount)), write(') (450)'),nl,
-                write('20. polka dot stingray (x') , write(amountItem(polka_dot_stingray,amount)), write(') (540)'),nl,
-                write('21. arowana (x') , write(amountItem(arowana,amount)), write(') (1050)'),nl,
+                write('1. egg (x ') , write(A), write(') (150)'),nl,
+                write('2. large egg (x ') , write(B), write(') (285)'),nl,
+                write('3. golden egg (x ') , write(C), write(') (1500)'),nl,
+                write('4. wool (x ') , write(D), write(') (1020)'),nl,
+                write('5. premium wool (x ') , write(E), write(') (2000)'),nl,
+                write('6. milk (x ') , write(F), write(') (375)'),nl,
+                write('7. large milk (x ') , write(G), write(') (570)'),nl,
+                write('8. wheat (x ') , write(H), write(') (75)'),nl,
+                write('9. corn (x ') , write(I), write(') (150)'),nl,
+                write('10. eggplant (x ') , write(J), write(') (180)'),nl,
+                write('11. tomato (x ') , write(K), write(') (180)'),nl,
+                write('12. potato (x ') , write(L), write(') (240)'),nl,
+                write('13. cauliflower (x ') , write(N), write(') (525)'),nl,
+                write('14. carp (x ') , write(O), write(') (150)'),nl,
+                write('15. rainbow trout (x ') , write(P), write(') (195)'),nl,
+                write('16. bullhead (x ') , write(Q), write(') (225)'),nl,
+                write('17. largemouth bass (x ') , write(R), write(') (300)'),nl,
+                write('18. salmon (x ') , write(S), write(') (375)'),nl,
+                write('19. tuna (x ') , write(T), write(') (450)'),nl,
+                write('20. polka dot stingray (x ') , write(U), write(') (540)'),nl,
+                write('21. arowana (x ') , write(V), write(') (1050)'),nl,
                 write('Pilihan: '), read(PilJual),
                 (
                     PilJual == 1 ->
                     myMoney(Money),
-                    amountItem(egg,amount),
+                    amountItem(egg,Egg),
                     (
-                        1=<amount ->
-                        addMoney((150*amount)),
-                        removeItems(egg,amount),
+                        1=<Egg ->
+                        addMoney((150*Egg)),
+                        removeItems(egg,Egg),
                         (write('Egg berhasil dijual'), nl);
                         (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 2 ->
                     myMoney(Money),
-                    amountItem(large_egg,amount),
+                    amountItem(large_egg,LargeEgg),
                     (
-                        1=<amount ->
-                        addMoney((285*amount)),
-                        removeItems(large_egg,amount),
+                        1=<LargeEgg ->
+                        addMoney((285*LargeEgg)),
+                        removeItems(large_egg,LargeEgg),
                         (write('Large Egg berhasil dijual'), nl);
                         (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 3 ->
                     myMoney(Money),
-                    amountItem(golden_egg,amount),
+                    amountItem(golden_egg,GoldEgg),
                     (
-                        1=<amount ->
-                        addMoney((1500*amount)),
-                        removeItems(golden_egg,amount),
+                        1=<GoldEgg ->
+                        addMoney((1500*GoldEgg)),
+                        removeItems(golden_egg,GoldEgg),
                         (write('Golden Egg berhasil dijual'), nl);
                         (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 4 ->
                     myMoney(Money),
-                    amountItem(wool,amount),
+                    amountItem(wool,Wool),
                     (
-                        1=<amount ->
-                        addMoney((1020*amount)),
-                        removeItems(wool,amount),
+                        1=<Wool ->
+                        addMoney((1020*Wool)),
+                        removeItems(wool,Wool),
                         (write('Wool berhasil dijual'), nl);
                         (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 5 ->
                     myMoney(Money),
-                    amountItem(premium_wool,amount),
+                    amountItem(premium_wool,PremWool),
                     (
-                        1=<amount ->
-                        addMoney((2000*amount)),
-                        removeItems(premium_wool,amount),
+                        1=<PremWool ->
+                        addMoney((2000*PremWool)),
+                        removeItems(premium_wool,PremWool),
                         (write('Premium Wool berhasil dijual'), nl);
                         (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 6 ->
                     myMoney(Money),
-                    amountItem(milk,amount),
+                    amountItem(milk,Milk),
                     (
-                        1=<amount ->
-                        addMoney((375*amount)),
-                        removeItems(milk,amount),
+                        1=<Milk ->
+                        addMoney((375*Milk)),
+                        removeItems(milk,Milk),
                         (write('Milk berhasil dijual'), nl);
                         (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 7 ->
                     myMoney(Money),
-                    amountItem(large_milk,amount),
+                    amountItem(large_milk,LargeMilk),
                     (
-                        1=<amount ->
-                        addMoney((570*amount)),
-                        removeItems(large_milk,amount),
+                        1=<LargeMilk ->
+                        addMoney((570*LargeMilk)),
+                        removeItems(large_milk,LargeMilk),
                         (write('Large Milk berhasil dijual'), nl);
                         (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 8 ->
                     myMoney(Money),
-                    amountItem(wheat,amount),
+                    amountItem(wheat,Wheat),
                     (
-                        1=<amount ->
-                        addMoney((75*amount)),
-                        removeItems(wheat,amount),
+                        1=<Wheat ->
+                        addMoney((75*Wheat)),
+                        removeItems(wheat,Wheat),
                         (write('Wheat berhasil dijual'), nl);
                         (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 9 ->
                     myMoney(Money),
-                    amountItem(corn,amount),
+                    amountItem(corn,Corn),
                     (
-                        1=<amount ->
-                        addMoney((150*amount)),
-                        removeItems(corn,amount),
+                        1=<Corn ->
+                        addMoney((150*Corn)),
+                        removeItems(corn,Corn),
                         (write('Corn berhasil dijual'), nl);
                         (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 10 ->
                     myMoney(Money),
-                    amountItem(eggplant,amount),
+                    amountItem(eggplant,Eggplant),
                     (
-                        1=<amount ->
-                        addMoney((180*amount)),
-                        removeItems(eggplant,amount),
+                        1=<Eggplant ->
+                        addMoney((180*Eggplant)),
+                        removeItems(eggplant,Eggplant),
                         (write('Eggplant berhasil dijual'), nl);
                         (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 11 ->
                     myMoney(Money),
-                    amountItem(tomato,amount),
+                    amountItem(tomato,Tomato),
                     (
-                        1=<amount ->
-                        addMoney((180*amount)),
-                        removeItems(tomato,amount),
+                        1=<Tomato ->
+                        addMoney((180*Tomato)),
+                        removeItems(tomato,Tomato),
                         (write('Tomato berhasil dijual'), nl);
                         (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 12 ->
                     myMoney(Money),
-                    amountItem(potato,amount),
+                    amountItem(potato,Potato),
                     (
-                        1=<amount ->
-                        addMoney((240*amount)),
-                        removeItems(potato,amount),
+                        1=<Potato ->
+                        addMoney((240*Potato)),
+                        removeItems(potato,Potato),
                         (write('Potato berhasil dijual'), nl);
                         (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 13 ->
                     myMoney(Money),
-                    amountItem(cauliflower,amount),
+                    amountItem(cauliflower,Cauli),
                     (
-                        1=<amount ->
-                        addMoney((525*amount)),
-                        removeItems(cauliflower,amount),
+                        1=<Cauli ->
+                        addMoney((525*Cauli)),
+                        removeItems(cauliflower,Cauli),
                         (write('cauliflower berhasil dijual'), nl);
                         (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 14 ->
                     myMoney(Money),
-                    amountItem(carp,amount),
+                    amountItem(carp,Carp),
                     (
                         1=<amount ->
-                        addMoney((150*amount)),
-                        removeItems(carp,amount),
+                        addMoney((150*Amount)),
+                        removeItems(carp,Amount),
                         (write('carp berhasil dijual'), nl);
                         (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 15 ->
                     myMoney(Money),
-                    amountItem(rainbow_trout,amount),
+                    amountItem(rainbow_trout,Rainbow),
                     (
-                        1=<amount ->
-                        addMoney((195*amount)),
-                        removeItems(rainbow_trout,amount),
+                        1=<Rainbow ->
+                        addMoney((195*Rainbow)),
+                        removeItems(rainbow_trout,Rainbow),
                         (write('rainbow_trout berhasil dijual'), nl);
                         (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 16 ->
                     myMoney(Money),
-                    amountItem(bullhead,amount),
+                    amountItem(bullhead,Bull),
                     (
-                        1=<amount ->
-                        addMoney((1225*amount)),
-                        removeItems(bullhead,amount),
+                        1=<Bull ->
+                        addMoney((1225*Bull)),
+                        removeItems(bullhead,Bull),
                         (write('bullhead berhasil dijual'), nl);
                         (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 17 ->
                     myMoney(Money),
-                    amountItem(largemouth_bass,amount),
+                    amountItem(largemouth_bass,Bass),
                     (
-                        1=<amount ->
-                        addMoney((300*amount)),
-                        removeItems(largemouth_bass,amount),
+                        1=<Bass ->
+                        addMoney((300*Bass)),
+                        removeItems(largemouth_bass,Bass),
                         (write('largemouth bass berhasil dijual'), nl);
                         (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 18 ->
                     myMoney(Money),
-                    amountItem(salmon,amount),
+                    amountItem(salmon,Salmon),
                     (
-                        1=<amount ->
-                        addMoney((375*amount)),
-                        removeItems(salmon,amount),
+                        1=<Salmon ->
+                        addMoney((375*Salmon)),
+                        removeItems(salmon,Salmon),
                         (write('salmon berhasil dijual'), nl);
                         (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 19 ->
                     myMoney(Money),
-                    amountItem(tuna,amount),
+                    amountItem(tuna,Tuna),
                     (
-                        1=<amount ->
-                        addMoney((450*amount)),
-                        removeItems(tuna,amount),
+                        1=<Tuna ->
+                        addMoney((450*Tuna)),
+                        removeItems(tuna,Tuna),
                         (write('tuna berhasil dijual'), nl);
                         (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 20 ->
                     myMoney(Money),
-                    amountItem(polka_dot_stingray,amount),
+                    amountItem(polka_dot_stingray,Polka),
                     (
-                        1=<amount ->
-                        addMoney((540*amount)),
-                        removeItems(polka_dot_stingray,amount),
+                        1=<Polka ->
+                        addMoney((540*Polka)),
+                        removeItems(polka_dot_stingray,Polka),
                         (write('polka dot stingray berhasil dijual'), nl);
                         (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 21 ->
                     myMoney(Money),
-                    amountItem(arowana,amount),
+                    amountItem(arowana,Arowana),
                     (
-                        1=<amount ->
-                        addMoney((1050*amount)),
-                        removeItems(arowana,amount),
+                        1=<Arowana ->
+                        addMoney((1050*Arowana)),
+                        removeItems(arowana,Arowana),
                         (write('arowana berhasil dijual'), nl);
                         (write('Item tidak ada di inventory'), nl)
                     )
