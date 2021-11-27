@@ -242,3 +242,8 @@ showWaktu :-
     write('Hari : '), write(Hari),nl,
     write('Jam  : '), write(Jam), nl
 .
+
+showHari(Day) :-
+    waktu(_, Hari),
+    Day is Hari, !
+.
