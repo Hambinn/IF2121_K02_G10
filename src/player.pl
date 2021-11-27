@@ -49,7 +49,7 @@ addGeneralExp(Amount) :-
     infoStats(_, _, _, _, _, _, _, _, GeneralExp, _),
     GeneralExp2 is GeneralExp + Amount,
     GeneralExp2 =< 300,
-    write('Exp anda bertambah sebesar '), write(GeneralExp2),
+    write('Exp anda bertambah sebesar '), write(Amount),
     retract(infoStats(Role, GeneralLevel, FarmingLevel, FarmingExp, FishingLevel, FishingExp, RanchingLevel, RanchingExp, GeneralExp, Money)),
     asserta(infoStats(Role, GeneralLevel, FarmingLevel, FarmingExp, FishingLevel, FishingExp, RanchingLevel, RanchingExp, GeneralExp2, Money)),!
 .
@@ -59,7 +59,7 @@ addGeneralExp(Amount) :-
     infoStats(_, GeneralLevel, _, _, _, _, _, _, GeneralExp, _),
     GeneralExpTemp is GeneralExp + Amount,
     GeneralExpTemp > 300,
-    write('Exp anda bertambah sebesar '), write(GeneralExpTemp),
+    write('Exp anda bertambah sebesar '), write(Amount),
     GeneralLevelTemp is GeneralExpTemp // 300,
     GeneralLevel2 is GeneralLevel + GeneralLevelTemp,
     GeneralExp2 is GeneralExpTemp mod 300,
@@ -80,7 +80,7 @@ addFarmingExp(Amount) :-
     infoStats(_, _, _, FarmingExp, _, _, _, _, _, _),
     FarmingExp2 is FarmingExp + Amount,
     FarmingExp2 =< 300,
-    write('Exp farming anda bertambah sebesar '), write(FarmingExp2),
+    write('Exp farming anda bertambah sebesar '), write(Amount),
     retract(infoStats(Role, GeneralLevel, FarmingLevel, FarmingExp, FishingLevel, FishingExp, RanchingLevel, RanchingExp, GeneralExp, Money)),
     asserta(infoStats(Role, GeneralLevel, FarmingLevel, FarmingExp2, FishingLevel, FishingExp, RanchingLevel, RanchingExp, GeneralExp, Money)),!
 .
@@ -90,7 +90,7 @@ addFarmingExp(Amount) :-
     infoStats(_, _, FarmingLevel, FarmingExp, _, _, _, _, _, _),
     FarmingExpTemp is FarmingExp + Amount,
     FarmingExpTemp > 300,
-    write('Exp farming anda bertambah sebesar '), write(FarmingExpTemp),nl,
+    write('Exp farming anda bertambah sebesar '), write(Amount),nl,
     FarmingLevelTemp is FarmingExpTemp // 300,
     FarmingLevel2 is FarmingLevel + FarmingLevelTemp,
     FarmingExp2 is FarmingExpTemp mod 300,
@@ -111,7 +111,7 @@ addFishingExp(Amount) :-
     infoStats(_, _, _, _, _, FishingExp, _, _, _, _),
     FishingExp2 is FishingExp + Amount,
     FishingExp2 =< 300,
-    write('Exp fishing anda bertambah sebesar '), write(FishingExp2),
+    write('Exp fishing anda bertambah sebesar '), write(Amount),
     retract(infoStats(Role, GeneralLevel, FarmingLevel, FarmingExp, FishingLevel, FishingExp, RanchingLevel, RanchingExp, GeneralExp, Money)),
     asserta(infoStats(Role, GeneralLevel, FarmingLevel, FarmingExp, FishingLevel, FishingExp2, RanchingLevel, RanchingExp, GeneralExp, Money)),!
 .
@@ -121,7 +121,7 @@ addFishingExp(Amount) :-
     infoStats(_, _, _, _, FishingLevel, FishingExp, _, _, _, _),
     FishingExpTemp is FishingExp + Amount,
     FishingExpTemp > 300,
-    write('Exp fishing anda bertambah sebesar '), write(FishingExpTemp),nl,
+    write('Exp fishing anda bertambah sebesar '), write(Amount),nl,
     FishingLevelTemp is FishingExpTemp // 300,
     FishingLevel2 is FishingLevel + FishingLevelTemp,
     FishingExp2 is FishingExpTemp mod 300,
@@ -142,7 +142,7 @@ addRanchingExp(Amount) :-
     infoStats(_, _, _, _, _, _, _, RanchingExp, _, _),
     RanchingExp2 is RanchingExp + Amount,
     RanchingExp2 =< 300,
-    write('Exp ranching anda bertambah sebesar '), write(RanchingExp2),
+    write('Exp ranching anda bertambah sebesar '), write(Amount),
     retract(infoStats(Role, GeneralLevel, FarmingLevel, FarmingExp, FishingLevel, FishingExp, RanchingLevel, RanchingExp, GeneralExp, Money)),
     asserta(infoStats(Role, GeneralLevel, FarmingLevel, FarmingExp, FishingLevel, FishingExp, RanchingLevel, RanchingExp2, GeneralExp, Money)),!
 .
@@ -152,7 +152,7 @@ addRanchingExp(Amount) :-
     infoStats(_, _, _, _, _, _, RanchingLevel, RanchingExp, _, _),
     RanchingExpTemp is RanchingExp + Amount,
     RanchingExpTemp > 300,
-    write('Exp ranching anda bertambah sebesar '), write(RanchingExpTemp),nl,
+    write('Exp ranching anda bertambah sebesar '), write(Amount),nl,
     RanchingLevelTemp is RanchingExpTemp // 300,
     RanchingLevel2 is RanchingLevel + RanchingLevelTemp,
     RanchingExp2 is RanchingExpTemp mod 300,
@@ -184,6 +184,14 @@ reduceMoney(Amount) :-
 .
 
 /* ***** WAKTU ***** */
+/* SHOW WAKTU */
+showWaktu :-
+    waktu(Jam, Hari),
+    write('Hari : '), write(Hari),nl,
+    write('Jam  : '), write(Jam), nl
+.
+
+/* ADD WAKTU */
 addWaktu(Jumlah) :-
     waktu(Jam, Hari),
     reducePlantedGrowTime(Jumlah),
@@ -207,38 +215,10 @@ addWaktu(Jumlah) :-
     ), 
     updateTimeRanch(Jumlah),!.
 
-addWaktu(Jumlah) :-
-    waktu(Jam, Hari),
-    reducePlantedGrowTime(Jumlah),
-    NewJam is Jam + Jumlah,
-    (
-        NewJam >= 24,
-        NewHari is Hari + 1,
-        NewHari > 40,
-        endState;
-        (
-            NewJam >= 24,
-            UpdateJam is NewJam - 24,
-            NewHari is Hari + 1,
-            retract(waktu(Jam, Hari)),
-            asserta(waktu(UpdateJam, NewHari));
-            (
-                retract(waktu(Jam, Hari)),
-                asserta(waktu(NewJam, Hari))
-            )
-        )
-    ), 
-    updateTimeRanch(Jumlah), !.
-
+/* ADD HARI */
 addHari(Jumlah) :-
     waktu(Jam,_),
     NextDayJam is 24 - Jam,
     TotalJam is NextDayJam + (Jumlah-1)*24,
     addWaktu(TotalJam),!
-.
-
-showWaktu :-
-    waktu(Jam, Hari),
-    write('Hari : '), write(Hari),nl,
-    write('Jam  : '), write(Jam), nl
 .
