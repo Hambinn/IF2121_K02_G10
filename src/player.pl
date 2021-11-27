@@ -189,12 +189,12 @@ addWaktu(Jumlah) :-
     reducePlantedGrowTime(Jumlah),
     NewJam is Jam + Jumlah,
     (
-        NewJam > 24,
+        NewJam >= 24,
         NewHari is Hari + 1,
         NewHari > 40,
         endState;
         (
-            NewJam > 24,
+            NewJam >= 24,
             UpdateJam is NewJam - 24,
             NewHari is Hari + 1,
             retract(waktu(Jam, Hari)),
@@ -209,14 +209,15 @@ addWaktu(Jumlah) :-
 
 addWaktu(Jumlah) :-
     waktu(Jam, Hari),
+    reducePlantedGrowTime(Jumlah),
     NewJam is Jam + Jumlah,
     (
-        NewJam > 24,
+        NewJam >= 24,
         NewHari is Hari + 1,
         NewHari > 40,
         endState;
         (
-            NewJam > 24,
+            NewJam >= 24,
             UpdateJam is NewJam - 24,
             NewHari is Hari + 1,
             retract(waktu(Jam, Hari)),
@@ -229,8 +230,15 @@ addWaktu(Jumlah) :-
     ), 
     updateTimeRanch(Jumlah), !.
 
+addHari(Jumlah) :-
+    waktu(Jam,_),
+    NextDayJam is 24 - Jam,
+    TotalJam is NextDayJam + (Jumlah-1)*24,
+    addWaktu(TotalJam),!
+.
+
 showWaktu :-
     waktu(Jam, Hari),
-    write('Jam  : '), write(Jam), nl,
-    write('Hari : '), write(Hari).
-
+    write('Hari : '), write(Hari),nl,
+    write('Jam  : '), write(Jam), nl
+.
