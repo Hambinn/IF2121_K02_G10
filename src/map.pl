@@ -181,8 +181,7 @@ generatePlantTile(ItemName,GrowTime) :-
 
 generateHarvestTile(ItemName,X,Y) :-
     asserta(harvest(ItemName,X,Y)),
-    printItemName(ItemName), write(' di ('), write(X), write(','), write(Y), write(') sudah siap panen ya'), !
-.
+    !.
 
 isWaterTile(X1,Y1,X2,Y2,X3,Y3,X4,Y4,X5,Y5,X6,Y6,X7,Y7,X8,Y8) :-
     water(TX1,TY1,TX2,TY2,TX3,TY3,TX4,TY4,TX5,TY5,TX6,TY6,TX7,TY7,TX8,TY8),
