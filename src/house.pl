@@ -1,10 +1,5 @@
-:- dynamic(diary/1).
-
 house:-
-    binjay(_),
-    positionX(X),
-    positionY(Y),
-    isHome(X,Y),
+    % a
     write('Anda tiba di rumah'),nl,
     write('Anda bisa melakukan beberapa hal dirumah:'),nl,
     write('1. Tidur'),nl,
@@ -32,8 +27,6 @@ house:-
             );
             (
                 Pilihan == 2 ->
-                showHari(Day),
-                writeDiary(Day),
                 (write('sukses menulis diary'),nl);
                 (
                     Pilihan == 3 ->
@@ -366,4 +359,6 @@ writeDiary(Day):-
 
 
 
+writeDiary:-
 
+readDiary:-
