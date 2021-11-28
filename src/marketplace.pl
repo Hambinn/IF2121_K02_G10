@@ -34,134 +34,148 @@ shop:-
             (
                 PilItem == 1 ->
                     myMoney(Money),
+                    write('Beli Berapa Banyak?'),read(Jml),nl,
                     (
-                        200=<Money ->
+                        200*Jml=<Money ->
                          (write('Shovel berhasil dibeli'), nl),
-                         addItems(shovel_1,1),
-                         reduceMoney(200);
+                         addItems(shovel_1,Jml),
+                         reduceMoney(200*Jml);
                         (write('Uangmu tidak cukup'), nl)
                     );
                     PilItem == 2 ->
                     myMoney(Money),
                     amountItem(shovel_1,Shovel1),
+                    write('Beli Berapa Banyak?'),read(Jml),nl,
                     (
-                        500=<Money, Shovel1>0  ->
+                        500*Jml=<Money, Shovel1>0  ->
                          (write('Shovel berhasil dibeli'), nl),
-                         addItems(shovel_2,1),
-                         removeItems(shovel_1),
-                         reduceMoney(500);
-                        (write('Uangmu tidak cukup'), nl)
+                         addItems(shovel_2,Jml),
+                         removeItems(shovel_1,1),
+                         reduceMoney(500*Jml);
+                        (write('Uangmu tidak cukup / kamu tidak memiliki Shovel level 1!'), nl)
                     );
                     PilItem == 3 ->
                     myMoney(Money),
+                    write('Beli Berapa Banyak?'),read(Jml),nl,
                     (
-                        200=<Money ->
+                        200*Jml=<Money ->
                          (write('Fishing Rod berhasil dibeli'), nl),
-                         addItems(fishing_rod_1,1),
-                         reduceMoney(200);
+                         addItems(fishing_rod_1,Jml),
+                         reduceMoney(200*Jml);
                         (write('Uangmu tidak cukup'), nl)
                     );
                     PilItem == 4 ->
                     myMoney(Money),
                     amountItem(fishing_rod_1,Rod1),
+                    write('Beli Berapa Banyak?'),read(Jml),nl,
                     (
-                        500=<Money, Rod1>0 ->
+                        500*Jml=<Money, Rod1>0 ->
                          (write('Fishing Rod berhasil dibeli'), nl),
-                         addItems(fishing_rod_2,1),
-                         removeItems(fishing_rod_1),
-                         reduceMoney(500);
-                        (write('Uangmu tidak cukup'), nl)
+                         addItems(fishing_rod_2,Jml),
+                         removeItems(fishing_rod_1,1),
+                         reduceMoney(500*Jml);
+                        (write('Uangmu tidak cukup/ kamu tidak memiliki Fishing Rod level 1!'), nl)
                     );
                     PilItem == 5 ->
                     myMoney(Money),
+                    write('Beli Berapa Banyak?'),read(Jml),nl,
                     (
-                        200=<Money ->
+                        200*Jml=<Money ->
                         (write('Milk Pail berhasil dibeli'), nl),
-                        addItems(milk_pail_1,1),
-                        reduceMoney(200);                      
+                        addItems(milk_pail_1,Jml),
+                        reduceMoney(200*Jml);                      
                         (write('Uangmu tidak cukup'), nl)
                     );
                     PilItem == 6 ->
                     myMoney(Money),
                     amountItem(milk_pail_1,Pail1),
+                    write('Beli Berapa Banyak?'),read(Jml),nl,
                     (
-                        500=<Money, Pail1>0 ->
+                        500*Jml=<Money, Pail1>0 ->
                          (write('Milk Pail berhasil dibeli'), nl),
-                         addItems(milk_pail_2,1),
-                         removeItems(milk_pail_1),
-                         reduceMoney(500);
-                        (write('Uangmu tidak cukup'), nl)
+                         addItems(milk_pail_2,Jml),
+                         removeItems(milk_pail_1,1),
+                         reduceMoney(500*Jml);
+                        (write('Uangmu tidak cukup / kamu titak memiliki Milk Pail level 1!'), nl)
                     );
                     PilItem == 7 ->
                     myMoney(Money),
+                    write('Beli Berapa Banyak?'),read(Jml),nl,
                     (
-                        200=<Money ->
+                        200*Jml=<Money ->
                         (write('Shears berhasil dibeli'), nl),
-                        addItems(shears_1,1),
-                        reduceMoney(200);
+                        addItems(shears_1,Jml),
+                        reduceMoney(200*Jml);
                         (write('Uangmu tidak cukup'), nl)
                     );
                     PilItem == 8 ->
                     myMoney(Money),
+                    write('Beli Berapa Banyak?'),read(Jml),nl,
                     (
-                        500=<Money ->
+                        500*Jml=<Money ->
                         (write('Shears berhasil dibeli'), nl),
-                        addItems(shears_2,1),
-                        reduceMoney(500);
+                        addItems(shears_2,Jml),
+                        reduceMoney(500*Jml);
                         (write('Uangmu tidak cukup'), nl)
                     );
                     PilItem == 9 ->
                     myMoney(Money),
+                    write('Beli Berapa Banyak?'),read(Jml),nl,
                     (
-                        30=<Money ->
+                        30*Jml=<Money ->
                         (write('Wheat Seeds berhasil dibeli'), nl),
-                        addItems(wheat_seeds,1),
-                        reduceMoney(30);
+                        addItems(wheat_seeds,Jml),
+                        reduceMoney(30*Jml);
                         (write('Uangmu tidak cukup'), nl)
                     );
                     PilItem == 10 ->
                     myMoney(Money),
+                    write('Beli Berapa Banyak?'),read(Jml),nl,
                     (
-                        100=<Money ->
+                        100*J=<Money ->
                         (write('Corn Seeds berhasil dibeli'), nl),
-                        addItems(corn_seeds,1),
-                        reduceMoney(100);
+                        addItems(corn_seeds,Jml),
+                        reduceMoney(100*Jml);
                         (write('Uangmu tidak cukup'), nl)
                     );
                     PilItem == 11 ->
                     myMoney(Money),
+                    write('Beli Berapa Banyak?'),read(Jml),nl,
                     (
-                        150=<Money ->
+                        150*Jml=<Money ->
                         (write('Eggplant Seeds berhasil dibeli'), nl),
-                        addItems(eggplant_seeds,1),
-                        reduceMoney(150);
+                        addItems(eggplant_seeds,Jml),
+                        reduceMoney(150*Jml);
                         (write('Uangmu tidak cukup'), nl)
                     );
                     PilItem == 12 ->
                     myMoney(Money),
+                    write('Beli Berapa Banyak?'),read(Jml),nl,
                     (
-                        150=<Money ->
+                        150*Jml=<Money ->
                         (write('Tomato Seeds berhasil dibeli'), nl),
-                        addItems(tomato_seeds,1),
-                        reduceMoney(150);
+                        addItems(tomato_seeds,Jml),
+                        reduceMoney(150*Jml);
                         (write('Uangmu tidak cukup'), nl)
                     );
                     PilItem == 13 ->
                     myMoney(Money),
+                    write('Beli Berapa Banyak?'),read(Jml),nl,
                     (
-                        200=<Money ->
+                        200*Jml=<Money ->
                         (write('Potato Seeds berhasil dibeli'), nl),
-                        addItems(potato_seeds,1),
-                        reduceMoney(200);
+                        addItems(potato_seeds,Jml),
+                        reduceMoney(200*Jml);
                         (write('Uangmu tidak cukup'), nl)
                     );
                     PilItem == 14 ->
                     myMoney(Money),
+                    write('Beli Berapa Banyak?'),read(Jml),nl,
                     (
-                        240=<Money ->
+                        240*Jml=<Money ->
                         (write('Cauliflower Seeds berhasil dibeli'), nl),
-                        addItems(cauliflower_seeds,1),
-                        reduceMoney(240);
+                        addItems(cauliflower_seeds,Jml),
+                        reduceMoney(240*Jml);
                         (write('Uangmu tidak cukup'), nl)
                     );
                     PilItem == 15 ->
