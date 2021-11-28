@@ -1,4 +1,5 @@
-dynamic(diary/1).
+:-dynamic(diary/1).
+:-dynamic(init/1).
 
 
 
@@ -45,7 +46,10 @@ house:-
                 (write('sukses menulis diary'),nl);
                 (
                     Pilihan == 3 ->
-                    displayDiary(-1)
+                    displayDiary(-1),
+                    write('baca diary yang mana? '),nl,
+                    read(PilihanDiary),
+                    loadGame(PilihanDiary),
                 )
             )
     ), !.
@@ -55,7 +59,7 @@ writeDiary(Day):-
     write('tuliskan diary tentang Day 1: '),nl,
     read(Diary),
     asserta(diary(Day)),
-    tell('day1.txt'),
+    tell('day1'),
     write(Diary),
     told, !.
 
@@ -424,7 +428,26 @@ displayDiary(N):-
     N2 is N + 1,
     displayDiary(N2),!.
 
+loadGame(FileName):-
+	    open(FileName, read, Stream),
+        readFileLines(Stream,Lines),
+    close(Stream),
+    assertaLine(Lines), 
+!.
 
+assertaLine([]) :- !.
+
+assertaLine([X|L]):-
+	asserta(X),
+	assertaLine(L), !.
+
+readFileLines(Stream,[]) :-
+    at_end_of_stream(Stream).
+
+readFileLines(Stream,[X|L]) :-
+    \+ at_end_of_stream(Stream),
+    read(Stream,X),
+    readFileLines(Stream,L).
 
 
 /*writeDiary:-*/
