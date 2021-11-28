@@ -547,7 +547,8 @@ chicken:-
     retract(ranchResult(egg,JmlhEgg)),
     retract(ranchResult(large_egg,JmlhLargeEgg)),
     retract(ranchResult(golden_egg,JmlhGoldEgg)),
-    addRanchingExp(Sum),
+    Sum2 is Sum * 200,
+    addRanchingExp(Sum2),
     !.  
 chicken:-
     \+ranchResult(egg,_),    
@@ -558,7 +559,8 @@ chicken:-
     addItems(golden_egg,JmlhGoldEgg), nl,
     retract(ranchResult(large_egg,JmlhLargeEgg)),
     retract(ranchResult(golden_egg,JmlhGoldEgg)),
-    addRanchingExp(Sum),
+    Sum2 is Sum * 200,
+    addRanchingExp(Sum2),
     !.  
 chicken:-
     ranchResult(egg,JmlhEgg),    
@@ -569,7 +571,8 @@ chicken:-
     addItems(golden_egg,JmlhGoldEgg), nl,
     retract(ranchResult(egg,JmlhEgg)),
     retract(ranchResult(golden_egg,JmlhGoldEgg)),
-    addRanchingExp(Sum),
+    Sum2 is Sum * 200,
+    addRanchingExp(Sum2),
     !.  
 chicken:-
     ranchResult(egg,JmlhEgg),    
@@ -580,7 +583,8 @@ chicken:-
     addItems(large_egg,JmlhLargeEgg), nl,
     retract(ranchResult(egg,JmlhEgg)),
     retract(ranchResult(large_egg,JmlhLargeEgg)),
-    addRanchingExp(Sum),
+    Sum2 is Sum * 200,
+    addRanchingExp(Sum2),
     !.  
 chicken:-
     \+ranchResult(egg,_),    
@@ -589,7 +593,8 @@ chicken:-
     Sum is JmlhGoldEgg,
     addItems(golden_egg,JmlhGoldEgg), nl,
     retract(ranchResult(golden_egg,JmlhGoldEgg)),
-    addRanchingExp(Sum),
+    Sum2 is Sum * 200,
+    addRanchingExp(Sum2),
     !.  
 chicken:-
     \+ranchResult(egg,_),    
@@ -598,7 +603,8 @@ chicken:-
     Sum is JmlhLargeEgg,
     addItems(large_egg,JmlhLargeEgg), nl,
     retract(ranchResult(large_egg,JmlhLargeEgg)),
-    addRanchingExp(Sum),
+    Sum2 is Sum * 200,
+    addRanchingExp(Sum2),
     !.  
 chicken:-
     ranchResult(egg,JmlhEgg),    
@@ -607,7 +613,8 @@ chicken:-
     Sum is JmlhEgg,
     addItems(egg,JmlhEgg),nl,
     retract(ranchResult(egg,JmlhEgg)),
-    addRanchingExp(Sum),
+    Sum2 is Sum * 200,
+    addRanchingExp(Sum2),
     !.  
 chicken:-
     \+ranchResult(egg,_),    
@@ -624,21 +631,24 @@ sheep:-
     addItems(wool,JmlhPremWool),nl,
     retract(ranchResult(wool,JmlhWool)),
     retract(ranchResult(premium_wool,JmlhPremWool)),
-    addRanchingExp(Sum),!.
+    Sum2 is Sum * 200,
+    addRanchingExp(Sum2),!.
 sheep:-
     \+ranchResult(wool,_),
     ranchResult(premium_wool,JmlhPremWool),
     Sum is JmlhPremWool,
     addItems(wool,JmlhPremWool),nl,
     retract(ranchResult(premium_wool,JmlhPremWool)),
-    addRanchingExp(Sum),!.
+    Sum2 is Sum * 200,
+    addRanchingExp(Sum2),!.
 sheep:-
     ranchResult(wool,JmlhWool),
     \+ranchResult(premium_wool,_),
     Sum is JmlhWool,
     addItems(wool,JmlhWool),nl,
     retract(ranchResult(wool,JmlhWool)),
-    addRanchingExp(Sum),!.
+    Sum2 is Sum * 200,
+    addRanchingExp(Sum2),!.
 sheep:-
     \+ranchResult(wool,_),
     \+ranchResult(premium_wool,_),
@@ -652,7 +662,8 @@ cow:-
     addItems(large_milk,JmlhLargeMilk),nl,
     retract(ranchResult(milk,JmlhMilk)),
     retract(ranchResult(large_milk,JmlhLargeMilk)),
-    addRanchingExp(Sum),
+    Sum2 is Sum * 200,
+    addRanchingExp(Sum2),
     !.
 cow:-
     \+ranchResult(milk,_),
@@ -660,7 +671,8 @@ cow:-
     Sum is JmlhLargeMilk,
     addItems(large_milk,JmlhLargeMilk),nl,
     retract(ranchResult(large_milk,JmlhLargeMilk)),
-    addRanchingExp(Sum),
+    Sum2 is Sum * 200,
+    addRanchingExp(Sum2),
     !.
 cow:-
     ranchResult(milk,JmlhMilk),
@@ -668,7 +680,8 @@ cow:-
     Sum is JmlhMilk,
     addItems(milk,JmlhMilk),nl,
     retract(ranchResult(milk,JmlhMilk)),
-    addRanchingExp(Sum),
+    Sum2 is Sum * 200,
+    addRanchingExp(Sum2),
     !.
 cow:-
     \+ranchResult(milk,_),
