@@ -557,7 +557,7 @@ logoHome :-
     write('          `======||||||||||||||||||||||||||||||======`'), nl,
     write('         `=======||||||||||||||||||||||||||||||=======`'), nl,
     write('        `==============================================`'), nl, nl,
-    write('    Ketik tidur. untuk tidur'), nl.
+    write('    Ketik house. untuk masuk ke rumah'), nl.
 
 logoHarvest :-
     write('         wWWWw               wWWWw'), nl,
