@@ -196,21 +196,31 @@ makeListItems2(ListofID,ListofQty,ListofName) :-
 /* *** FARM STATUS *** */
 farmstatus :-
     \+plantedPlants(_,_,_,_),
-    write('Belum ada tanaman yang ditanam'),!
+    \+harvest(_,_,_),
+    write('Belum ada tanaman yang ditanam dan tidak ada tanaman untuk di harvest'),!
 .
 
 farmstatus :-
     harvest(_,_,_),
     plantedPlants(_,_,_,_),
     findall(NameHarvest, harvest(NameHarvest,_,_), ListofNameHarvest),
-    findall(X1, harvest(_,_,X1,_), ListofX1),
-    findall(Y1, harvest(_,_,_,Y1), ListofY1),
+    findall(X1, harvest(_,X1,_), ListofX1),
+    findall(Y1, harvest(_,_,Y1), ListofY1),
     findall(Name, plantedPlants(Name,_,_,_), ListofName),
     findall(GT, plantedPlants(_,GT,_,_), ListofGT),
     findall(X2, plantedPlants(_,_,X2,_), ListofX2),
     findall(Y2, plantedPlants(_,_,_,Y2), ListofY2),
     write('Farm status:'),nl,nl,
-    displayFarm(ListofNameHarvest,ListofX1,ListofY1,ListofName,ListofGT,ListofX2,ListofY2),!
+    displayFarm(ListofNameHarvest,ListofX1,ListofY1,ListofName,ListofGT,ListofX2,ListofY2),!.
+
+farmstatus :-
+    harvest(_,_,_),
+    \+plantedPlants(_,_,_,_),
+    findall(NameHarvest, harvest(NameHarvest,_,_), ListofNameHarvest),
+    findall(X1, harvest(_,X1,_), ListofX1),
+    findall(Y1, harvest(_,_,Y1), ListofY1),
+    write('Farm status:'),nl,nl,
+    displayFarm(ListofNameHarvest,ListofX1,ListofY1,[],[],[],[]),!
 .
 
 farmstatus :-
