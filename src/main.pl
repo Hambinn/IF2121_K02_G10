@@ -193,6 +193,7 @@ gaskeun :-
     \+binjay(_),
     asserta(binjay(99)),
     asserta(waktu(20,30)),
+    asserta(diary(-1)),
     createMap,
     initBegin,!.
 
@@ -211,6 +212,7 @@ nyerah :-
     retract(infoStats(_,_,_,_,_,_,_,_,_,_)),
     retract(binjay(_)),
     retract(items(_,_,_,_,_,_,_,_,_)),
+    retract(diary(_)),
     logoDie,
     write('yeyyyy anda mati, dadahhh Tubes'), !.
 
