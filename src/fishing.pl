@@ -37,7 +37,35 @@ fish :-
     write('beli fishing rod dulu >:('),!.
 
 /* Punya Fishing Rod 1 */
+
 fish :-
+    positionX(X),
+    positionY(Y),
+    Top is Y - 1,
+    Left is X - 1,
+    Right is X + 1,
+    Bot is Y + 1,
+    (
+        isWaterTile(Left,Y,Left,Y,Left,Y,Left,Y,Left,Y,Left,Y,Left,Y,Left,Y),
+        realFish;
+        (
+            isWaterTile(Right,Y,Right,Y,Right,Y,Right,Y,Right,Y,Right,Y,Right,Y,Right,Y),
+            realFish;
+            (
+                isWaterTile(X,Top,X,Top,X,Top,X,Top,X,Top,X,Top,X,Top,X,Top),
+                realFish;
+                (
+                    isWaterTile(X,Bot,X,Bot,X,Bot,X,Bot,X,Bot,X,Bot,X,Bot,X,Bot),
+                    realFish;
+                    (
+                        write('Gak ada air mau mancing dimana oiii')
+                    )
+                )
+            )
+        )
+    ), !.
+
+realFish :-
     binjay(_),
     inventory(_,fishing_rod_1,_,_,_,_,_,_,_), 
     myFishingLevel(Level),
@@ -56,7 +84,7 @@ fish :-
     !.
 
 /* Punya Fishing Rod 1 */
-fish :-
+realFish :-
     binjay(_),
     inventory(_,fishing_rod_2,_,_,_,_,_,_,_), 
     myFishingLevel(Level),
