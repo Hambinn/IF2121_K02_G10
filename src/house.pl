@@ -49,7 +49,7 @@ house:-
                     displayDiary(-1),
                     write('baca diary yang mana? '),nl,
                     read(PilihanDiary),
-                    loadGame(PilihanDiary),
+                    loadGame(PilihanDiary)
                 )
             )
     ), !.

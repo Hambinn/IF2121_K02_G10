@@ -3,30 +3,30 @@
 randomFishRod1(TypeFish) :-
     TypeFish =< 50,
     write('You didnt get anything!'),nl,
-    addFishingExp(2),
-    addWaktu(2),!.
+    addFishingExp(100),
+    addWaktu(6),!.
 
 /* Dapet Common Item */
 randomFishRod1(TypeFish) :-
     TypeFish > 50,
     addItems(TypeFish,1),nl,
-    addFishingExp(30),
-    addWaktu(2),!.
+    addFishingExp(200),
+    addWaktu(6),!.
 
 /* ***** RANDOM FISHING ROD 2 ***** */
 /* Dapet Junk Item */
 randomFishRod2(TypeFish) :-
     TypeFish =< 50,
     write('You didnt get anything!'),nl,
-    addFishingExp(5),
-    addWaktu(2),!.
+    addFishingExp(100),
+    addWaktu(6),!.
 
 /* Dapet Common Item */
 randomFishRod2(TypeFish) :-
     TypeFish > 50,
     addItems(TypeFish,2),nl,
-    addFishingExp(50),
-    addWaktu(2),!.
+    addFishingExp(300),
+    addWaktu(6),!.
 
 /* ***** FISHING ***** */
 /* Gapunya Fishing Rod */

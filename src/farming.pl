@@ -82,7 +82,7 @@ dig :-
     inventory(_,shovel_2,_,_,_,_,_,_,_),
     /* Membuat dig tile di tempat berdiri, satu blok di kirinya, dan kanannya */
     write('tanahnya berhasil digali pake shovel level 2...'),nl,
-    random(100,150,Exp),
+    random(50,100,Exp),
     addFarmingExp(Exp),
     generateDigTileLv2,!
 .
@@ -307,28 +307,28 @@ harvest:-
         HarvestProduct == wheat ->
         (
             addItems(HarvestProduct,1),
-            random(200,300,Exp),
+            random(200,250,Exp),
             addFarmingExp(Exp),
             retract(harvest(HarvestProduct,X,Y))
         );
         HarvestProduct == corn ->
         (
             addItems(HarvestProduct,1),
-            random(400,450,Exp),
+            random(200,300,Exp),
             addFarmingExp(Exp),
             retract(harvest(HarvestProduct,X,Y))
         );
         HarvestProduct == eggplant ->
         (
             addItems(HarvestProduct,1),
-            random(500,550,Exp),
+            random(300,350,Exp),
             addFarmingExp(Exp),
             retract(harvest(HarvestProduct,X,Y))
         );
         HarvestProduct == tomato ->
         (
             addItems(HarvestProduct,1),
-            random(500,550,Exp),
+            random(300,350,Exp),
             addFarmingExp(Exp),
             retract(harvest(HarvestProduct,X,Y))
         );
@@ -336,7 +336,7 @@ harvest:-
         (
             random(2,5,Amount),
             addItems(HarvestProduct,Amount),
-            random(250,300,Exp),
+            random(200,250,Exp),
             TotalExp is Exp*Amount,
             addFarmingExp(TotalExp),
             retract(harvest(HarvestProduct,X,Y))
