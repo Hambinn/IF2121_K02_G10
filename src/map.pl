@@ -135,8 +135,8 @@ generateDigTileLv2 :-
 generateDigTileLv2 :-
     positionX(X),
     positionY(Y),
-    Right = X+1,
-    Left = X-1,
+    Right is X+1,
+    Left is X-1,
     \+isQuest(X,Y),
     \+isMarket(X,Y),
     \+isWaterTile(X,Y,X,Y,X,Y,X,Y,X,Y,X,Y,X,Y,X,Y),
@@ -177,7 +177,7 @@ generatePlantTile(ItemName,GrowTime) :-
     isDig(X,Y),
     retract(dig(X, Y)),
     asserta(plantedPlants(ItemName,GrowTime,X,Y)), 
-    printItemName(ItemName), write(' berhasil ditanam, jangan lupa panen ya') , !.
+    printItemName(ItemName), write(' berhasil ditanam, jangan lupa panen ya'), nl,!.
 
 generateHarvestTile(ItemName,X,Y) :-
     asserta(harvest(ItemName,X,Y)),

@@ -69,7 +69,7 @@ addItems(ItemName,Quantity) :-
     items(ID,ItemName,Qty,Sell,Buy,Level,FarmLevel,FishLevel,RanchLevel),
     Qty2 is Qty + Quantity,
     asserta(inventory(ID,ItemName,Qty2,Sell,Buy,Level,FarmLevel,FishLevel,RanchLevel)),
-    write('Ciee dapet '), write(Quantity), write(' '), printItemName(ItemName), write('...'),!
+    write('Ciee dapet '), write(Quantity), write(' '), printItemName(ItemName), write('...'), nl,!
 .
 addItems(ItemID,Quantity) :-
     inventoryCapacity(Max),
@@ -79,7 +79,7 @@ addItems(ItemID,Quantity) :-
     items(ItemID,Name,Qty,Sell,Buy,Level,FarmLevel,FishLevel,RanchLevel),
     Qty2 is Qty + Quantity,
     asserta(inventory(ItemID,Name,Qty2,Sell,Buy,Level,FarmLevel,FishLevel,RanchLevel)),
-    write('Ciee dapet '), write(Quantity), write(' '), printItemName(Name), write('...'),!
+    write('Ciee dapet '), write(Quantity), write(' '), printItemName(Name), write('...'), nl,!
 .
 
 /* Sudah ada item 'itemName' di Inventory */
@@ -91,7 +91,7 @@ addItems(ItemName,Quantity) :-
     Qty2 is Qty + Quantity,
     retract(inventory(ID,ItemName,Qty,Sell,Buy,Level,FarmLevel,FishLevel,RanchLevel)),
     asserta(inventory(ID,ItemName,Qty2,Sell,Buy,Level,FarmLevel,FishLevel,RanchLevel)),
-    write('Ciee dapet '), write(Quantity), write(' '), printItemName(ItemName), write('...'),!
+    write('Ciee dapet '), write(Quantity), write(' '), printItemName(ItemName), write('...'), nl,!
 .
 addItems(ItemID,Quantity) :-
     inventoryCapacity(Max),
@@ -101,7 +101,7 @@ addItems(ItemID,Quantity) :-
     Qty2 is Qty + Quantity,
     retract(inventory(ItemID,Name,Qty,Sell,Buy,Level,FarmLevel,FishLevel,RanchLevel)),
     asserta(inventory(ItemID,Name,Qty2,Sell,Buy,Level,FarmLevel,FishLevel,RanchLevel)),
-    write('Ciee dapet '), write(Quantity), write(' '), printItemName(Name), write('...'),!
+    write('Ciee dapet '), write(Quantity), write(' '), printItemName(Name), write('...'), nl,!
 .
 
 /* Inventory sudah penuh sebelum penambahan items */

@@ -9,16 +9,16 @@
 /* PLANTS 1 */
 plants1(wheat_seeds,wheat,6).
 plants1(corn_seeds,corn,8).
-plants1(eggplant_seeds,eggplant,8).
+plants1(eggplant_seeds,eggplant,12).
 plants1(tomato_seeds,tomato,12).
-plants1(potato_seeds,potato,12).
+plants1(potato_seeds,potato,16).
 plants1(cauliflower_seeds,cauliflower,24).
 /* PLANTS 2 */
 plants2(wheat_seeds,wheat,4).
 plants2(corn_seeds,corn,6).
-plants2(eggplant_seeds,eggplant,6).
+plants2(eggplant_seeds,eggplant,8).
 plants2(tomato_seeds,tomato,8).
-plants2(potato_seeds,potato,8).
+plants2(potato_seeds,potato,12).
 plants2(cauliflower_seeds,cauliflower,16).
 
 /* *** REDUCE PLANTED PLANTS GROW TIME *** */
@@ -30,7 +30,9 @@ reducePlantedGrowTime(_) :-
 reducePlantedGrowTime(Time) :-
     plantedPlants(_,_,_,_),
     makeListPlantedPlants(ListofName,ListofGrowTime),
-    reduceListPlantedGrowTime(ListofName,ListofGrowTime, Time),!
+    reverseList(ListofName,ListofName2,[]),
+    reverseList(ListofGrowTime,ListofGrowTime2,[]),
+    reduceListPlantedGrowTime(ListofName2,ListofGrowTime2, Time),!
 .
 
 /* Rule tambahan untuk mengurangi waktu growTime dari list Planted Plants */
@@ -48,31 +50,57 @@ reduceListPlantedGrowTime([A|X], [B|Y], Time) :-
     reduceListPlantedGrowTime(X,Y,Time),!
 .
 
+
 /* Rule tambahan untuk membuat list Planted Plants */
 makeListPlantedPlants(ListofName,ListofGrowTime) :-
     findall(Name, plantedPlants(Name,_,_,_), ListofName),
     findall(GrowTime, plantedPlants(_,GrowTime,_,_), ListofGrowTime),!
 .
 
+/* Rule tambahan untuk me-reverse List */
+reverseList([],RevList,RevList).
+reverseList([H|T],RevList,T2) :- 
+    reverseList(T,RevList,[H|T2]).
+
 /* *** DIG *** */
 /* Kasus tidak memiliki shovel */
 dig :-
     \+inventory(_,shovel_1,_,_,_,_,_,_,_), 
     \+inventory(_,shovel_2,_,_,_,_,_,_,_),
-    write('beli shovel dulu ih >:('),!
-.
-
-/* Punya Shovel Level 1 */
-dig :-
-    inventory(_,shovel_1,_,_,_,_,_,_,_), 
-    generateDigTile,!
+    write('beli shovel dulu ih >:('),nl,!
 .
 
 /* Punya Shovel Level 2 */
 dig :-
+    positionX(X),
+    positionY(Y),
+    \+isDig(X,Y),
     inventory(_,shovel_2,_,_,_,_,_,_,_),
     /* Membuat dig tile di tempat berdiri, satu blok di kirinya, dan kanannya */
+    write('tanahnya berhasil digali pake shovel level 2...'),nl,
+    random(100,150,Exp),
+    addFarmingExp(Exp),
     generateDigTileLv2,!
+.
+
+/* Punya Shovel Level 1 */
+dig :-
+    positionX(X),
+    positionY(Y),
+    \+isDig(X,Y),
+    \+inventory(_,shovel_2,_,_,_,_,_,_,_),
+    inventory(_,shovel_1,_,_,_,_,_,_,_),
+    write('tanahnya berhasil digali pake shovel level 1...'),nl,
+    random(50,100,Exp),
+    addFarmingExp(Exp),
+    generateDigTile,!
+.
+
+dig :-
+    positionX(X),
+    positionY(Y),
+    isDig(X,Y),
+    write('tanahnya sudah berlubang'),nl,!
 .
 
 /* *** PLANT *** */
@@ -100,7 +128,7 @@ plant :-
     countSeeds(ListofID,ListofQty,ListofName,Sum),
     Sum =:= 0,
     write('Seeds dalam inventory:'),nl,nl,
-    write('Gaada...'),!
+    write('Gaada...'),nl,!
 .
 
 /* Kondisi tanah belum digali */
@@ -108,7 +136,7 @@ plant :-
     positionX(X),
     positionY(Y),
     \+isDig(X,Y),
-    write('Mau nanem di batu boss?'),!
+    write('Mau nanem di batu boss?'),nl,!
 .
 
 /* *** FUNGSI TAMBAHAN PENDUKUNG PLANT *** */
@@ -116,7 +144,7 @@ plant :-
 plantChosen(SeedsName) :-
     amountItem(SeedsName,Amount),
     Amount =:= 0,
-    write('Emang ada ya seed itu?'),!
+    write('Emang ada ya seed itu?'),nl,!
 .
 
 /* Menanam tanaman dengan seed: SeedsName */
@@ -127,7 +155,9 @@ plantChosen(SeedsName) :-
     myFarmingLevel(Level),
     Level < 16,
     plants1(SeedsName,PlantName,GrowTime),
-    generatePlantTile(PlantName,GrowTime),!
+    generatePlantTile(PlantName,GrowTime),
+    random(150,200,Exp),
+    addFarmingExp(Exp),!
 .
 
 plantChosen(SeedsName) :-
@@ -136,7 +166,9 @@ plantChosen(SeedsName) :-
     myFarmingLevel(Level),
     Level >= 16,
     plants2(SeedsName,PlantName,GrowTime),
-    generatePlantTile(PlantName,GrowTime),!
+    generatePlantTile(PlantName,GrowTime),
+    random(150,200,Exp),
+    addFarmingExp(Exp),!
 .
 
 countSeeds([],[],[],0).
@@ -197,62 +229,122 @@ makeListItems2(ListofID,ListofQty,ListofName) :-
 farmstatus :-
     \+plantedPlants(_,_,_,_),
     \+harvest(_,_,_),
-    write('Belum ada tanaman yang ditanam dan tidak ada tanaman untuk di harvest'),!
+    write('Belum ada tanaman yang ditanam atau siap panen'),nl,!
 .
 
-farmstatus :-
+displayFarm :-
     harvest(_,_,_),
     plantedPlants(_,_,_,_),
     findall(NameHarvest, harvest(NameHarvest,_,_), ListofNameHarvest),
-    findall(X1, harvest(_,X1,_), ListofX1),
-    findall(Y1, harvest(_,_,Y1), ListofY1),
-    findall(Name, plantedPlants(Name,_,_,_), ListofName),
+    findall(XHarvest, harvest(_,XHarvest,_), ListofXHarvest),
+    findall(YHarvest, harvest(_,_,YHarvest), ListofYHarvest),
+    findall(NamePlant, plantedPlants(NamePlant,_,_,_), ListofNamePlant),
     findall(GT, plantedPlants(_,GT,_,_), ListofGT),
-    findall(X2, plantedPlants(_,_,X2,_), ListofX2),
-    findall(Y2, plantedPlants(_,_,_,Y2), ListofY2),
+    findall(XPlant, plantedPlants(_,_,XPlant,_), ListofXPlant),
+    findall(YPlant, plantedPlants(_,_,_,YPlant), ListofYPlant),
+    reverseList(ListofNameHarvest,ListofNameHarvest2,[]),
+    reverseList(ListofXHarvest,ListofXHarvest2,[]),
+    reverseList(ListofYHarvest,ListofYHarvest2,[]),
+    reverseList(ListofNamePlant,ListofNamePlant2,[]),
+    reverseList(ListofGT,ListofGT2,[]),
+    reverseList(ListofXPlant,ListofXPlant2,[]),
+    reverseList(ListofYPlant,ListofYPlant2,[]),
     write('Farm status:'),nl,nl,
-    displayFarm(ListofNameHarvest,ListofX1,ListofY1,ListofName,ListofGT,ListofX2,ListofY2),!.
+    displayFarmCrops(ListofNameHarvest2,ListofXHarvest2,ListofYHarvest2,ListofNamePlant2,ListofGT2,ListofXPlant2,ListofYPlant2),!
+.
 
-farmstatus :-
+displayFarm :-
+    \+harvest(_,_,_),
+    plantedPlants(_,_,_,_),
+    findall(NamePlant, plantedPlants(NamePlant,_,_,_), ListofNamePlant),
+    findall(GT, plantedPlants(_,GT,_,_), ListofGT),
+    findall(XPlant, plantedPlants(_,_,XPlant,_), ListofXPlant),
+    findall(YPlant, plantedPlants(_,_,_,YPlant), ListofYPlant),
+    reverseList(ListofNamePlant,ListofNamePlant2,[]),
+    reverseList(ListofGT,ListofGT2,[]),
+    reverseList(ListofXPlant,ListofXPlant2,[]),
+    reverseList(ListofYPlant,ListofYPlant2,[]),
+    write('Farm status:'),nl,nl,
+    displayFarmCrops([],[],[],ListofNamePlant2,ListofGT2,ListofXPlant2,ListofYPlant2),!
+.
+
+displayFarm :-
     harvest(_,_,_),
     \+plantedPlants(_,_,_,_),
     findall(NameHarvest, harvest(NameHarvest,_,_), ListofNameHarvest),
-    findall(X1, harvest(_,X1,_), ListofX1),
-    findall(Y1, harvest(_,_,Y1), ListofY1),
+    findall(XHarvest, harvest(_,XHarvest,_), ListofXHarvest),
+    findall(YHarvest, harvest(_,_,YHarvest), ListofYHarvest),
+    reverseList(ListofNameHarvest,ListofNameHarvest2,[]),
+    reverseList(ListofXHarvest,ListofXHarvest2,[]),
+    reverseList(ListofYHarvest,ListofYHarvest2,[]),
     write('Farm status:'),nl,nl,
-    displayFarm(ListofNameHarvest,ListofX1,ListofY1,[],[],[],[]),!
+    displayFarmCrops(ListofNameHarvest2,ListofXHarvest2,ListofYHarvest2,[],[],[],[]),!
 .
 
-farmstatus :-
-    \+harvest(_,_,_),
-    plantedPlants(_,_,_,_),
-    findall(Name, plantedPlants(Name,_,_,_), ListofName),
-    findall(GT, plantedPlants(_,GT,_,_), ListofGT),
-    findall(X2, plantedPlants(_,_,X2,_), ListofX2),
-    findall(Y2, plantedPlants(_,_,_,Y2), ListofY2),
-    write('Farm status:'),nl,nl,
-    displayFarm([],[],[],ListofName,ListofGT,ListofX2,ListofY2),!
+displayFarmCrops([],[],[],[],[],[],[]).
+displayFarmCrops([A|M],[B|N],[C|O],D,E,F,G) :-
+    printItemName(A), write(' di ('), write(B),write(','), write(C), write(') sudah siap panen ya'), nl,
+    displayFarmCrops(M,N,O,D,E,F,G),!
 .
-
-displayFarm([],[],[],[],[],[],[]).
-displayFarm([A|M],[B|N],[C|O],D,E,F,G) :-
-    printItemName(A), write(' di ('), write(B),write(','), write(C), write(') sudah siap panen ya'),nl,
-    displayFarm(M,N,O,D,E,F,G),!
-.
-displayFarm([],[],[],[D|P],[E|Q],[F|R],[G|S]) :-
-    printItemName(D), write(' di ('), write(F), write(','), write(G), write('): sisa '), write(E), write(' jam lagi'),nl,
-    displayFarm([],[],[],P,Q,R,S),!
+displayFarmCrops([],[],[],[D|P],[E|Q],[F|R],[G|S]) :-
+    printItemName(D), write(' di ('), write(F), write(','), write(G), write('): sisa '), write(E), write(' jam lagi'), nl,
+    displayFarmCrops([],[],[],P,Q,R,S),!
 .
 
 harvest:-
     positionX(X),
     positionY(Y),
     harvest(HarvestProduct,X,Y),
-    addItems(HarvestProduct,1),
-    retract(harvest(HarvestProduct,X,Y)),!.
+    (
+        HarvestProduct == wheat ->
+        (
+            addItems(HarvestProduct,1),
+            random(200,300,Exp),
+            addFarmingExp(Exp),
+            retract(harvest(HarvestProduct,X,Y))
+        );
+        HarvestProduct == corn ->
+        (
+            addItems(HarvestProduct,1),
+            random(400,450,Exp),
+            addFarmingExp(Exp),
+            retract(harvest(HarvestProduct,X,Y))
+        );
+        HarvestProduct == eggplant ->
+        (
+            addItems(HarvestProduct,1),
+            random(500,550,Exp),
+            addFarmingExp(Exp),
+            retract(harvest(HarvestProduct,X,Y))
+        );
+        HarvestProduct == tomato ->
+        (
+            addItems(HarvestProduct,1),
+            random(500,550,Exp),
+            addFarmingExp(Exp),
+            retract(harvest(HarvestProduct,X,Y))
+        );
+        HarvestProduct == potato ->
+        (
+            random(2,5,Amount),
+            addItems(HarvestProduct,Amount),
+            random(250,300,Exp),
+            TotalExp is Exp*Amount,
+            addFarmingExp(TotalExp),
+            retract(harvest(HarvestProduct,X,Y))
+        );
+        HarvestProduct == cauliflower ->
+        (
+            addItems(HarvestProduct,1),
+            random(650,900,Exp),
+            addFarmingExp(Exp),
+            retract(harvest(HarvestProduct,X,Y))
+        )
+    ),!
+.
 
 harvest:-
     positionX(X),
     positionY(Y),
     \+harvest(_,X,Y),
-    write('Tidak ada tanaman yang dapat di panen disini'),!.
+    write('Tidak ada tanaman yang dapat di panen disini'),nl,!.
