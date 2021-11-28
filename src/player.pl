@@ -81,7 +81,7 @@ addFarmingExp(Amount) :-
     infoStats(_, _, _, FarmingExp, _, _, _, _, _, _),
     FarmingExp2 is FarmingExp + Amount,
     FarmingExp2 =< 300,
-    write('Exp farming anda bertambah sebesar '), write(FarmingExp2), nl,
+    write('Exp farming anda bertambah menjadi '), write(FarmingExp2), nl,
     retract(infoStats(Role, GeneralLevel, FarmingLevel, FarmingExp, FishingLevel, FishingExp, RanchingLevel, RanchingExp, GeneralExp, Money)),
     asserta(infoStats(Role, GeneralLevel, FarmingLevel, FarmingExp2, FishingLevel, FishingExp, RanchingLevel, RanchingExp, GeneralExp, Money)),!
 .
@@ -91,7 +91,7 @@ addFarmingExp(Amount) :-
     infoStats(_, _, FarmingLevel, FarmingExp, _, _, _, _, _, _),
     FarmingExpTemp is FarmingExp + Amount,
     FarmingExpTemp > 300,
-    write('Exp farming anda bertambah sebesar '), write(FarmingExpTemp), nl,
+    write('Exp farming anda bertambah menjadi '), write(FarmingExpTemp), nl,
     FarmingLevelTemp is FarmingExpTemp // 300,
     FarmingLevel2 is FarmingLevel + FarmingLevelTemp,
     FarmingExp2 is FarmingExpTemp mod 300,
@@ -112,7 +112,7 @@ addFishingExp(Amount) :-
     infoStats(_, _, _, _, _, FishingExp, _, _, _, _),
     FishingExp2 is FishingExp + Amount,
     FishingExp2 =< 300,
-    write('Exp fishing anda bertambah sebesar '), write(FishingExp2), nl,
+    write('Exp fishing anda bertambah menjadi '), write(FishingExp2), nl,
     retract(infoStats(Role, GeneralLevel, FarmingLevel, FarmingExp, FishingLevel, FishingExp, RanchingLevel, RanchingExp, GeneralExp, Money)),
     asserta(infoStats(Role, GeneralLevel, FarmingLevel, FarmingExp, FishingLevel, FishingExp2, RanchingLevel, RanchingExp, GeneralExp, Money)),!
 .
@@ -122,7 +122,7 @@ addFishingExp(Amount) :-
     infoStats(_, _, _, _, FishingLevel, FishingExp, _, _, _, _),
     FishingExpTemp is FishingExp + Amount,
     FishingExpTemp > 300,
-    write('Exp fishing anda bertambah sebesar '), write(FishingExpTemp), nl,
+    write('Exp fishing anda bertambah menjadi '), write(FishingExpTemp), nl,
     FishingLevelTemp is FishingExpTemp // 300,
     FishingLevel2 is FishingLevel + FishingLevelTemp,
     FishingExp2 is FishingExpTemp mod 300,
@@ -143,7 +143,7 @@ addRanchingExp(Amount) :-
     infoStats(_, _, _, _, _, _, _, RanchingExp, _, _),
     RanchingExp2 is RanchingExp + Amount,
     RanchingExp2 =< 300,
-    write('Exp ranching anda bertambah sebesar '), write(RanchingExp2), nl,
+    write('Exp ranching anda bertambah menjadi '), write(RanchingExp2), nl,
     retract(infoStats(Role, GeneralLevel, FarmingLevel, FarmingExp, FishingLevel, FishingExp, RanchingLevel, RanchingExp, GeneralExp, Money)),
     asserta(infoStats(Role, GeneralLevel, FarmingLevel, FarmingExp, FishingLevel, FishingExp, RanchingLevel, RanchingExp2, GeneralExp, Money)),!
 .
@@ -153,7 +153,7 @@ addRanchingExp(Amount) :-
     infoStats(_, _, _, _, _, _, RanchingLevel, RanchingExp, _, _),
     RanchingExpTemp is RanchingExp + Amount,
     RanchingExpTemp > 300,
-    write('Exp ranching anda bertambah sebesar '), write(RanchingExpTemp), nl,
+    write('Exp ranching anda bertambah menjadi '), write(RanchingExpTemp), nl,
     RanchingLevelTemp is RanchingExpTemp // 300,
     RanchingLevel2 is RanchingLevel + RanchingLevelTemp,
     RanchingExp2 is RanchingExpTemp mod 300,
@@ -176,8 +176,7 @@ addMoney(Amount) :-
     asserta(infoStats(Role, GeneralLevel, FarmingLevel, FarmingExp, FishingLevel, FishingExp, RanchingLevel, RanchingExp, GeneralExp, Money2)),nl,
     (
         Money2 >= 20000,
-        logoWin, sleep(2),
-        write('Anda akan dikirim kembali ke bumi untuk menyelesaikan Tubes');
+        endState, sleep(2);
         (
             write('')
         )

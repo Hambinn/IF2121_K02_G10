@@ -19,10 +19,10 @@ house:-
         write('Yakin akan tidur?(y/n)'), read(PilTidur),
         (
             PilTidur == 'y'->
-            waktu(Jam, _),
+            waktu(_, Hari),
             addHari(1),
             (
-                Lucky is Jam mod 2,
+                Lucky is Hari mod 2,
                 Lucky == 1,
                 peri, nl;
                 (

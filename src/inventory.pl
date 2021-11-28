@@ -35,11 +35,16 @@ amountItem(ItemName, Amount) :-
 /* inventory */
 /* Mencetak informasi inventory */
 inventory :-
+    binjay(_),
     totalInventory(Length),
     write('Inventory kamuhh ('), write(Length), write('/100)'),nl,
     makeListItems(ListofLevel,ListofQty,ListofName),
     displayInventory(ListofLevel,ListofQty,ListofName),!
 .
+
+inventory :-
+    \+ binjay(_),
+    write('Anda belum tiba di Binjay!'), !.
 
 /* Mengembalikan list level, quantity, dan name dari item yang ada di inventory */
 makeListItems(ListofLevel,ListofQty,ListofName) :-

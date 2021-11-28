@@ -252,9 +252,8 @@ shop:-
                     amountItem(egg,Egg),
                     (
                         1=<Egg ->
-                        addMoney((150*Egg)),
                         removeItems(egg,Egg),
-                        (write('Egg berhasil dijual'), nl);
+                        (write('Egg berhasil dijual'), nl), addMoney((150*Egg));
                         (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 2 ->
@@ -262,9 +261,8 @@ shop:-
                     amountItem(large_egg,LargeEgg),
                     (
                         1=<LargeEgg ->
-                        addMoney((285*LargeEgg)),
                         removeItems(large_egg,LargeEgg),
-                        (write('Large Egg berhasil dijual'), nl);
+                        (write('Large Egg berhasil dijual'), nl), addMoney((285*LargeEgg));
                         (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 3 ->
@@ -272,9 +270,9 @@ shop:-
                     amountItem(golden_egg,GoldEgg),
                     (
                         1=<GoldEgg ->
-                        addMoney((1500*GoldEgg)),
+                        
                         removeItems(golden_egg,GoldEgg),
-                        (write('Golden Egg berhasil dijual'), nl);
+                        (write('Golden Egg berhasil dijual'), nl), addMoney((1500*GoldEgg));
                         (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 4 ->
@@ -282,9 +280,9 @@ shop:-
                     amountItem(wool,Wool),
                     (
                         1=<Wool ->
-                        addMoney((1020*Wool)),
+                        
                         removeItems(wool,Wool),
-                        (write('Wool berhasil dijual'), nl);
+                        (write('Wool berhasil dijual'), nl), addMoney((1020*Wool));
                         (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 5 ->
@@ -292,9 +290,9 @@ shop:-
                     amountItem(premium_wool,PremWool),
                     (
                         1=<PremWool ->
-                        addMoney((2000*PremWool)),
+                        
                         removeItems(premium_wool,PremWool),
-                        (write('Premium Wool berhasil dijual'), nl);
+                        (write('Premium Wool berhasil dijual'), nl), addMoney((2000*PremWool));
                         (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 6 ->
@@ -302,9 +300,9 @@ shop:-
                     amountItem(milk,Milk),
                     (
                         1=<Milk ->
-                        addMoney((375*Milk)),
+                        
                         removeItems(milk,Milk),
-                        (write('Milk berhasil dijual'), nl);
+                        (write('Milk berhasil dijual'), nl), addMoney((375*Milk));
                         (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 7 ->
@@ -312,9 +310,9 @@ shop:-
                     amountItem(large_milk,LargeMilk),
                     (
                         1=<LargeMilk ->
-                        addMoney((570*LargeMilk)),
+                        
                         removeItems(large_milk,LargeMilk),
-                        (write('Large Milk berhasil dijual'), nl);
+                        (write('Large Milk berhasil dijual'), nl), addMoney((570*LargeMilk));
                         (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 8 ->
@@ -322,9 +320,9 @@ shop:-
                     amountItem(wheat,Wheat),
                     (
                         1=<Wheat ->
-                        addMoney((75*Wheat)),
+                        
                         removeItems(wheat,Wheat),
-                        (write('Wheat berhasil dijual'), nl);
+                        (write('Wheat berhasil dijual'), nl), addMoney((75*Wheat));
                         (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 9 ->
@@ -332,9 +330,9 @@ shop:-
                     amountItem(corn,Corn),
                     (
                         1=<Corn ->
-                        addMoney((150*Corn)),
+                        
                         removeItems(corn,Corn),
-                        (write('Corn berhasil dijual'), nl);
+                        (write('Corn berhasil dijual'), nl), addMoney((150*Corn));
                         (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 10 ->
@@ -342,9 +340,9 @@ shop:-
                     amountItem(eggplant,Eggplant),
                     (
                         1=<Eggplant ->
-                        addMoney((180*Eggplant)),
+                        
                         removeItems(eggplant,Eggplant),
-                        (write('Eggplant berhasil dijual'), nl);
+                        (write('Eggplant berhasil dijual'), nl), addMoney((180*Eggplant));
                         (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 11 ->
@@ -352,9 +350,9 @@ shop:-
                     amountItem(tomato,Tomato),
                     (
                         1=<Tomato ->
-                        addMoney((180*Tomato)),
+                        
                         removeItems(tomato,Tomato),
-                        (write('Tomato berhasil dijual'), nl);
+                        (write('Tomato berhasil dijual'), nl), addMoney((180*Tomato));
                         (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 12 ->
@@ -362,9 +360,9 @@ shop:-
                     amountItem(potato,Potato),
                     (
                         1=<Potato ->
-                        addMoney((240*Potato)),
+                        
                         removeItems(potato,Potato),
-                        (write('Potato berhasil dijual'), nl);
+                        (write('Potato berhasil dijual'), nl), addMoney((240*Potato));
                         (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 13 ->
@@ -372,9 +370,9 @@ shop:-
                     amountItem(cauliflower,Cauli),
                     (
                         1=<Cauli ->
-                        addMoney((525*Cauli)),
+                        
                         removeItems(cauliflower,Cauli),
-                        (write('cauliflower berhasil dijual'), nl);
+                        (write('cauliflower berhasil dijual'), nl), addMoney((525*Cauli));
                         (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 14 ->
@@ -382,9 +380,9 @@ shop:-
                     amountItem(carp,Carp),
                     (
                         1=<Carp ->
-                        addMoney((150*Carp)),
+                        
                         removeItems(carp,Carp),
-                        (write('carp berhasil dijual'), nl);
+                        (write('carp berhasil dijual'), nl), addMoney((150*Carp));
                         (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 15 ->
@@ -392,9 +390,9 @@ shop:-
                     amountItem(rainbow_trout,Rainbow),
                     (
                         1=<Rainbow ->
-                        addMoney((195*Rainbow)),
+                        
                         removeItems(rainbow_trout,Rainbow),
-                        (write('rainbow_trout berhasil dijual'), nl);
+                        (write('rainbow_trout berhasil dijual'), nl), addMoney((195*Rainbow));
                         (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 16 ->
@@ -402,9 +400,9 @@ shop:-
                     amountItem(bullhead,Bull),
                     (
                         1=<Bull ->
-                        addMoney((1225*Bull)),
+                        
                         removeItems(bullhead,Bull),
-                        (write('bullhead berhasil dijual'), nl);
+                        (write('bullhead berhasil dijual'), nl), addMoney((1225*Bull));
                         (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 17 ->
@@ -412,9 +410,8 @@ shop:-
                     amountItem(largemouth_bass,Bass),
                     (
                         1=<Bass ->
-                        addMoney((300*Bass)),
                         removeItems(largemouth_bass,Bass),
-                        (write('largemouth bass berhasil dijual'), nl);
+                        (write('largemouth bass berhasil dijual'), nl), addMoney((300*Bass));
                         (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 18 ->
@@ -422,9 +419,9 @@ shop:-
                     amountItem(salmon,Salmon),
                     (
                         1=<Salmon ->
-                        addMoney((375*Salmon)),
+                        
                         removeItems(salmon,Salmon),
-                        (write('salmon berhasil dijual'), nl);
+                        (write('salmon berhasil dijual'), nl), addMoney((375*Salmon));
                         (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 19 ->
@@ -432,9 +429,9 @@ shop:-
                     amountItem(tuna,Tuna),
                     (
                         1=<Tuna ->
-                        addMoney((450*Tuna)),
+                        
                         removeItems(tuna,Tuna),
-                        (write('tuna berhasil dijual'), nl);
+                        (write('tuna berhasil dijual'), nl), addMoney((450*Tuna));
                         (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 20 ->
@@ -442,9 +439,9 @@ shop:-
                     amountItem(polka_dot_stingray,Polka),
                     (
                         1=<Polka ->
-                        addMoney((540*Polka)),
+                        
                         removeItems(polka_dot_stingray,Polka),
-                        (write('polka dot stingray berhasil dijual'), nl);
+                        (write('polka dot stingray berhasil dijual'), nl), addMoney((540*Polka));
                         (write('Item tidak ada di inventory'), nl)
                     );
                     PilJual == 21 ->
@@ -452,9 +449,9 @@ shop:-
                     amountItem(arowana,Arowana),
                     (
                         1=<Arowana ->
-                        addMoney((1050*Arowana)),
+                        
                         removeItems(arowana,Arowana),
-                        (write('arowana berhasil dijual'), nl);
+                        (write('arowana berhasil dijual'), nl), addMoney((1050*Arowana));
                         (write('Item tidak ada di inventory'), nl)
                     )
         );

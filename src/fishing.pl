@@ -4,7 +4,7 @@ randomFishRod1(TypeFish) :-
     TypeFish =< 50,
     write('You didnt get anything!'),nl,
     addFishingExp(2),
-     addWaktu(2),!.
+    addWaktu(2),!.
 
 /* Dapet Common Item */
 randomFishRod1(TypeFish) :-

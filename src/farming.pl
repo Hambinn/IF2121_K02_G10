@@ -65,6 +65,10 @@ reverseList([H|T],RevList,T2) :-
 /* *** DIG *** */
 /* Kasus tidak memiliki shovel */
 dig :-
+    \+binjay(_),
+    write('Anda belum tiba di Binjay!'), !.
+    
+dig :-
     \+inventory(_,shovel_1,_,_,_,_,_,_,_), 
     \+inventory(_,shovel_2,_,_,_,_,_,_,_),
     write('beli shovel dulu ih >:('),nl,!
@@ -105,6 +109,10 @@ dig :-
 
 /* *** PLANT *** */
 /* Kondisi normal (tanah sudah digali dan memiliki seeds) */
+plant :-
+    \+ binjay(_),
+    write('Anda belum tiba di Binjay!'), !.
+    
 plant :-
     positionX(X),
     positionY(Y),

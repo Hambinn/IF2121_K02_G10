@@ -33,7 +33,7 @@ w :-
         isBot(X,Next);
         isRight(X,Next);
         isLeft(X,Next)
-    ),
+    ), logoFence, nl,
     write('Kepentok pagar bosss'),!.
 
 
@@ -150,7 +150,7 @@ s :-
         isBot(X,Next);
         isRight(X,Next);
         isLeft(X,Next)
-    ),
+    ), logoFence, nl,
     write('Kepentok pagar bosss'),!.
 
 s :-
@@ -266,7 +266,7 @@ d :-
         isBot(Next,Y);
         isRight(Next,Y);
         isLeft(Next,Y)
-    ),
+    ), logoFence, nl,
     write('Kepentok pagar bosss'),!.
 
 d :-
@@ -382,7 +382,7 @@ a :-
         isBot(Next,Y);
         isRight(Next,Y);
         isLeft(Next,Y)
-    ),
+    ), logoFence, nl,
     write('Kepentok pagar bosss'),!.
 
 a :-
@@ -608,4 +608,21 @@ logoWin :-
     write('                              __.-\'      :::`-.__'), nl,
     write('                             (_           ::::::_)'), nl,
     write('                               `"""---------"""\''), nl.
+
+logoFence :-
+    write('        |\\___/|                      \\\\'), nl,
+    write('        )     (    |\\_/|              ||    \''), nl,
+    write('       =\\     /=   )- - \'._.-""""-.  //'), nl,
+    write('         )===(    =\\T_= /    ~  ~  \\//'), nl,
+    write('        /     \\     `"`\\   ~   / ~  /'), nl,
+    write('        |     |         |~   \\ |  ~/'), nl,
+    write('       /       \\         \\  ~/- \\ ~\\\''), nl,
+    write('       \\       /         || |  // /`'), nl,
+    write('____/\\_/\\_   _/_/\\_/\\_/\\_((_|\\((_//\\_/\\_/\\_'), nl,
+    write('|  |  |  |( (  |  |  |  |  |  |  |  |  |  |'), nl,
+    write('|  |  |  | ) ) |  |  |  |  |  |  |  |  |  |'), nl,
+    write('|  |  |  |(_(  |  |  |  |  |  |  |  |  |  |'), nl,
+    write('|  |  |  |  |  |  |  |  |  |  |  |  |  |  |'), nl,
+    write('|  |  |  |  |  |  |  |  |  |  |  |  |  |  |'), nl.
+
 
