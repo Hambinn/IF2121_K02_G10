@@ -35,7 +35,7 @@ shop:-
                 PilItem == 1 ->
                     myMoney(Money),
                     (
-                        200<Money ->
+                        200=<Money ->
                          (write('Shovel berhasil dibeli'), nl),
                          addItems(shovel_1,1),
                          reduceMoney(200);
@@ -45,7 +45,7 @@ shop:-
                     myMoney(Money),
                     amountItem(shovel_1,Shovel1),
                     (
-                        500<Money, Shovel1>0  ->
+                        500=<Money, Shovel1>0  ->
                          (write('Shovel berhasil dibeli'), nl),
                          addItems(shovel_2,1),
                          removeItems(shovel_1),
@@ -55,7 +55,7 @@ shop:-
                     PilItem == 3 ->
                     myMoney(Money),
                     (
-                        200<Money ->
+                        200=<Money ->
                          (write('Fishing Rod berhasil dibeli'), nl),
                          addItems(fishing_rod_1,1),
                          reduceMoney(200);
@@ -65,7 +65,7 @@ shop:-
                     myMoney(Money),
                     amountItem(fishing_rod_1,Rod1),
                     (
-                        500<Money, Rod1>0 ->
+                        500=<Money, Rod1>0 ->
                          (write('Fishing Rod berhasil dibeli'), nl),
                          addItems(fishing_rod_2,1),
                          removeItems(fishing_rod_1),
@@ -75,7 +75,7 @@ shop:-
                     PilItem == 5 ->
                     myMoney(Money),
                     (
-                        200<Money ->
+                        200=<Money ->
                         (write('Milk Pail berhasil dibeli'), nl),
                         addItems(milk_pail_1,1),
                         reduceMoney(200);                      
@@ -85,7 +85,7 @@ shop:-
                     myMoney(Money),
                     amountItem(milk_pail_1,Pail1),
                     (
-                        500<Money, Pail1>0 ->
+                        500=<Money, Pail1>0 ->
                          (write('Milk Pail berhasil dibeli'), nl),
                          addItems(milk_pail_2,1),
                          removeItems(milk_pail_1),
@@ -95,7 +95,7 @@ shop:-
                     PilItem == 7 ->
                     myMoney(Money),
                     (
-                        200<Money ->
+                        200=<Money ->
                         (write('Shears berhasil dibeli'), nl),
                         addItems(shears_1,1),
                         reduceMoney(200);
@@ -104,7 +104,7 @@ shop:-
                     PilItem == 8 ->
                     myMoney(Money),
                     (
-                        500<Money ->
+                        500=<Money ->
                         (write('Shears berhasil dibeli'), nl),
                         addItems(shears_2,1),
                         reduceMoney(500);
@@ -113,7 +113,7 @@ shop:-
                     PilItem == 9 ->
                     myMoney(Money),
                     (
-                        30<Money ->
+                        30=<Money ->
                         (write('Wheat Seeds berhasil dibeli'), nl),
                         addItems(wheat_seeds,1),
                         reduceMoney(30);
@@ -122,7 +122,7 @@ shop:-
                     PilItem == 10 ->
                     myMoney(Money),
                     (
-                        100<Money ->
+                        100=<Money ->
                         (write('Corn Seeds berhasil dibeli'), nl),
                         addItems(corn_seeds,1),
                         reduceMoney(100);
@@ -131,7 +131,7 @@ shop:-
                     PilItem == 11 ->
                     myMoney(Money),
                     (
-                        150<Money ->
+                        150=<Money ->
                         (write('Eggplant Seeds berhasil dibeli'), nl),
                         addItems(eggplant_seeds,1),
                         reduceMoney(150);
@@ -140,7 +140,7 @@ shop:-
                     PilItem == 12 ->
                     myMoney(Money),
                     (
-                        150<Money ->
+                        150=<Money ->
                         (write('Tomato Seeds berhasil dibeli'), nl),
                         addItems(tomato_seeds,1),
                         reduceMoney(150);
@@ -149,7 +149,7 @@ shop:-
                     PilItem == 13 ->
                     myMoney(Money),
                     (
-                        200<Money ->
+                        200=<Money ->
                         (write('Potato Seeds berhasil dibeli'), nl),
                         addItems(potato_seeds,1),
                         reduceMoney(200);
@@ -158,7 +158,7 @@ shop:-
                     PilItem == 14 ->
                     myMoney(Money),
                     (
-                        240<Money ->
+                        240=<Money ->
                         (write('Cauliflower Seeds berhasil dibeli'), nl),
                         addItems(cauliflower_seeds,1),
                         reduceMoney(240);
@@ -167,21 +167,21 @@ shop:-
                     PilItem == 15 ->
                     myMoney(Money),
                     (
-                        500<Money ->
+                        500=<Money ->
                         buyChicken;
                         (write('Uangmu tidak cukup'), nl)
                     );
                     PilItem == 16 ->
                     myMoney(Money),
                     (
-                        500<Money ->
+                        500=<Money ->
                         buySheep;
                         (write('Uangmu tidak cukup'), nl)
                     );
                     PilItem == 17 ->
                     myMoney(Money),
                     (
-                        500<Money ->
+                        500=<Money ->
                         buyCow;
                         (write('Uangmu tidak cukup'), nl)
                     )
