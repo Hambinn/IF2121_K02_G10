@@ -45,7 +45,7 @@ generateQuestTile :-
     lebar(L),
     panjang(P),
     NewP is P,
-    random(15, L, X),
+    random(10, L, X),
     random(1, NewP, Y),
     asserta(quest(X, Y)).
 
@@ -221,8 +221,8 @@ isWaterTile(X1,Y1,X2,Y2,X3,Y3,X4,Y4,X5,Y5,X6,Y6,X7,Y7,X8,Y8) :-
     ).
 
 isHome(X,Y) :-
-    X =:= 8,
-    Y =:= 16.
+    X =:= 6,
+    Y =:= 11.
 
 isPlayer(X,Y) :-
     positionX(A),
@@ -376,8 +376,8 @@ initMap(X, Y) :-
     asserta(panjang(Y)).
 
 initPlayer :-
-    asserta(positionX(7)),
-    asserta(positionY(16)).
+    asserta(positionX(5)),
+    asserta(positionY(11)).
 
 map :- 
     binjay(_),
@@ -425,7 +425,7 @@ legenda :-
     ),!.
 
 createMap :-
-    initMap(16,15),
+    initMap(11,10),
     initPlayer,
     generateMarketTile,
     generateQuestTile,
