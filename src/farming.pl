@@ -234,7 +234,7 @@ makeListItems2(ListofID,ListofQty,ListofName) :-
 .
 
 /* *** FARM STATUS *** */
-farmstatus :-
+displayFarm :-
     \+plantedPlants(_,_,_,_),
     \+harvest(_,_,_),
     write('Belum ada tanaman yang ditanam atau siap panen'),nl,!
