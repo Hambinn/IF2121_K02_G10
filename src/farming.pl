@@ -43,7 +43,6 @@ reduceListPlantedGrowTime([A|X], [B|Y], Time) :-
     reduceListPlantedGrowTime(X,Y,Time),!.
 reduceListPlantedGrowTime([A|X], [B|Y], Time) :-
     B =< 1,
-    write('sini'),
     retract(plantedPlants(A,B,PosX,PosY)),
     generateHarvestTile(A,PosX,PosY),
     reduceListPlantedGrowTime(X,Y,Time),!
@@ -234,3 +233,16 @@ displayFarm([],[],[],[D|P],[E|Q],[F|R],[G|S]) :-
     printItemName(D), write(' di ('), write(F), write(','), write(G), write('): sisa '), write(E), write(' jam lagi'),nl,
     displayFarm([],[],[],P,Q,R,S),!
 .
+
+harvest:-
+    positionX(X),
+    positionY(Y),
+    harvest(HarvestProduct,X,Y),
+    addItems(HarvestProduct,1),
+    retract(harvest(HarvestProduct,X,Y)),!.
+
+harvest:-
+    positionX(X),
+    positionY(Y),
+    \+harvest(_,X,Y),
+    write('Tidak ada tanaman yang dapat di panen disini'),!.

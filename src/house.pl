@@ -357,8 +357,6 @@ writeDiary(Day):-
     told, !.
 
 
+/*writeDiary:-*/
+/*readDiary:-*/
 
-
-writeDiary:-
-
-readDiary:-
