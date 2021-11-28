@@ -192,7 +192,7 @@ gaskeun :-
 gaskeun :-
     \+binjay(_),
     asserta(binjay(99)),
-    asserta(waktu(20,30)),
+    asserta(waktu(0,1)),
     asserta(diary(-1)),
     createMap,
     initBegin,!.
@@ -220,6 +220,7 @@ endState :-
     myMoney(M),
     (
         M >= 20000,
+        logoWin, sleep(2),
         write('Anda akan dikirim kembali ke bumi untuk menyelesaikan Tubes');
         (
             logoDie,

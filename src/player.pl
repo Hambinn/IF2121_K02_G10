@@ -26,7 +26,8 @@ status :-
     write('Level Ranching: '), write(RanchingLevel), nl,
     write('Exp Ranching: '), write(RanchingExp), nl,
     write('Exp: '), write(GeneralExp), write('/300'), nl,
-    write('Gold: '), write(Money), nl, !
+    write('Gold: '), write(Money), nl, 
+    showWaktu,!
 .
 
 status :-
@@ -172,7 +173,16 @@ addMoney(Amount) :-
     infoStats(_, _, _, _, _, _, _, _, _, Money),
     Money2 is Money + Amount,
     retract(infoStats(Role, GeneralLevel, FarmingLevel, FarmingExp, FishingLevel, FishingExp, RanchingLevel, RanchingExp, GeneralExp, Money)),
-    asserta(infoStats(Role, GeneralLevel, FarmingLevel, FarmingExp, FishingLevel, FishingExp, RanchingLevel, RanchingExp, GeneralExp, Money2)),!
+    asserta(infoStats(Role, GeneralLevel, FarmingLevel, FarmingExp, FishingLevel, FishingExp, RanchingLevel, RanchingExp, GeneralExp, Money2)),nl,
+    (
+        Money2 >= 20000,
+        logoWin, sleep(2),
+        write('Anda akan dikirim kembali ke bumi untuk menyelesaikan Tubes');
+        (
+            write('')
+        )
+    ),
+    !
 .
 
 /* REDUCE MONEY */

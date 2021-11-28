@@ -583,3 +583,29 @@ logoDie :-
     write('    |'), nl,
     write('  __|___'), nl, sleep(2),
     write('         GAME OVER      ').
+
+logoWin :-
+    write('                                  ___________'), nl,
+    write('                             .---\'::\'        `---.'), nl,
+    write('                            (::::::\'              )'), nl,
+    write('                            |`-----._______.-----\'|'), nl,
+    write('                            |              :::::::|'), nl,
+    write('                           .|               ::::::!-.'), nl,
+    write('                           \\|               :::::/|/'), nl,
+    write('                            |               ::::::|'), nl,
+    write('                            | Special  Award :::::|'), nl,
+    write('                            |    for Silliness::::|'), nl,
+    write('                            |               ::::::|'), nl,
+    write('                            |              .::::::|'), nl,
+    write('                            |              :::::::|'), nl,
+    write('                             \\            :::::::/'), nl,
+    write('                              `.        .:::::::\''), nl,
+    write('                                `-._  .::::::-\''), nl,
+    write('____________________________________|  """|"_________________________________________'), nl,
+    write('                                    |  :::|'), nl,
+    write('                                    |   ::|'), nl,
+    write('                                   /     ::\\   '), nl,
+    write('                              __.-\'      :::`-.__'), nl,
+    write('                             (_           ::::::_)'), nl,
+    write('                               `"""---------"""\''), nl.
+
