@@ -41,14 +41,19 @@ house:-
             );
             (
                 Pilihan == 2 ->
+                write('Kamu masuk kerumah dan membuka buku diarymu'),nl,
+                write('Kamu mulai menulis beberapa hal yang menurutmu  penting pada hari ini'),nl,
+                write('Jangan lupa untuk menuliskannya diantara tanda kutip ('') agar diarymu dapat tercatat dengan baik!'),nl,
                 showHari(Day),
                 writeDiary(Day),
-                (write('sukses menulis diary'),nl);
+                (write('sukses menulis diary!'),nl);
                 (
                     Pilihan == 3 ->
                     displayDiary(-1),
-                    write('baca diary yang mana? '),
-                    write('(contoh input = day20) : '),
+                    write('mana diary yang ingin kamu baca hari ini? '),
+                    write('untuk membaca diary, kamu memerlukan mantra khusus yaitu kata day dan diikuti dengan hari yang ingin kamu baca'),nl,
+                    write('misalnya untuk membaca diary di day 1, mantranya adalah day1'),nl,
+                    write('masukan mantra : '),
                     read(PilihanDiary),
                     write('Isi diary kamu: '),
                     readDiary(PilihanDiary)
