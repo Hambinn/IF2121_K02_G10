@@ -238,7 +238,6 @@ endState :-
         forall(ranch(_,_),(
             retract(ranch(_,_))
         )),
-        
         forall(water(_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _),(
             retract(water(_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _))
         )),
@@ -251,7 +250,7 @@ endState :-
         retract(binjay(_)),
         retract(diary(_)),
         write('SELAMAT uang anda sekarang '), write(M), nl,
-        write('Anda akan dikirim kembali ke bumi untuk menyelesaikan Tubes'),
+        write('Anda akan dikirim kembali ke bumi untuk menyelesaikan Tubes'), nl,
         write(' DADAHHHHHH');
         (
             retract(positionX(_)),
