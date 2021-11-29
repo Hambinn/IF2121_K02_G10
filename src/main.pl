@@ -152,9 +152,9 @@ initBegin :-
                 write('  |---|---|---|---|---|    |--|--|    |  |'), nl,
                 write('  |---|---|---|---|---|    |==|==|    |  |'), nl,
                 write('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^'), nl,
-                addItems(chicken,1), nl,
-                addItems(sheep,1), nl,
-                addItems(cow,1), nl,
+                addItems(chicken,1),
+                addItems(sheep,1),
+                addItems(cow,1),
                 setStatus(Role, 1, 1, 56, 1, 56, 1, 76, 0, 1000),
                 generateChickenProduct(1,_),
                 generateSheepProduct(1,_),
@@ -175,7 +175,8 @@ initBegin :-
                     write('              `~`~~`~~~`~`~`~~`~( / , /__,___.-"'), nl,
                     write('                                 \\ \\\\/'), nl,
                     write('                                  `\\\\\\\''), nl,
-                    addItems(shovel_1, 1), nl,
+                    addItems(shovel_1, 1),
+                    addItems(wheat_seeds,5),
                     setStatus(Role, 1, 1, 76, 1, 56, 1, 56, 0, 1000)
             )
         )
