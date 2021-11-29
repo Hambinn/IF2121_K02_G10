@@ -29,15 +29,6 @@ randomFishRod2(TypeFish) :-
     addWaktu(6),!.
 
 /* ***** FISHING ***** */
-/* Gapunya Fishing Rod */
-fish :-
-    binjay(_),
-    \+inventory(_,fishing_rod_1,_,_,_,_,_,_,_), 
-    \+inventory(_,fishing_rod_2,_,_,_,_,_,_,_),
-    write('beli fishing rod dulu >:('),!.
-
-/* Punya Fishing Rod 1 */
-
 fish :-
     positionX(X),
     positionY(Y),
@@ -65,6 +56,14 @@ fish :-
         )
     ), !.
 
+/* Gapunya Fishing Rod */
+realFish :-
+    binjay(_),
+    \+inventory(_,fishing_rod_1,_,_,_,_,_,_,_), 
+    \+inventory(_,fishing_rod_2,_,_,_,_,_,_,_),
+    write('beli fishing rod dulu >:('),!.
+
+/* Punya Fishing Rod 1 */
 realFish :-
     binjay(_),
     inventory(_,fishing_rod_1,_,_,_,_,_,_,_), 
@@ -83,7 +82,7 @@ realFish :-
     ),
     !.
 
-/* Punya Fishing Rod 1 */
+/* Punya Fishing Rod 2 */
 realFish :-
     binjay(_),
     inventory(_,fishing_rod_2,_,_,_,_,_,_,_), 
