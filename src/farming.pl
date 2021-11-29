@@ -79,6 +79,12 @@ dig :-
     positionX(X),
     positionY(Y),
     \+isDig(X,Y),
+    \+isHome(X,Y),
+    \+isQuest(X,Y),
+    \+isMarket(X,Y),
+    \+isWaterTile(X,Y,X,Y,X,Y,X,Y,X,Y,X,Y,X,Y,X,Y),
+    \+isRanch(X,Y),
+    \+isPlant(X,Y),
     inventory(_,shovel_2,_,_,_,_,_,_,_),
     /* Membuat dig tile di tempat berdiri, satu blok di kirinya, dan kanannya */
     write('tanahnya berhasil digali pake shovel level 2...'),nl,
@@ -92,6 +98,12 @@ dig :-
     positionX(X),
     positionY(Y),
     \+isDig(X,Y),
+    \+isHome(X,Y),
+    \+isQuest(X,Y),
+    \+isMarket(X,Y),
+    \+isWaterTile(X,Y,X,Y,X,Y,X,Y,X,Y,X,Y,X,Y,X,Y),
+    \+isRanch(X,Y),
+    \+isPlant(X,Y),
     \+inventory(_,shovel_2,_,_,_,_,_,_,_),
     inventory(_,shovel_1,_,_,_,_,_,_,_),
     write('tanahnya berhasil digali pake shovel level 1...'),nl,
@@ -105,6 +117,35 @@ dig :-
     positionY(Y),
     isDig(X,Y),
     write('tanahnya sudah berlubang'),nl,!
+.
+
+dig :-
+    positionX(X),
+    positionY(Y),
+    (
+        isHome(X, Y),
+        write('ada rumah woiii');
+        (
+            isQuest(X, Y),
+            write('nanti gabisa kerja mampus dah');
+            (
+                isMarket(X,Y),
+                write('kasian pemilik supermarketnya :)');
+                (
+                    isWaterTile(X,Y,X,Y,X,Y,X,Y,X,Y,X,Y,X,Y,X,Y),
+                    write('nanti kebanjiran gesss');
+                    (
+                        isRanch(X,Y),
+                        write('kasian ayamnya nanti');
+                        (
+                            isPlant(X,Y),
+                            write('ada tanaman masa mau digali sih')
+                        )
+                    )
+                )
+            )
+        )
+    ), !
 .
 
 /* *** PLANT *** */
