@@ -61,7 +61,7 @@ w :-
     positionY(Y),
     Next is (Y-1),
     isPlant(X, Next),
-    write('Widih ada tanaman'),
+    logoPlant,
     retract(positionY(_)),
     asserta(positionY(Next)), !.
 
@@ -177,7 +177,7 @@ s :-
     positionY(Y),
     Next is (Y+1),
     isPlant(X, Next),
-    write('Widih ada tanaman nihh'),
+    logoPlant,
     retract(positionY(_)),
     asserta(positionY(Next)),!.
 
@@ -293,7 +293,7 @@ d :-
     positionY(Y),
     Next is (X+1),
     isPlant(Next, Y),
-    write('widih ada tanaman nihhh'),
+    logoPlant,
     retract(positionX(_)),
     asserta(positionX(Next)),!.
 
@@ -409,7 +409,7 @@ a :-
     positionY(Y),
     Next is (X-1),
     isPlant(Next, Y),
-    write('widih ada tanaman nihhh'),
+    logoPlant,
     retract(positionX(_)),
     asserta(positionX(Next)),!.
 
@@ -625,4 +625,16 @@ logoFence :-
     write('|  |  |  |  |  |  |  |  |  |  |  |  |  |  |'), nl,
     write('|  |  |  |  |  |  |  |  |  |  |  |  |  |  |'), nl.
 
+logoPlant :-
+    write('      |'), nl,
+    write('    \\|/|/'), nl,
+    write('  \\|\\\\|//|/'), nl,
+    write('   \\|\\|/|/'), nl,
+    write('   \\\\|//'), nl,
+    write('     \\|/'), nl,
+    write('     \\|/'), nl,
+    write('      |'), nl,
+    write('_\\|/__|_\\|/____\\|/_'), nl,
+    write('Widihhhh ada tanaman nihhh'), nl,
+    write('Ketik displayFarm untuk melihat status tanaman.'), nl.
 
