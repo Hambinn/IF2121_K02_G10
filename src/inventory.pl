@@ -336,22 +336,6 @@ printItemName(ItemName) :-
     write('Fishing Rod'),!
 .
 printItemName(ItemName) :-
-    ItemName == milk_pail_1,
-    write('Milk Pail'),!
-.
-printItemName(ItemName) :-
-    ItemName == milk_pail_2,
-    write('Milk Pail'),!
-.
-printItemName(ItemName) :-
-    ItemName == shears_1,
-    write('Shears'),!
-.
-printItemName(ItemName) :-
-    ItemName == shears_2,
-    write('Shears'),!
-.
-printItemName(ItemName) :-
     ItemName == chicken,
     write('Chicken'),!
 .

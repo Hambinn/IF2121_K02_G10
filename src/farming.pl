@@ -82,7 +82,7 @@ dig :-
     inventory(_,shovel_2,_,_,_,_,_,_,_),
     /* Membuat dig tile di tempat berdiri, satu blok di kirinya, dan kanannya */
     write('tanahnya berhasil digali pake shovel level 2...'),nl,
-    random(50,100,Exp),
+    random(20,50,Exp),
     addFarmingExp(Exp),
     generateDigTileLv2,!
 .
@@ -95,7 +95,7 @@ dig :-
     \+inventory(_,shovel_2,_,_,_,_,_,_,_),
     inventory(_,shovel_1,_,_,_,_,_,_,_),
     write('tanahnya berhasil digali pake shovel level 1...'),nl,
-    random(50,100,Exp),
+    random(20,50,Exp),
     addFarmingExp(Exp),
     generateDigTile,!
 .
@@ -164,8 +164,9 @@ plantChosen(SeedsName) :-
     Level < 16,
     plants1(SeedsName,PlantName,GrowTime),
     generatePlantTile(PlantName,GrowTime),
-    random(150,200,Exp),
-    addFarmingExp(Exp),!
+    random(50,100,Exp),
+    addFarmingExp(Exp), nl,
+    logoPlant,!
 .
 
 plantChosen(SeedsName) :-
@@ -175,8 +176,9 @@ plantChosen(SeedsName) :-
     Level >= 16,
     plants2(SeedsName,PlantName,GrowTime),
     generatePlantTile(PlantName,GrowTime),
-    random(150,200,Exp),
-    addFarmingExp(Exp),!
+    random(50,100,Exp),
+    addFarmingExp(Exp), nl,
+    logoPlant,!
 .
 
 countSeeds([],[],[],0).
@@ -307,28 +309,28 @@ harvest:-
         HarvestProduct == wheat ->
         (
             addItems(HarvestProduct,1),
-            random(200,250,Exp),
+            random(100,150,Exp),
             addFarmingExp(Exp),
             retract(harvest(HarvestProduct,X,Y))
         );
         HarvestProduct == corn ->
         (
             addItems(HarvestProduct,1),
-            random(200,300,Exp),
+            random(100,200,Exp),
             addFarmingExp(Exp),
             retract(harvest(HarvestProduct,X,Y))
         );
         HarvestProduct == eggplant ->
         (
             addItems(HarvestProduct,1),
-            random(300,350,Exp),
+            random(150,250,Exp),
             addFarmingExp(Exp),
             retract(harvest(HarvestProduct,X,Y))
         );
         HarvestProduct == tomato ->
         (
             addItems(HarvestProduct,1),
-            random(300,350,Exp),
+            random(150,250,Exp),
             addFarmingExp(Exp),
             retract(harvest(HarvestProduct,X,Y))
         );
@@ -336,7 +338,7 @@ harvest:-
         (
             random(2,5,Amount),
             addItems(HarvestProduct,Amount),
-            random(200,250,Exp),
+            random(100,150,Exp),
             TotalExp is Exp*Amount,
             addFarmingExp(TotalExp),
             retract(harvest(HarvestProduct,X,Y))
@@ -344,7 +346,7 @@ harvest:-
         HarvestProduct == cauliflower ->
         (
             addItems(HarvestProduct,1),
-            random(650,900,Exp),
+            random(450,500,Exp),
             addFarmingExp(Exp),
             retract(harvest(HarvestProduct,X,Y))
         )

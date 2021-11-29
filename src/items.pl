@@ -71,10 +71,6 @@ items(102,shovel_2,0,0,500,2,0,0,0).
 items(111,fishing_rod_1,0,0,200,1,0,0,0).
 items(112,fishing_rod_2,0,0,500,2,0,16,0).
 /* Ranching */
-items(121,milk_pail_1,0,0,200,1,0,0,0).
-items(122,milk_pail_2,0,0,500,2,0,0,16).
-items(123,shears_1,0,0,200,1,0,0,0).
-items(124,shears_2,0,0,500,2,0,0,16).
 items(125,chicken,0,0,500,0,0,0,0).
 items(126,sheep,0,0,500,0,0,0,0).
 items(127,cow,0,0,500,0,0,0,0).
