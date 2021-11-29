@@ -8,7 +8,8 @@ shop:-
     write('Apa yang ingin kamu lakukan?'), nl,
     write('1. beli item'), nl,
     write('2. jual item'), nl,
-    write('3. kembali ke map'), nl,
+    write('3. alchemist'), nl,
+    write('4. kembali ke map'), nl,
     write('Pilihan: '), read(Pilihan), nl,
     ( 
         Pilihan == 1 ->
@@ -457,7 +458,12 @@ shop:-
         );
             (
             Pilihan == 3 ->
-            write('kembali ke map')
+            write('alchemist'), nl,
+            alchemist;
+            (
+                Pilihan == 4 ->
+                write('kembali ke map'),nl
+            )
         )
     )
 ), 
