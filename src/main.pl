@@ -15,6 +15,7 @@
 :- include('ranching.pl').
 :- include('quest.pl').
 :- include('house.pl').
+:- include('alchemist.pl').
 
 title :-
     write('                                      lllllll                                              '), nl, 

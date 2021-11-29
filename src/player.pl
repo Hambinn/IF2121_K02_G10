@@ -75,6 +75,11 @@ myFarmingLevel(FarmingLevel) :-
     infoStats(_, _, FarmingLevel, _, _, _, _, _, _, _),!
 .
 
+/* MY FARMING EXP */
+myFarmingExp(FarmingExp) :-
+    infoStats(_, _, _, FarmingExp, _, _, _, _, _, _),!
+.
+
 /* ADD FARMING EXP */
 /* Kondisi jika exp farming ditambahkan tidak akan menambah level farming */
 addFarmingExp(Amount) :-
@@ -106,6 +111,11 @@ myFishingLevel(FishingLevel) :-
     infoStats(_, _, _, _, FishingLevel, _, _, _, _, _),!
 .
 
+/* MY FISHING EXP */
+myFishingExp(FishingExp) :-
+    infoStats(_, _, _, _, _, FishingExp, _, _, _, _),!
+.
+
 /* ADD Fishing EXP */
 /* Kondisi jika exp Fishing ditambahkan tidak akan menambah level Fishing */
 addFishingExp(Amount) :-
@@ -134,7 +144,12 @@ addFishingExp(Amount) :-
 /* ****** RANCHING LEVEL & EXP ****** *.
 /* MY RANCHING LEVEL */
 myRanchingLevel(RanchingLevel) :-
-    infoStats(_, _, _, _, RanchingLevel, _, _, _, _, _),!
+    infoStats(_, _, _, _, _, _, RanchingLevel, _, _, _),!
+.
+
+/* MY RANCHING EXP */
+myRanchingExp(RanchingExp) :-
+    infoStats(_, _, _, _, _, _, _, RanchingExp, _, _),!
 .
 
 /* ADD RANCHING EXP */
