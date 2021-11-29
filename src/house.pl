@@ -23,7 +23,7 @@ house:-
             waktu(_, Hari),
             addHari(1),
             (
-                Lucky is Hari mod 2,
+                Lucky is Hari mod 3,
                 Lucky == 1,
                 peri, nl;
                 (
