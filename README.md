@@ -22,7 +22,7 @@ GNU Prolog
 * Pastikan telah memiliki GNU Prolog Console yang akan digunakan untuk menjalankan program.
 * Pastikan directory console berada pada main program
 * Gunakan `change_directory(address).` untuk mengubah directory console, atau melalui menu > 'File' pada GNU Prolog Console, kemudian pilih 'Change Directory' dan navigasikan kepada folder terkait.
-* Jalankan program 'main.pl' dengan menjalankan `consult('main').` pada GNU Prolog Console atau dengan langsung memilih file main.pl** melalui menu > 'Consult' pada GNU Prolog Console.
+* Jalankan program 'main.pl' dengan menjalankan `consult('main').` pada GNU Prolog Console atau dengan langsung memilih file 'main.pl' melalui menu > 'Consult' pada GNU Prolog Console.
 * Masukkan *commands* yang tersedia pada program.
 
 ### Sumber Referensi
