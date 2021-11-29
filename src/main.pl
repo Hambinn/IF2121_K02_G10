@@ -233,8 +233,9 @@ endState :-
         retract(items(_,_,_,_,_,_,_,_,_)),
         retract(inventory(_,_,_,_,_,_,_,_,_)),
         retract(diary(_)),
-        write('SELAMAT uang anda sekarang'), write(M), nl,
-        write('Anda akan dikirim kembali ke bumi untuk menyelesaikan Tubes');
+        write('SELAMAT uang anda sekarang '), write(M), nl,
+        write('Anda akan dikirim kembali ke bumi untuk menyelesaikan Tubes'),
+        write(' DADAHHHHHH');
         (
             retract(positionX(_)),
             retract(positionY(_)),

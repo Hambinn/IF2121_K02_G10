@@ -200,7 +200,7 @@ addWaktu(Jumlah) :-
     (
         NewJam >= 24,
         NewHari is Hari + 1,
-        NewHari > 40,
+        NewHari > 25,
         endState;
         (
             NewJam >= 24,
@@ -223,7 +223,7 @@ addWaktu(Jumlah) :-
     (
         NewJam >= 24,
         NewHari is Hari + 1,
-        NewHari > 40,
+        NewHari > 25,
         endState;
         (
             NewJam >= 24,
