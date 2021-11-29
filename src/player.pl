@@ -88,7 +88,8 @@ addFarmingExp(Amount) :-
     FarmingExp2 =< 300,
     write('Exp farming anda bertambah sebanyak '), write(Amount), nl,
     retract(infoStats(Role, GeneralLevel, FarmingLevel, FarmingExp, FishingLevel, FishingExp, RanchingLevel, RanchingExp, GeneralExp, Money)),
-    asserta(infoStats(Role, GeneralLevel, FarmingLevel, FarmingExp2, FishingLevel, FishingExp, RanchingLevel, RanchingExp, GeneralExp, Money)),!
+    asserta(infoStats(Role, GeneralLevel, FarmingLevel, FarmingExp2, FishingLevel, FishingExp, RanchingLevel, RanchingExp, GeneralExp, Money)),
+    addGeneralExp(Amount),!
 .
 
 /* Kondisi jika exp farming ditambahkan akan menambah level farming */
@@ -102,7 +103,8 @@ addFarmingExp(Amount) :-
     FarmingExp2 is FarmingExpTemp mod 300,
     write('Farming level anda bertambah '), write(FarmingLevelTemp), write(' menjadi '), write(FarmingLevel2), nl,
     retract(infoStats(Role, GeneralLevel, FarmingLevel, FarmingExp, FishingLevel, FishingExp, RanchingLevel, RanchingExp, GeneralExp, Money)),
-    asserta(infoStats(Role, GeneralLevel, FarmingLevel2, FarmingExp2, FishingLevel, FishingExp, RanchingLevel, RanchingExp, GeneralExp, Money)),!
+    asserta(infoStats(Role, GeneralLevel, FarmingLevel2, FarmingExp2, FishingLevel, FishingExp, RanchingLevel, RanchingExp, GeneralExp, Money)),
+    addGeneralExp(Amount),!
 .
 
 /* ****** FISHING LEVEL & EXP ****** *.
@@ -124,7 +126,8 @@ addFishingExp(Amount) :-
     FishingExp2 =< 300,
     write('Exp fishing anda bertambah sebanyak '), write(Amount), nl,
     retract(infoStats(Role, GeneralLevel, FarmingLevel, FarmingExp, FishingLevel, FishingExp, RanchingLevel, RanchingExp, GeneralExp, Money)),
-    asserta(infoStats(Role, GeneralLevel, FarmingLevel, FarmingExp, FishingLevel, FishingExp2, RanchingLevel, RanchingExp, GeneralExp, Money)),!
+    asserta(infoStats(Role, GeneralLevel, FarmingLevel, FarmingExp, FishingLevel, FishingExp2, RanchingLevel, RanchingExp, GeneralExp, Money)),
+    addGeneralExp(Amount),!
 .
 
 /* Kondisi jika exp Fishing ditambahkan akan menambah level Fishing */
@@ -138,7 +141,8 @@ addFishingExp(Amount) :-
     FishingExp2 is FishingExpTemp mod 300,
     write('Fishing level anda bertambah '), write(FishingLevelTemp), write(' menjadi '), write(FishingLevel2), nl,
     retract(infoStats(Role, GeneralLevel, FarmingLevel, FarmingExp, FishingLevel, FishingExp, RanchingLevel, RanchingExp, GeneralExp, Money)),
-    asserta(infoStats(Role, GeneralLevel, FarmingLevel, FarmingExp, FishingLevel2, FishingExp2, RanchingLevel, RanchingExp, GeneralExp, Money)),!
+    asserta(infoStats(Role, GeneralLevel, FarmingLevel, FarmingExp, FishingLevel2, FishingExp2, RanchingLevel, RanchingExp, GeneralExp, Money)),
+    addGeneralExp(Amount),!
 .
 
 /* ****** RANCHING LEVEL & EXP ****** *.
@@ -160,7 +164,8 @@ addRanchingExp(Amount) :-
     RanchingExp2 =< 300,
     write('Exp ranching anda bertambah sebanyak '), write(Amount), nl,
     retract(infoStats(Role, GeneralLevel, FarmingLevel, FarmingExp, FishingLevel, FishingExp, RanchingLevel, RanchingExp, GeneralExp, Money)),
-    asserta(infoStats(Role, GeneralLevel, FarmingLevel, FarmingExp, FishingLevel, FishingExp, RanchingLevel, RanchingExp2, GeneralExp, Money)),!
+    asserta(infoStats(Role, GeneralLevel, FarmingLevel, FarmingExp, FishingLevel, FishingExp, RanchingLevel, RanchingExp2, GeneralExp, Money)),
+    addGeneralExp(Amount),!
 .
 
 /* Kondisi jika exp Ranching ditambahkan akan menambah level Ranching */
@@ -174,7 +179,8 @@ addRanchingExp(Amount) :-
     RanchingExp2 is RanchingExpTemp mod 300,
     write('Ranching level anda bertambah '), write(RanchingLevelTemp), write(' menjadi '), write(RanchingLevel2), nl,
     retract(infoStats(Role, GeneralLevel, FarmingLevel, FarmingExp, FishingLevel, FishingExp, RanchingLevel, RanchingExp, GeneralExp, Money)),
-    asserta(infoStats(Role, GeneralLevel, FarmingLevel, FarmingExp, FishingLevel, FishingExp, RanchingLevel2, RanchingExp2, GeneralExp, Money)),!
+    asserta(infoStats(Role, GeneralLevel, FarmingLevel, FarmingExp, FishingLevel, FishingExp, RanchingLevel2, RanchingExp2, GeneralExp, Money)),
+    addGeneralExp(Amount),!
 .
 
 /* ****** MONEY ****** *.
