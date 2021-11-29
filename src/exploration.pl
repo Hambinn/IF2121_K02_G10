@@ -4,10 +4,10 @@ w :-
 
 w :-
     binjay(_),
-    addWaktu(1),
     positionX(X),
     positionY(Y),
     Next is (Y-1),
+    addWaktu(1),
     \+isTop(X,Next),
     \+isBot(X,Next),
     \+isRight(X,Next),

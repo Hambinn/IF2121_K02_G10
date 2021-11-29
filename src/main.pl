@@ -233,10 +233,21 @@ endState :-
         retract(items(_,_,_,_,_,_,_,_,_)),
         retract(inventory(_,_,_,_,_,_,_,_,_)),
         retract(diary(_)),
-        write('SELAMAT uang anda sekarang'), write(M),
+        write('SELAMAT uang anda sekarang'), write(M), nl,
         write('Anda akan dikirim kembali ke bumi untuk menyelesaikan Tubes');
         (
-            logoDie,
-            write('Anda disiksa dan digantung. Byeee tubes')
+            retract(positionX(_)),
+            retract(positionY(_)),
+            retract(quest(_, _)),
+            retract(ranch(_, _)),
+            retract(market(_, _)),
+            retract(water(_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _)),
+            retract(infoStats(_,_,_,_,_,_,_,_,_,_)),
+            retract(binjay(_)),
+            retract(items(_,_,_,_,_,_,_,_,_)),
+            retract(inventory(_,_,_,_,_,_,_,_,_)),
+            retract(diary(_)),
+            logoDie,nl,
+            write(' Anda disiksa dan digantung. Byeee tubes')
         )
     ), !.
