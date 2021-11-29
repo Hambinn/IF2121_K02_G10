@@ -50,7 +50,7 @@ house:-
                 (
                     Pilihan == 3 ->
                     displayDiary(-1),
-                    write('mana diary yang ingin kamu baca hari ini? '),
+                    write('mana diary yang ingin kamu baca hari ini? '),nl,
                     write('untuk membaca diary, kamu memerlukan mantra khusus yaitu kata day dan diikuti dengan hari yang ingin kamu baca'),nl,
                     write('misalnya untuk membaca diary di day 1, mantranya adalah day1'),nl,
                     write('masukan mantra : '),
